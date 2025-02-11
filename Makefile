@@ -6,7 +6,7 @@
 #    By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/11 12:34:41 by magrabko          #+#    #+#              #
-#    Updated: 2025/02/11 14:08:45 by magrabko         ###   ########.fr        #
+#    Updated: 2025/02/11 17:22:32 by magrabko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,13 @@ GREEN=                          \033[1;32m
 RESET=                          \033[0m
 
 SRC_PATH= 		src
-OBJ_PATH= 		obj
+SRC_FILES=		main.c	\
+
+PARS_PATH=		src/parsing
+PARS_FILES=		check_map.c check_utils.c gnl.c init.c management.c pars_utils.c	\
+
+EXEC_PATH=		src/exec
+EXEC_FILES=
 
 LIBFT_PATH=    	./libft
 MLX_PATH=		./minilibx-linux
@@ -31,19 +37,28 @@ MLX_FLAGS =		-L$(MLX_PATH) -lmlx -lXext -lX11
 LIBFT=        	$(LIBFT_PATH)/libft.a
 MLX=			$(MLX_PATH)/libmlx.a
 
-SRC=			$(SRC_PATH)/main.c				\
+SRC=			$(SRC_PATH)/$(SRC_FILES)	\
+				$(PARS_PATH)/$(PARS_FILES)	\
+				$(EXEC_PATH)/$(EXEC_FILES)	\
 
+OBJ_PATH= 		obj
 OBJ= 			$(addprefix $(OBJ_PATH)/, $(notdir $(SRC:.c=.o)))
 
 NOPRINT=		--no-print-directory
 
 all: $(MLX) $(LIBFT) $(NAME)
 
+$(OBJ_PATH):
+	@mkdir $(OBJ_PATH)
+
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
 	@$(CC) $(CFLAGS) $(INCLD) -c $< -o $@
 
-$(OBJ_PATH):
-	@mkdir $(OBJ_PATH)
+$(OBJ_PATH)/%.o: $(PARS_PATH)/%.c | $(OBJ_PATH)
+	@$(CC) $(CFLAGS) $(INCLD) -c $< -o $@
+
+$(OBJ_PATH)/%.o: $(EXEC_PATH)/%.c | $(OBJ_PATH)
+	@$(CC) $(CFLAGS) $(INCLD) -c $< -o $@
 
 $(MLX):
 	@$(MAKE) -s $(NOPRINT) -C $(MLX_PATH) > /dev/null 2>&1
