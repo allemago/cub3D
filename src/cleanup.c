@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   management.c                                       :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:20:26 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/11 17:07:32 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/11 21:59:09 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ void	free_all(t_data *data)
 {
 	if (data->temp != NULL)
 		free_temp(data);
+	if (data->map != NULL)
+		free_tab(&data->map);
+/* 	if (data->sprite != NULL)
+		; */
 }
 
 void	free_temp(t_data *data)
@@ -64,11 +68,5 @@ void	err_free_exit(char *str, t_data *data)
 			manage_file(data, 'C');
 		free_all(data);
 	}
-	exit(1);
-}
-
-void	err_msg_exit(void)
-{
-	perror(NULL);
 	exit(1);
 }

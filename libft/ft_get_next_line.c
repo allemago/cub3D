@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl.c                                              :+:      :+:    :+:   */
+/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 16:22:08 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/11 17:23:31 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/11 20:51:33 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "libft.h"
 
 static int	ft_varlen(char *s, int version)
 {
@@ -46,7 +46,7 @@ static char	*ft_strjoin_gnl(char *s1, char *s2)
 	s2_len = ft_varlen(s2, 2);
 	str = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (str == NULL)
-		return (free_ptr((void **)&s1), NULL);
+		return (free(s1), NULL);
 	i = 0;
 	while (i < s1_len)
 	{
@@ -57,7 +57,7 @@ static char	*ft_strjoin_gnl(char *s1, char *s2)
 	while (j < s2_len)
 		str[i++] = s2[j++];
 	str[i] = '\0';
-	free_ptr((void **)&s1);
+	free(s1);
 	return (str);
 }
 
@@ -100,7 +100,7 @@ static char	*ft_readfile(int fd, char *stash)
 		if (read_bytes == -1)
 		{
 			stash[0] = '\0';
-			free_ptr((void **)&buf);
+			free(buf);
 			return (NULL);
 		}
 		stash[read_bytes] = '\0';
@@ -118,7 +118,7 @@ char	*get_next_line(int fd)
 	line = ft_readfile(fd, stash);
 	if (line == NULL || ft_varlen(line, 1) == 0)
 	{
-		free_ptr((void **)&line);
+		free(line);
 		return (NULL);
 	}
 	ft_remainder(stash);

@@ -6,27 +6,11 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:31:30 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/11 17:51:54 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/11 22:33:26 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-char	*ft_getnl(char *str)
-{
-	int	i;
-
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '\n')
-			return (str);
-		i++;
-	}
-	return (NULL);
-}
 
 int	search_set(char c, char *set)
 {
@@ -37,20 +21,6 @@ int	search_set(char c, char *set)
 	{
 		if (c == set[i])
 			return (set[i]);
-		i++;
-	}
-	return (0);
-}
-
-size_t	find_char(char *str, char c)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-			return (1);
 		i++;
 	}
 	return (0);

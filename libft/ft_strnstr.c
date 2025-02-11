@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 15:25:40 by magrabko          #+#    #+#             */
-/*   Updated: 2024/05/30 17:26:49 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/11 20:25:04 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 			return ((char *)&big[i]);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
 /*
 #include <stdio.h>

@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:17:48 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/11 17:52:03 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/11 21:53:45 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	alloc_map(char ***map, t_data *data);
 char	*ft_getnl(char *str);
 
 /* MANAGEMENT */
-void	err_msg_exit(void);
 void	err_free_exit(char *str, t_data *data);
 void	free_all(t_data *data);
 void	free_temp(t_data *data);
 void	free_ptr(void **ptr);
+void	free_tab(char ***tab);
 
 #endif

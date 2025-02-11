@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:36:13 by magrabko          #+#    #+#             */
-/*   Updated: 2025/01/23 10:17:28 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:54:44 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# define BUFFER_SIZE 1
 # define BASE10 "0123456789"
 # define BASE16_LOW "0123456789abcdef"
 # define BASE16_UPP "0123456789ABCDEF"
@@ -55,6 +56,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
+char	*ft_getnl(char *str);
+char	*get_next_line(int fd);
 
 /* MEMORY */
 void	*ft_memset(void *s, int c, size_t n);

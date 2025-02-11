@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:09:20 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/11 17:51:49 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/11 23:38:08 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_alloc(void *ptr, t_data *data)
 
 void	alloc_map(char ***map, t_data *data)
 {
-	*map = ft_calloc(data->temp->y, sizeof(char *));
+	*map = malloc(sizeof(char *) * (data->temp->y + 1));
 	check_alloc(*map, data);
 }
 
@@ -33,11 +33,14 @@ int	check_file(t_data *data, char *argv)
 	end = start + 1;
 	if ((start - 3) < 0)
 		return (0);
-	if (ft_strnstr(&argv[start - 3], ".cub", 4) == NULL)
+	if (ft_strnstr(&argv[start - 3], ".cub", ft_strlen(&argv[start - 3])) == NULL)
 		return (0);
 	data->temp = malloc(sizeof(t_temp));
 	if (data->temp == NULL)
-		err_msg_exit();
+	{
+		perror(NULL);
+		exit(1);
+	}
 	while (start > 0 && !search_set(argv[start - 1], ALL_SPACES))
 		start--;
 	data->temp->file = ft_strndup(&argv[start], end - start);

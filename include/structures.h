@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:27:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/11 16:15:09 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/11 23:56:46 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,32 +28,25 @@ typedef struct s_temp
 
 typedef struct s_sprite
 {
-	void		*b_wall;
-	void		*i_wall;
-	void		*ground;
-	void		*fairy_p1;
-	void		*toad_1;
-	void		*toad_2;
-	void		*exit_ok;
-	void		*exit_ko;
 }				t_sprite;
 
 typedef struct s_data
 {
-	int			move_counter;
-	int			item_count;
-	int			item_found;
 	int			player_x;
 	int			player_y;
-	int			on_exit;
-	int			exit_x;
-	int			exit_y;
+	int			width;
+	int			height;
 	int			max_x;
 	int			max_y;
-	int			size_x;
-	int			size_y;
 	int			img_x;
 	int			img_y;
+	int			f_color[3];
+	int			c_color[3];
+	char		facing;
+	char		*north;
+	char		*south;
+	char		*west;
+	char		*east;
 	char		**map;
 	void		*mlx_ptr;
 	void		*win_ptr;

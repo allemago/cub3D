@@ -6,7 +6,7 @@
 #    By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 17:33:32 by magrabko          #+#    #+#              #
-#    Updated: 2025/01/23 09:40:07 by magrabko         ###   ########.fr        #
+#    Updated: 2025/02/11 20:48:24 by magrabko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC=		ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c			\
 			ft_substr.c ft_strjoin.c ft_tolower.c ft_toupper.c ft_split.c 		\
 			ft_calloc.c ft_strtrim.c ft_striteri.c ft_strmapi.c ft_itoa.c		\
 			ft_putendl_fd.c ft_printf_fd.c ft_putptr_fd.c ft_putnbr_base_fd.c	\
+			ft_get_newline.c ft_get_next_line.c									\
 
 OBJ = $(SRC:.c=.o)
 
