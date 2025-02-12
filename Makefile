@@ -6,7 +6,7 @@
 #    By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/11 12:34:41 by magrabko          #+#    #+#              #
-#    Updated: 2025/02/11 20:52:11 by magrabko         ###   ########.fr        #
+#    Updated: 2025/02/12 16:29:37 by magrabko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC_PATH= 		src
 SRC_FILES=		main.c cleanup.c	\
 
 PARS_PATH=		src/parsing
-PARS_FILES=		check_map.c check_utils.c init.c pars_utils.c	\
+PARS_FILES=		check_input.c check_utils.c init.c manager.c pars_utils.c	\
 
 EXEC_PATH=		src/exec
 EXEC_FILES=

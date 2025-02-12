@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:20:26 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/11 21:59:09 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:31:09 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,4 @@ void	free_temp(t_data *data)
 		free_tab(&data->temp->map_check);
 		free_ptr((void **)&data->temp);
 	}
-}
-
-void	err_free_exit(char *str, t_data *data)
-{
-	if (str != NULL)
-		ft_printf_fd(2, str);
-	if (data != NULL)
-	{
-		if (data->temp->fd_map != -1)
-			manage_file(data, 'C');
-		free_all(data);
-	}
-	exit(1);
 }

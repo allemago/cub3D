@@ -6,11 +6,25 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:31:30 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/11 22:33:26 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:32:25 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+int	is_line_empty(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (!search_set(line[i], ALL_SPACES))
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	search_set(char c, char *set)
 {
@@ -26,9 +40,9 @@ int	search_set(char c, char *set)
 	return (0);
 }
 
-size_t	find_last_char(char *str)
+int	find_last_char(char *str)
 {
-	size_t	i;
+	int	i;
 
 	i = ft_strlen(str);
 	while (i > 0 && (search_set(str[i], ALL_SPACES) || str[i] == '\0'))
@@ -36,23 +50,12 @@ size_t	find_last_char(char *str)
 	return (i);
 }
 
-void	manage_file(t_data *data, int flag)
+void	pass_spaces(char *str, int *index)
 {
-	if (flag == 'O')
-	{
-		data->temp->fd_map = open(data->temp->file, O_RDONLY);
-		if (data->temp->fd_map == -1)
-		{
-			ft_printf_fd(2, "%s: ", data->temp->file);
-			err_free_exit(strerror(errno), data);
-		}
-	}
-	else if (flag == 'C')
-	{
-		if (data->temp->fd_map != -1)
-		{
-			close(data->temp->fd_map);
-			data->temp->fd_map = -1;
-		}
-	}
+	int	i;
+
+	i = 0;
+	while (str[i] && search_set(str[i], ALL_SPACES))
+		i++;
+	*index += i;
 }
