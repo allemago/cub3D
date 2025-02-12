@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/11 23:57:39 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/12 09:52:29 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	init_data(t_data *data)
 	data->max_y = 0;
 	data->img_x = 0;
 	data->img_y = 0;
-	data->f_color = {0, 0, 0};
 	data->facing = 0;
 	data->north = NULL;
 	data->south = NULL;

@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:11:08 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/11 23:54:34 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/12 10:03:00 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,17 +136,20 @@ int	fill_map(t_data *data)
 	return (1);
 }
 
-char	*add_to_identifier(t_data *data, char *temp, int i)
+int	add_rgb(t_data *data, char **rgb)
+{
+	
+}
+
+int	add_to_identifier(t_data *data, char *temp, int i)
 {
 	char	*id;
+	char	**rgb;
 
 	id = ft_strdup(temp);
 	check_alloc(id, data);
 	if (access(id, O_RDONLY))
-	{
-		perror("indentifier");
-		return (NULL);
-	}
+		return (perror("indentifier"), 0);
 	if (i == 0)
 		data->north = id;
 	else if (i == 1)
@@ -155,11 +158,13 @@ char	*add_to_identifier(t_data *data, char *temp, int i)
 		data->west = id;
 	else if (i == 3)
 		data->east = id;
-	else if (i == 4)
-		data-> = ft_strnstr(line, "F", len);
-	else if (i == 5)
-		temp = ft_strnstr(line, "C", len);
-	return (id);
+	else
+	{
+		rgb = ft_split(temp, ',');
+		check_alloc(rgb, data);
+		add_rgb(data, rgb);
+	}
+	return (1);
 }
 
 char	*get_identifier(char *line, char *temp, int i)
