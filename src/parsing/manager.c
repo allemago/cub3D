@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:29:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/12 16:35:14 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/16 17:07:58 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	err_free_exit(char *str, t_data *data)
 		ft_printf_fd(2, str);
 	if (data != NULL)
 	{
-		if (data->temp->fd_map != -1)
+		if (data->temp && data->temp->fd_map != -1)
 			manage_file(data, 'C');
 		free_all(data);
 	}
@@ -31,10 +31,27 @@ void	check_alloc(void *ptr, t_data *data)
 		err_free_exit(strerror(errno), data);
 }
 
+int	is_directory(char *file)
+{
+	int	fd;
+	
+	fd = open(file, O_WRONLY);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	fd = -1;
+	return (0);
+}
+
 void	manage_file(t_data *data, int flag)
 {
 	if (flag == 'O')
 	{
+		if (is_directory(data->temp->file))
+		{
+			ft_printf_fd(2, "%s: ", data->temp->file);
+			err_free_exit(strerror(errno), data);
+		}
 		data->temp->fd_map = open(data->temp->file, O_RDONLY);
 		if (data->temp->fd_map == -1)
 		{
@@ -52,26 +69,20 @@ void	manage_file(t_data *data, int flag)
 	}
 }
 
-int	is_file_valid(t_data *data, char *argv)
+int	is_file_valid(t_data *data, char *map_file)
 {
-	int	start;
-	int	end;
+	int	ext;
 
-	start = find_last_char(argv);
-	end = start + 1;
-	if ((start - 3) < 0)
-		return (0);
-	if (ft_strnstr(&argv[start - 3], ".cub", ft_strlen(&argv[start - 3])) == NULL)
+	ext = ft_strlen(map_file) - 4;
+	if (ext < 0 || ft_strnstr(&map_file[ext], ".cub", 4) == NULL)
 		return (0);
 	data->temp = malloc(sizeof(t_temp));
 	if (data->temp == NULL)
 	{
-		perror(NULL);
+		perror("is_file_valid");
 		exit(1);
 	}
-	while (start > 0 && !search_set(argv[start - 1], ALL_SPACES))
-		start--;
-	data->temp->file = ft_strndup(&argv[start], end - start);
+	data->temp->file = ft_strdup(map_file);
 	if (data->temp->file == NULL)
 		err_free_exit(strerror(errno), data);
 	init_temp(data);

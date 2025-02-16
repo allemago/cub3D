@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:09:20 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/12 16:57:33 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/16 18:14:09 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ char	*get_element_info(t_data *data, char *temp, int *index)
 	int		end;
 
 	end = 0;
-	while (temp[end] && !search_set(temp[end], ALL_SPACES))
+	while (temp[end] && !search_c_set(temp[end], ALL_SPACES))
 		end++;
 	info = ft_strndup(temp, end);
 	check_alloc(info, data);
 	*index = end;
 	return (info);
 }
-
+/*
 char	*get_element(char *line, char *temp, int i)
 {
 	int	n;
@@ -65,9 +65,38 @@ char	*get_element(char *line, char *temp, int i)
 		n = 2;
 	else
 		n = 1;
-	if (temp == NULL || !search_set(temp[n], ALL_SPACES))
+	if (temp == NULL || !search_c_set(temp[n], ALL_SPACES))
 		return (NULL);
 	return (&temp[n]);
+}
+ */
+
+int	get_element(char *line)
+{
+	char	*temp;
+	int		n;
+
+	temp = NULL;
+	n = ft_strlen(line);
+	if (ft_strnstr(line, "NO", n))
+		temp = ft_strnstr(line, "NO", n);
+	else if (ft_strnstr(line, "SO", n))
+		temp = ft_strnstr(line, "SO", n);
+	else if (ft_strnstr(line, "WE", n))
+		temp = ft_strnstr(line, "WE", n);
+	else if (ft_strnstr(line, "EA", n))
+		temp = ft_strnstr(line, "EA", n);
+	else if (ft_strnstr(line, "F", n))
+		temp = ft_strnstr(line, "F", n);
+	else if (ft_strnstr(line, "C", n))
+		temp = ft_strnstr(line, "C", n);
+	else
+		return (0);
+	if (temp[0] == 'F' || temp[0] == 'C')
+		n = 1;
+	else
+		n = 2;
+	return (n);
 }
 
 static char	**add_to_map(t_data *data, char *line)

@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:31:30 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/12 16:32:25 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:08:58 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,28 @@ int	is_line_empty(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (!search_set(line[i], ALL_SPACES))
+		if (!search_c_set(line[i], ALL_SPACES))
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	search_set(char c, char *set)
+int	search_str_set(char *str, char *set)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (search_c_set(str[i], set))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	search_c_set(char c, char *set)
 {
 	size_t	i;
 
@@ -40,22 +54,12 @@ int	search_set(char c, char *set)
 	return (0);
 }
 
-int	find_last_char(char *str)
-{
-	int	i;
-
-	i = ft_strlen(str);
-	while (i > 0 && (search_set(str[i], ALL_SPACES) || str[i] == '\0'))
-		i--;
-	return (i);
-}
-
 void	pass_spaces(char *str, int *index)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] && search_set(str[i], ALL_SPACES))
+	while (str[i] && search_c_set(str[i], ALL_SPACES))
 		i++;
 	*index += i;
 }

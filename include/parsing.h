@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:17:48 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/12 17:06:03 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/16 19:21:15 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,28 @@
 
 # include "structures.h"
 
+# define RED "\001\e[1;91m\002"
+# define RESET "\001\033[0m\002 "
 # define BUFFER_SIZE 1
 # define ALL_SPACES " \t\n\v\f\r"
 # define ARGC_MSG "Error: try ./cub3D map.cub\n"
 # define ERR_EXT_MSG "Error: wrong file extension, use a .cub file.\n"
-# define ERR_ELEM_MSG "Error: invalid information in identifier.\n"
-# define ERR_WALL_MSG "Error: map must be surrounded by walls '1'.\n"
+# define ERR_ELEM_MSG \
+	"Error: invalid element in file.\nEnsure the format is correct:\n\
+- NO, SO, WE, EA followed by a valid path.\n\
+- Floor (F) and Ceiling (C) colors must be in R,G,B format (0-255).\n"
+# define ERR_WALL_MSG "Error: map must be surrounded by walls (1).\n"
 # define ERR_ITEM_MSG "Error: item conditions not met.\n"
 
 /* STRUCT INIT */
 void	init_data(t_data *data);
 void	init_temp(t_data *data);
-int		set_element(t_data *data, char *temp, int i);
+int		set_element(t_data *data, char *line, int start, int index);
 
 /* CHECKS */
 int		check_elements(t_data *data);
 int		check_map(t_data *data);
-char	*get_element(char *line, char *temp, int i);
+int		get_element(char *line);
 char	*get_element_info(t_data *data, char *temp, int *index);
 
 /* MAP INIT */
@@ -39,10 +44,11 @@ int		fill_map_check(t_data *data);
 void	load_map(t_data *data, int i);
 
 /* UTILS */
-int		find_last_char(char *str);
-int		is_file_valid(t_data *data, char *argv);
+int		is_file_valid(t_data *data, char *map_file);
 int		is_line_empty(char *line);
-int		search_set(char c, char *set);
+int		search_c_set(char c, char *set);
+int		search_str_set(char *str, char *set);
+int		is_directory(char *file);
 void	manage_file(t_data *data, int flag);
 void	pass_spaces(char *str, int *index);
 

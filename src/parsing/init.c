@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/12 16:57:53 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:52:46 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	init_temp(t_data *data)
 {
-	data->temp->item = ft_calloc(2, sizeof(int));
-	if (data->temp->item == NULL)
-		err_free_exit(strerror(errno), data);
 	data->temp->x = 0;
 	data->temp->y = 0;
 	data->temp->fd_map = -1;
@@ -35,6 +32,8 @@ void	init_data(t_data *data)
 	data->img_x = 0;
 	data->img_y = 0;
 	data->facing = 0;
+	data->f_color = NULL;
+	data->c_color = NULL;
 	data->north = NULL;
 	data->south = NULL;
 	data->west = NULL;
@@ -46,23 +45,27 @@ void	init_data(t_data *data)
 	data->sprite = NULL;
 }
 
-static int	set_rgb(t_data *data, char *info, int i)
+static int	set_rgb(t_data *data, char *info, char c)
 {
 	char	**rgb;
 
 	rgb = ft_split(info, ',');
 	free_ptr((void **)&info);
 	check_alloc(rgb, data);
-	if (rgb[3] != NULL)
+	if (rgb[1] == NULL || rgb[2] == NULL || rgb[3] != NULL)
 		return (0);
-	if (i == 4)
+	if (c == 'F')
 	{
+		data->f_color = malloc(sizeof(int) * 3);
+		check_alloc(data->f_color, data);
 		data->f_color[0] = ft_atoi(rgb[0]);
 		data->f_color[1] = ft_atoi(rgb[1]);
 		data->f_color[2] = ft_atoi(rgb[2]);
 	}
-	else if (i == 5)
+	else if (c == 'C')
 	{
+		data->c_color = malloc(sizeof(int) * 3);
+		check_alloc(data->c_color, data);
 		data->c_color[0] = ft_atoi(rgb[0]);
 		data->c_color[1] = ft_atoi(rgb[1]);
 		data->c_color[2] = ft_atoi(rgb[2]);
@@ -70,29 +73,31 @@ static int	set_rgb(t_data *data, char *info, int i)
 	return (1);
 }
 
-int	set_element(t_data *data, char *temp, int i)
+int	set_element(t_data *data, char *line, int start, int index)
 {
 	char	*info;
-	int		index;
 
-	info = get_element_info(data, temp, &index);
-	pass_spaces(&temp[index], &index);
-	if (temp[index])
+	info = get_element_info(data, &line[start], &index);
+	pass_spaces(&line[start + index], &index);
+	if (line[start + index])
 		return (0);
-	if (i < 4)
+	if (search_c_set(line[0], "FC"))
 	{
-		if (access(info, O_RDONLY))
-			return (perror("indentifier"), 0);
-		if (i == 0)
+		if (!set_rgb(data, info, line[0]))
+			return (0);
+	}
+	else
+	{
+		if (is_directory(info) || access(info, O_RDONLY))
+			return (perror(info), 0);
+		if (ft_strnstr(line, "NO", ft_strlen(line)))
 			data->north = info;
-		else if (i == 1)
+		else if (ft_strnstr(line, "SO", ft_strlen(line)))
 			data->south = info;
-		else if (i == 2)
+		else if (ft_strnstr(line, "WE", ft_strlen(line)))
 			data->west = info;
-		else if (i == 3)
+		else if (ft_strnstr(line, "EA", ft_strlen(line)))
 			data->east = info;
 	}
-	else if (!set_rgb(data, info, i))
-		return (0);
 	return (1);
 }
