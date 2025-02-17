@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:11:08 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/17 18:26:44 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:34:28 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,13 @@ int	check_elements(t_data *data)
 
 /*
 
-	Reste à faire:
+	-> 	Reste à faire
 
-	Pour vérifier uniquement les éléments avant la map:
-	incrémenter un index jusqu'à 6 quand ligne != vide.
-	Si index == 6, continuer à passer les lignes si elles sont vides.
-	Puis copier le fichier à partir de cet index.
+		Si autres que mur, non entoure de murs.
+		Exemple:
 
-	Ajouter vérification si un élément est en double (2 x NO, SO, etc...);
-	dans set_element.
+			11111111111
+		1110000000000000001
+		1111111111111111111
 
 */
