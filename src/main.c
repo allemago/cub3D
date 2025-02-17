@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:49:55 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/16 20:53:00 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:29:44 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(int argc, char **argv)
 
 	init_data(&data);
 	check_input(&data, argc, argv[1]);
-	/* print_all(&data); */
+ /* print_all(&data); */
 	free_all(&data);
 	return (0);
 }

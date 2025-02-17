@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:29:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/16 17:07:58 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:29:58 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	check_alloc(void *ptr, t_data *data)
 int	is_directory(char *file)
 {
 	int	fd;
-	
+
 	fd = open(file, O_WRONLY);
 	if (fd == -1)
 		return (1);

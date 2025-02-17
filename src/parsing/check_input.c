@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:11:08 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/16 20:57:56 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:26:44 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ int	check_elements(t_data *data)
 	i = 0;
 	while (i < 6)
 	{
-		start = get_element(data->temp->map_check[i]);
+		start = get_element(data, data->temp->map_check[i],
+				ft_strlen(data->temp->map_check[i]));
 		if (!start)
 			return (0);
 		pass_spaces(&data->temp->map_check[i][start], &start);
@@ -91,11 +92,12 @@ int	check_elements(t_data *data)
 	if (!data->north || !data->south || !data->west || !data->east
 		|| !data->f_color || !data->c_color)
 		return (0);
-	load_map(data, i);
+	if (!load_map(data, i))
+		return (0);
 	return (1);
 }
 
-/* 
+/*
 
 	Reste à faire:
 
@@ -106,5 +108,5 @@ int	check_elements(t_data *data)
 
 	Ajouter vérification si un élément est en double (2 x NO, SO, etc...);
 	dans set_element.
-	
+
 */

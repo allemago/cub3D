@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:17:48 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/16 19:21:15 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:17:45 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,19 @@ int		set_element(t_data *data, char *line, int start, int index);
 /* CHECKS */
 int		check_elements(t_data *data);
 int		check_map(t_data *data);
-int		get_element(char *line);
-char	*get_element_info(t_data *data, char *temp, int *index);
+int		get_element(t_data *data, char *line, int n);
 
 /* MAP INIT */
 int		fill_map_check(t_data *data);
-void	load_map(t_data *data, int i);
+int		load_map(t_data *data, int i);
 
 /* UTILS */
+int		check_map_end(char **map, int i);
 int		is_file_valid(t_data *data, char *map_file);
 int		is_line_empty(char *line);
+int		is_directory(char *file);
 int		search_c_set(char c, char *set);
 int		search_str_set(char *str, char *set);
-int		is_directory(char *file);
 void	manage_file(t_data *data, int flag);
 void	pass_spaces(char *str, int *index);
 

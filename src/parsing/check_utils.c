@@ -6,16 +6,20 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:09:20 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/16 18:14:09 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:24:16 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	load_map(t_data *data, int i)
+int	load_map(t_data *data, int i)
 {
 	int	j;
 
+	while (data->temp->map_check[i] && is_line_empty(data->temp->map_check[i]))
+		i++;
+	if (data->temp->map_check[i] == NULL)
+		return (0);
 	data->height = data->temp->y - i;
 	data->map = malloc(sizeof(char *) * (data->height + 1));
 	check_alloc(data->map, data);
@@ -24,79 +28,87 @@ void	load_map(t_data *data, int i)
 	{
 		data->map[j] = ft_strdup(data->temp->map_check[i]);
 		check_alloc(data->map[j], data);
+		if (is_line_empty(data->map[j]))
+		{
+			if (!check_map_end(data->map, j))
+				return (free_ptr((void **)&data->map[j]), 0);
+			return (free_ptr((void **)&data->map[j]), data->map[j] = NULL, 1);
+		}
 		j++;
 		i++;
 	}
 	data->map[j] = NULL;
+	return (1);
 }
 
-char	*get_element_info(t_data *data, char *temp, int *index)
+static int	go_first_c(char *str)
 {
-	char	*info;
-	int		end;
+	int	i;
 
-	end = 0;
-	while (temp[end] && !search_c_set(temp[end], ALL_SPACES))
-		end++;
-	info = ft_strndup(temp, end);
-	check_alloc(info, data);
-	*index = end;
-	return (info);
+	i = 0;
+	while (str[i] && search_c_set(str[i], ALL_SPACES))
+		i++;
+	return (str[i]);
 }
 /*
-char	*get_element(char *line, char *temp, int i)
-{
-	int	n;
-
-	n = ft_strlen(line);
-	if (i == 0)
-		temp = ft_strnstr(line, "NO", n);
-	else if (i == 1)
-		temp = ft_strnstr(line, "SO", n);
-	else if (i == 2)
-		temp = ft_strnstr(line, "WE", n);
-	else if (i == 3)
-		temp = ft_strnstr(line, "EA", n);
-	else if (i == 4)
-		temp = ft_strnstr(line, "F", n);
-	else if (i == 5)
-		temp = ft_strnstr(line, "C", n);
-	if (i < 4)
-		n = 2;
-	else
-		n = 1;
-	if (temp == NULL || !search_c_set(temp[n], ALL_SPACES))
-		return (NULL);
-	return (&temp[n]);
-}
- */
-
-int	get_element(char *line)
+int	get_element(t_data *data, char *line, int n)
 {
 	char	*temp;
-	int		n;
+	int		first_char;
 
 	temp = NULL;
-	n = ft_strlen(line);
-	if (ft_strnstr(line, "NO", n))
+	if (ft_strnstr(line, "NO", n) && !data->north)
 		temp = ft_strnstr(line, "NO", n);
-	else if (ft_strnstr(line, "SO", n))
+	else if (ft_strnstr(line, "SO", n) && !data->south)
 		temp = ft_strnstr(line, "SO", n);
-	else if (ft_strnstr(line, "WE", n))
+	else if (ft_strnstr(line, "WE", n) && !data->west)
 		temp = ft_strnstr(line, "WE", n);
-	else if (ft_strnstr(line, "EA", n))
+	else if (ft_strnstr(line, "EA", n) && !data->east)
 		temp = ft_strnstr(line, "EA", n);
-	else if (ft_strnstr(line, "F", n))
+	else if (ft_strnstr(line, "F", n) && !data->f_color)
 		temp = ft_strnstr(line, "F", n);
-	else if (ft_strnstr(line, "C", n))
+	else if (ft_strnstr(line, "C", n) && !data->c_color)
 		temp = ft_strnstr(line, "C", n);
-	else
+	else if (temp == NULL)
+		return (0);
+	first_char = 0;
+	pass_spaces(line, &first_char);
+	if (temp[0] == 'F' || temp[0] == 'C')
+	{
+		if (line[first_char] != 'F' && line[first_char] != 'C')
+			return (0);
+		return (n = (n - ft_strlen(temp)) + 1);
+	}
+	return (n = (n - ft_strlen(temp)) + 2);
+}
+*/
+
+int	get_element(t_data *data, char *line, int n)
+{
+	char	*temp;
+
+	temp = NULL;
+	if (ft_strnstr(line, "NO", n) && !data->north)
+		temp = ft_strnstr(line, "NO", n);
+	else if (ft_strnstr(line, "SO", n) && !data->south)
+		temp = ft_strnstr(line, "SO", n);
+	else if (ft_strnstr(line, "WE", n) && !data->west)
+		temp = ft_strnstr(line, "WE", n);
+	else if (ft_strnstr(line, "EA", n) && !data->east)
+		temp = ft_strnstr(line, "EA", n);
+	else if (ft_strnstr(line, "F", n) && !data->f_color)
+		temp = ft_strnstr(line, "F", n);
+	else if (ft_strnstr(line, "C", n) && !data->c_color)
+		temp = ft_strnstr(line, "C", n);
+	else if (temp == NULL)
 		return (0);
 	if (temp[0] == 'F' || temp[0] == 'C')
-		n = 1;
-	else
-		n = 2;
-	return (n);
+	{
+		if (!search_c_set(go_first_c(line), "FC"))
+			return (0);
+		return (n = (n - ft_strlen(temp)) + 1);
+	}
+	return (n = (n - ft_strlen(temp)) + 2);
 }
 
 static char	**add_to_map(t_data *data, char *line)
@@ -138,13 +150,15 @@ int	fill_map_check(t_data *data)
 			manage_file(data, 'C');
 			break ;
 		}
-		if (!is_line_empty(data->temp->line))
+		if (is_line_empty(data->temp->line) && data->temp->y < 7)
+			free_ptr((void **)&data->temp->line);
+		else
 		{
 			data->temp->y++;
 			data->temp->map_check = add_to_map(data,
 					ft_strtrim(data->temp->line, "\n"));
+			free_ptr((void **)&data->temp->line);
 		}
-		free_ptr((void **)&data->temp->line);
 	}
 	if (data->temp->y < 9)
 		return (0);

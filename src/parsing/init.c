@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/16 20:52:46 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:28:36 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,20 @@ static int	set_rgb(t_data *data, char *info, char c)
 	return (1);
 }
 
+static char	*get_element_info(t_data *data, char *temp, int *index)
+{
+	char	*info;
+	int		end;
+
+	end = 0;
+	while (temp[end] && !search_c_set(temp[end], ALL_SPACES))
+		end++;
+	info = ft_strndup(temp, end);
+	check_alloc(info, data);
+	*index = end;
+	return (info);
+}
+
 int	set_element(t_data *data, char *line, int start, int index)
 {
 	char	*info;
@@ -81,9 +95,9 @@ int	set_element(t_data *data, char *line, int start, int index)
 	pass_spaces(&line[start + index], &index);
 	if (line[start + index])
 		return (0);
-	if (search_c_set(line[0], "FC"))
+	if (search_str_set(line, "FC"))
 	{
-		if (!set_rgb(data, info, line[0]))
+		if (!set_rgb(data, info, search_str_set(line, "FC")))
 			return (0);
 	}
 	else

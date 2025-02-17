@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:31:30 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/16 16:08:58 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:56:39 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ int	is_line_empty(char *line)
 	return (1);
 }
 
+int	check_map_end(char **map, int i)
+{
+	while (map[i] && is_line_empty(map[i]))
+		i++;
+	if (map[i])
+		return (0);
+	return (1);
+}
+
 int	search_str_set(char *str, char *set)
 {
 	size_t	i;
@@ -34,7 +43,7 @@ int	search_str_set(char *str, char *set)
 	while (str[i])
 	{
 		if (search_c_set(str[i], set))
-			return (1);
+			return (str[i]);
 		i++;
 	}
 	return (0);
