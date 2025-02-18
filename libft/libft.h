@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:36:13 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/11 19:54:44 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:09:48 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	*ft_calloc(size_t count, size_t size);
 
 /* CONVERT */
 int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
 char	*ft_itoa(int n);
 
 /* STRING CALLBACKS */

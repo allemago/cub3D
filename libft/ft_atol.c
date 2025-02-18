@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/11 14:02:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/18 14:00:27 by magrabko         ###   ########.fr       */
+/*   Created: 2025/02/18 16:08:48 by magrabko          #+#    #+#             */
+/*   Updated: 2025/02/18 16:09:29 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "libft.h"
 
-# include "../libft/libft.h"
-# include "../minilibx-linux/mlx.h"
-# include "parsing.h"
-# include "structures.h"
-# include <errno.h>
-# include <fcntl.h>
-# include <math.h>
-# include <stdbool.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
+long	ft_atol(const char *str)
+{
+	int		i;
+	long	result;
+	int		sign;
 
-/* TEMPORAIRE -> TESTS */
-void	print_all(t_data *data);
-
-#endif
+	i = 0;
+	result = 0;
+	sign = 1;
+	while ((str[i] && str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-')
+	{
+		sign = sign * -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	return (result * sign);
+}

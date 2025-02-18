@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/17 18:28:36 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:17:56 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ static int	set_rgb(t_data *data, char *info, char c)
 	rgb = ft_split(info, ',');
 	free_ptr((void **)&info);
 	check_alloc(rgb, data);
-	if (rgb[1] == NULL || rgb[2] == NULL || rgb[3] != NULL)
+	if (rgb[1] == NULL || rgb[2] == NULL || rgb[3] != NULL
+		|| !is_rgb_valid(rgb))
 		return (0);
 	if (c == 'F')
 	{
