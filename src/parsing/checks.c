@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:11:08 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/18 16:05:26 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:23:09 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,24 +132,3 @@ void	check_input(t_data *data, int argc, char *map_file)
 	}
 	free_temp(data);
 }
-
-/*
-
-		TO DO
-
-[x]	->	Verifier si un mur n'est pas precede ou suivi
-		de vide si ce n'est pas le seul mur de la ligne.
-
-[x]	->	Verifier si 0 n'est pas entoure de vide.
-		Exemple:
-						incorrect
-			11111111111  |
-		1110000000000000001
-		1111111111111111111
-
-[x]	->	Mettre a jour width dans check_map.
-
-[ ]	->	Verifier que les couleurs soient comprises
-		entre 0 et 255.
-
-*/

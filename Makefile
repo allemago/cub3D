@@ -90,16 +90,6 @@ fclean: clean
 
 re: fclean all
 
-input:
-		@echo "\n\033[1;32m NORMAL INPUT TEST\033[0;33m"
-		@echo "./so_long maps/valid/*.ber"
-		@echo "\n\033[1;38;5;202m ERROR TESTS\033[0;33m"
-		@echo "./so_long"
-		@echo "./so_long map.txt"
-		@echo "./so_long maps/invalid/*.ber"
-		@echo "\n\033[1;32m VALGRIND TEST\033[0;33m"
-		@echo "valgrind --leak-check=full ./so_long maps/valid/*.ber\n"
-
 copy_mlx:
 		@cp -r ~/Documents/minilibx-linux minilibx-linux
 
