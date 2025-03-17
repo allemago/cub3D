@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_count_occ.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 12:39:38 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/17 17:15:42 by magrabko         ###   ########.fr       */
+/*   Created: 2025/03/17 16:58:44 by magrabko          #+#    #+#             */
+/*   Updated: 2025/03/17 17:01:30 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdio.h"
 
-int	ft_isdigit(int c)
+int	ft_count_occ(const char *s, char c)
 {
-	if ((c >= '0' && c <= '9'))
-		return (1);
-	return (0);
+	size_t	i;
+	int		occ;
+
+	i = 0;
+    occ = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+            occ++;
+        i++;
+	}
+	return (occ);
 }

@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:11:08 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/18 16:23:09 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:07:18 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@ static int	check_map_items(t_data *data, char item, int i, int j)
 		if (!data->facing)
 			data->facing = item;
 		else
-			return (0);
+			return (ft_printf_fd(2, ERR_PLAYER_MSG), 0);
+		data->map[i][j] = '0';
 	}
 	else if (item != '0' && item != '1' && item != ' ')
-		return (0);
+		return (ft_printf_fd(2, ERR_ITEM_MSG), 0);
 	if (item == '1' && !check_around(data->map, '&', i, j))
-		return (0);
+		return (ft_printf_fd(2, ERR_WALL_MSG), 0);
 	if (search_c_set(item, "NSEW0") && !check_around(data->map, '|', i, j))
-		return (0);
+		return (ft_printf_fd(2, ERR_ITEM_MSG), 0);
 	return (1);
 }
 
@@ -72,7 +73,7 @@ int	check_map(t_data *data)
 			while (data->map[i][j])
 			{
 				if (!check_map_items(data, data->map[i][j], i, j))
-					return (ft_printf_fd(2, ERR_ITEM_MSG), 0);
+					return (0);
 				j++;
 			}
 		}
@@ -128,6 +129,11 @@ void	check_input(t_data *data, int argc, char *map_file)
 	}
 	if (!check_map(data))
 	{
+		err_free_exit(NULL, data);
+	}
+	if (!data->player_x && !data->player_y)
+	{
+		ft_printf_fd(2, ERR_ITEM_MSG);
 		err_free_exit(NULL, data);
 	}
 	free_temp(data);

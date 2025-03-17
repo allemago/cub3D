@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/18 16:17:56 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:45:40 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init_temp(t_data *data)
 	data->temp->x = 0;
 	data->temp->y = 0;
 	data->temp->fd_map = -1;
+	data->temp->rgb = NULL;
 	data->temp->map_check = NULL;
 	data->temp->line = NULL;
 }
@@ -47,30 +48,29 @@ void	init_data(t_data *data)
 
 static int	set_rgb(t_data *data, char *info, char c)
 {
-	char	**rgb;
-
-	rgb = ft_split(info, ',');
+	data->temp->rgb = ft_split(info, ',');
 	free_ptr((void **)&info);
-	check_alloc(rgb, data);
-	if (rgb[1] == NULL || rgb[2] == NULL || rgb[3] != NULL
-		|| !is_rgb_valid(rgb))
-		return (0);
+	check_alloc(data->temp->rgb, data);
+	if (data->temp->rgb[1] == NULL || data->temp->rgb[2] == NULL
+		|| data->temp->rgb[3] != NULL || !is_rgb_valid(data->temp->rgb))
+		return (ft_printf_fd(2, ERR_COLOR_MSG), 0);
 	if (c == 'F')
 	{
 		data->f_color = malloc(sizeof(int) * 3);
 		check_alloc(data->f_color, data);
-		data->f_color[0] = ft_atoi(rgb[0]);
-		data->f_color[1] = ft_atoi(rgb[1]);
-		data->f_color[2] = ft_atoi(rgb[2]);
+		data->f_color[0] = ft_atoi(data->temp->rgb[0]);
+		data->f_color[1] = ft_atoi(data->temp->rgb[1]);
+		data->f_color[2] = ft_atoi(data->temp->rgb[2]);
 	}
 	else if (c == 'C')
 	{
 		data->c_color = malloc(sizeof(int) * 3);
 		check_alloc(data->c_color, data);
-		data->c_color[0] = ft_atoi(rgb[0]);
-		data->c_color[1] = ft_atoi(rgb[1]);
-		data->c_color[2] = ft_atoi(rgb[2]);
+		data->c_color[0] = ft_atoi(data->temp->rgb[0]);
+		data->c_color[1] = ft_atoi(data->temp->rgb[1]);
+		data->c_color[2] = ft_atoi(data->temp->rgb[2]);
 	}
+	free_tab(&data->temp->rgb);
 	return (1);
 }
 
@@ -98,8 +98,8 @@ int	set_element(t_data *data, char *line, int start, int index)
 		return (0);
 	if (search_str_set(line, "FC"))
 	{
-		if (!set_rgb(data, info, search_str_set(line, "FC")))
-			return (0);
+		return (ft_isdigit(info[0]) && (ft_count_occ(info, ',') == 2)
+			&& set_rgb(data, info, search_str_set(line, "FC")));
 	}
 	else
 	{

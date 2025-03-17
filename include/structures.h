@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:27:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/02/16 18:35:30 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:11:43 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_temp
 	int			fd_map;
 	char		*file;
 	char		*line;
+	char		**rgb;
 	char		**map_check;
 }				t_temp;
 
