@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:09:35 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/17 18:06:25 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:49:44 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ int	get_map_size(t_data *data, char **map_check, int *i)
 			data->width = len;
 		start++;
 	}
+	return (1);
+}
+
+static int	check_end(t_data *data, int i)
+{
+	int	map_end;
+
+	map_end = i;
+	while (data->temp->map_check[i] && is_line_empty(data->temp->map_check[i]))
+		i++;
+	if (data->temp->map_check[i])
+		return (0);
+	data->height -= (i - map_end);
 	return (1);
 }
 

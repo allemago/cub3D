@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:17:48 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/17 18:02:42 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:40:54 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int		fill_map_game(t_data *data, int i);
 /* UTILS */
 void	manage_file(t_data *data, int flag);
 void	pass_spaces(char *str, int *index);
+char	*get_element_info(t_data *data, char *temp, int *index);
 int		check_around(char **map, char op, int i, int j);
-int		check_end(t_data *data, int i);
 int		get_element(t_data *data, char *line, int n);
 int		get_first_c(char *str);
 int		go_last_char(char *str);

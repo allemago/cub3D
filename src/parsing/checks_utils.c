@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:09:20 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/17 17:35:33 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:41:00 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,18 @@ int	is_line_empty(char *line)
 	return (1);
 }
 
-int	check_end(t_data *data, int i)
+char	*get_element_info(t_data *data, char *temp, int *index)
 {
-	int	map_end;
+	char	*info;
+	int		end;
 
-	map_end = i;
-	while (data->temp->map_check[i] && is_line_empty(data->temp->map_check[i]))
-		i++;
-	if (data->temp->map_check[i])
-		return (ft_printf_fd(2, ERR_EMPTY_MSG), 0);
-	data->height -= (i - map_end);
-	return (1);
+	end = 0;
+	while (temp[end] && !search_c_set(temp[end], ALL_SPACES))
+		end++;
+	info = ft_strndup(temp, end);
+	check_alloc(info, data);
+	*index = end;
+	return (info);
 }
 
 int	get_element(t_data *data, char *line, int n)

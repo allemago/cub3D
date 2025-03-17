@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/17 17:45:40 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:44:56 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,16 @@ static int	set_rgb(t_data *data, char *info, char c)
 	return (1);
 }
 
-static char	*get_element_info(t_data *data, char *temp, int *index)
+static void	set_orientation(t_data *data, char *line, char *info)
 {
-	char	*info;
-	int		end;
-
-	end = 0;
-	while (temp[end] && !search_c_set(temp[end], ALL_SPACES))
-		end++;
-	info = ft_strndup(temp, end);
-	check_alloc(info, data);
-	*index = end;
-	return (info);
+	if (ft_strnstr(line, "NO", ft_strlen(line)))
+		data->north = info;
+	else if (ft_strnstr(line, "SO", ft_strlen(line)))
+		data->south = info;
+	else if (ft_strnstr(line, "WE", ft_strlen(line)))
+		data->west = info;
+	else if (ft_strnstr(line, "EA", ft_strlen(line)))
+		data->east = info;
 }
 
 int	set_element(t_data *data, char *line, int start, int index)
@@ -95,24 +93,22 @@ int	set_element(t_data *data, char *line, int start, int index)
 	info = get_element_info(data, &line[start], &index);
 	pass_spaces(&line[start + index], &index);
 	if (line[start + index])
-		return (0);
+		return (free_ptr((void **)&info), 0);
 	if (search_str_set(line, "FC"))
 	{
-		return (ft_isdigit(info[0]) && (ft_count_occ(info, ',') == 2)
-			&& set_rgb(data, info, search_str_set(line, "FC")));
+		if (!ft_isdigit(info[0]) || (ft_count_occ(info, ',') != 2))
+			return (free_ptr((void **)&info), 0);
+		if (!set_rgb(data, info, search_str_set(line, "FC")))
+			return (0);
 	}
 	else
 	{
 		if (is_directory(info) || access(info, O_RDONLY))
-			return (perror(info), 0);
-		if (ft_strnstr(line, "NO", ft_strlen(line)))
-			data->north = info;
-		else if (ft_strnstr(line, "SO", ft_strlen(line)))
-			data->south = info;
-		else if (ft_strnstr(line, "WE", ft_strlen(line)))
-			data->west = info;
-		else if (ft_strnstr(line, "EA", ft_strlen(line)))
-			data->east = info;
+		{
+			perror(info);
+			return (free_ptr((void **)&info), 0);
+		}
+		set_orientation(data, line, info);
 	}
 	return (1);
 }
