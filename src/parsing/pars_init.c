@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   pars_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/17 18:44:56 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:24:09 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,11 @@ int	set_element(t_data *data, char *line, int start, int index)
 	pass_spaces(&line[start + index], &index);
 	if (line[start + index])
 		return (free_ptr((void **)&info), 0);
-	if (search_str_set(line, "FC"))
+	if (is_str_inset(line, "FC"))
 	{
 		if (!ft_isdigit(info[0]) || (ft_count_occ(info, ',') != 2))
 			return (free_ptr((void **)&info), 0);
-		if (!set_rgb(data, info, search_str_set(line, "FC")))
+		if (!set_rgb(data, info, is_str_inset(line, "FC")))
 			return (0);
 	}
 	else

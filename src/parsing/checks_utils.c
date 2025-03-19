@@ -6,11 +6,32 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:09:20 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/17 18:41:00 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:37:26 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+int	is_open(char **map, char op, int i, int j)
+{
+	if (op == '&')
+	{
+		if ((!map[i][j + 1] || is_c_inset(map[i][j + 1], ALL_SPACES))
+			&& (j - 1 < 0 || is_c_inset(map[i][j - 1], ALL_SPACES))
+			&& (!map[i + 1] || is_c_inset(map[i + 1][j], ALL_SPACES))
+			&& (i - 1 < 0 || is_c_inset(map[i - 1][j], ALL_SPACES)))
+			return (0);
+	}
+	else if (op == '|')
+	{
+		if ((!map[i][j + 1] || is_c_inset(map[i][j + 1], ALL_SPACES))
+			|| (j - 1 < 0 || is_c_inset(map[i][j - 1], ALL_SPACES))
+			|| (!map[i + 1] || is_c_inset(map[i + 1][j], ALL_SPACES))
+			|| (i - 1 < 0 || is_c_inset(map[i - 1][j], ALL_SPACES)))
+			return (0);
+	}
+	return (1);
+}
 
 int	is_rgb_valid(char **rgb)
 {
@@ -26,27 +47,13 @@ int	is_rgb_valid(char **rgb)
 	return (1);
 }
 
-int	is_line_empty(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i])
-	{
-		if (!search_c_set(line[i], ALL_SPACES))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 char	*get_element_info(t_data *data, char *temp, int *index)
 {
 	char	*info;
 	int		end;
 
 	end = 0;
-	while (temp[end] && !search_c_set(temp[end], ALL_SPACES))
+	while (temp[end] && !is_c_inset(temp[end], ALL_SPACES))
 		end++;
 	info = ft_strndup(temp, end);
 	check_alloc(info, data);
@@ -75,30 +82,22 @@ int	get_element(t_data *data, char *line, int n)
 		return (0);
 	if (temp[0] == 'F' || temp[0] == 'C')
 	{
-		if (!search_c_set(get_first_c(line), "FC"))
+		if (!is_c_inset(line[go_edge_char(line, FIRST_C)], "FC"))
 			return (0);
 		return (n = (n - ft_strlen(temp)) + 1);
 	}
 	return (n = (n - ft_strlen(temp)) + 2);
 }
 
-int	check_around(char **map, char op, int i, int j)
+int	go_end_map(t_data *data, int i)
 {
-	if (op == '&')
-	{
-		if ((!map[i][j + 1] || search_c_set(map[i][j + 1], ALL_SPACES)) && (j
-				- 1 < 0 || search_c_set(map[i][j - 1], ALL_SPACES)) && (!map[i
-				+ 1] || search_c_set(map[i + 1][j], ALL_SPACES)) && (i - 1 < 0
-				|| search_c_set(map[i - 1][j], ALL_SPACES)))
-			return (0);
-	}
-	else if (op == '|')
-	{
-		if ((!map[i][j + 1] || search_c_set(map[i][j + 1], ALL_SPACES)) || (j
-				- 1 < 0 || search_c_set(map[i][j - 1], ALL_SPACES)) || (!map[i
-				+ 1] || search_c_set(map[i + 1][j], ALL_SPACES)) || (i - 1 < 0
-				|| search_c_set(map[i - 1][j], ALL_SPACES)))
-			return (0);
-	}
+	int	map_end;
+
+	map_end = i;
+	while (data->temp->map_check[i] && is_line_empty(data->temp->map_check[i]))
+		i++;
+	if (data->temp->map_check[i])
+		return (0);
+	data->height -= (i - map_end);
 	return (1);
 }

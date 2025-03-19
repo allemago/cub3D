@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:17:48 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/17 18:40:54 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:07:27 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 # define BUFFER_SIZE 1
 # define ALL_SPACES " \t\n\v\f\r"
+# define FIRST_C 0
+# define LAST_C 1
 # define ARGC_MSG "Error: try ./cub3D map.cub\n"
 # define ERR_EXT_MSG "Error: wrong file extension, use a .cub file.\n"
 # define ERR_EMPTY_MSG "Map: no empty lines allowed.\n"
@@ -35,7 +37,8 @@ int		set_element(t_data *data, char *line, int start, int index);
 /* CHECKS */
 void	check_input(t_data *data, int argc, char *map_file);
 int		check_elements(t_data *data);
-int		check_map(t_data *data);
+int		check_map(t_data *data, int last);
+int		check_path(t_data *data);
 
 /* MAP INIT */
 int		fill_map_check(t_data *data);
@@ -45,16 +48,16 @@ int		fill_map_game(t_data *data, int i);
 void	manage_file(t_data *data, int flag);
 void	pass_spaces(char *str, int *index);
 char	*get_element_info(t_data *data, char *temp, int *index);
-int		check_around(char **map, char op, int i, int j);
+int		is_open(char **map, char op, int i, int j);
 int		get_element(t_data *data, char *line, int n);
-int		get_first_c(char *str);
-int		go_last_char(char *str);
+int		go_edge_char(char *str, int edge);
+int		go_end_map(t_data *data, int i);
 int		is_directory(char *file);
 int		is_file_valid(t_data *data, char *map_file);
 int		is_line_empty(char *line);
 int		is_rgb_valid(char **rgb);
-int		search_c_set(char c, char *set);
-int		search_str_set(char *str, char *set);
+int		is_c_inset(char c, char *set);
+int		is_str_inset(char *str, char *set);
 
 /* MANAGEMENT */
 void	check_alloc(void *ptr, t_data *data);

@@ -6,13 +6,41 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:09:35 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/17 18:49:44 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/19 19:04:31 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	get_map_size(t_data *data, char **map_check, int *i)
+static void	reset_maps(t_data *data, int i, int j)
+{
+	free_tab(&data->temp->map_check);
+	data->temp->map_check = malloc(sizeof(char *) * (data->height + 1));
+	check_alloc(data->temp->map_check, data);
+	while (data->map[i])
+	{
+		data->temp->map_check[i] = ft_strdup(data->map[i]);
+		check_alloc(data->temp->map_check[i], data);
+		i++;
+	}
+	data->temp->map_check[i] = NULL;
+	i = 0;
+	while (data->map[i] && data->temp->map_check[i])
+	{
+		while (data->map[i][j] && data->temp->map_check[i][j])
+		{
+			if (is_c_inset(data->map[i][j], "\t\n\v\f\r"))
+			{
+				data->map[i][j] = ' ';
+				data->temp->map_check[i][j] = ' ';
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+static int	get_map_size(t_data *data, char **map_check, int *i)
 {
 	int	start;
 	int	len;
@@ -26,24 +54,11 @@ int	get_map_size(t_data *data, char **map_check, int *i)
 	*i = start;
 	while (map_check[start])
 	{
-		len = ft_strlen(map_check[start]);
+		len = go_edge_char(map_check[start], LAST_C) + 1;
 		if (data->width < len)
 			data->width = len;
 		start++;
 	}
-	return (1);
-}
-
-static int	check_end(t_data *data, int i)
-{
-	int	map_end;
-
-	map_end = i;
-	while (data->temp->map_check[i] && is_line_empty(data->temp->map_check[i]))
-		i++;
-	if (data->temp->map_check[i])
-		return (0);
-	data->height -= (i - map_end);
 	return (1);
 }
 
@@ -60,15 +75,16 @@ int	fill_map_game(t_data *data, int i)
 	while (data->temp->map_check[i])
 	{
 		if (is_line_empty(data->temp->map_check[i]))
-			return (data->map[j] = NULL, check_end(data, i));
-		data->map[j] = malloc(sizeof(char) * data->width + 1);
+			return (data->map[j] = NULL, go_end_map(data, i));
+		data->map[j] = malloc(sizeof(char) * (data->width + 1));
 		check_alloc(data->map[j], data);
 		data->map[j][data->width] = '\0';
 		ft_memset(data->map[j], ' ', data->width);
-		len = ft_strlen(data->temp->map_check[i]);
+		len = go_edge_char(data->temp->map_check[i], LAST_C) + 1;
 		ft_memcpy(data->map[j++], data->temp->map_check[i++], len);
 	}
 	data->map[j] = NULL;
+	reset_maps(data, 0, 0);
 	return (1);
 }
 

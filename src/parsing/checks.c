@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:11:08 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/17 18:12:22 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:17:52 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 
 static int	check_map_items(t_data *data, char item, int i, int j)
 {
-	if (search_c_set(item, "NSEW"))
+	if (is_c_inset(item, "NSEW"))
 	{
+		if (data->facing)
+			return (ft_printf_fd(2, ERR_PLAYER_MSG), 0);
 		data->player_x = j;
 		data->player_y = i;
-		if (!data->facing)
-			data->facing = item;
-		else
-			return (ft_printf_fd(2, ERR_PLAYER_MSG), 0);
+		data->facing = item;
 		data->map[i][j] = '0';
 	}
-	else if (item != '0' && item != '1' && item != ' ')
+	else if (!is_c_inset(item, "01D "))
 		return (ft_printf_fd(2, ERR_ITEM_MSG), 0);
-	if (item == '1' && !check_around(data->map, '&', i, j))
+	if (item == '1' && !is_open(data->map, '&', i, j))
 		return (ft_printf_fd(2, ERR_WALL_MSG), 0);
-	if (search_c_set(item, "NSEW0") && !check_around(data->map, '|', i, j))
+	if (is_c_inset(item, "NSEW0D") && !is_open(data->map, '|', i, j))
 		return (ft_printf_fd(2, ERR_ITEM_MSG), 0);
 	return (1);
 }
@@ -41,38 +40,35 @@ static int	check_walls(char **map, int i)
 	pass_spaces(map[i], &j);
 	while (map[i][j])
 	{
-		if (map[i][j] != '1' || (map[i][j] == '1' && !check_around(map, '&', i,
-					j)))
+		if (map[i][j] != '1' || (map[i][j] == '1' && !is_open(map, '&', i, j)))
 			return (0);
 		j++;
-		if (search_c_set(map[i][j], ALL_SPACES))
-		{
+		if (is_c_inset(map[i][j], ALL_SPACES))
 			pass_spaces(&map[i][j], &j);
-		}
 	}
 	return (1);
 }
 
-int	check_map(t_data *data)
+int	check_map(t_data *data, int last)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (data->map[i])
+	while (data->temp->map_check[i])
 	{
-		if ((i == 0 || i == data->height - 1) && !check_walls(data->map, i))
+		if ((i == 0 || i == last) && !check_walls(data->temp->map_check, i))
 			return (ft_printf_fd(2, ERR_WALL_MSG), 0);
 		else
 		{
 			j = 0;
-			pass_spaces(data->map[i], &j);
-			if (data->map[i][j] != '1'
-				|| data->map[i][go_last_char(data->map[i])] != '1')
+			pass_spaces(data->temp->map_check[i], &j);
+			if (data->temp->map_check[i][j] != '1'
+				|| data->map[i][go_edge_char(data->map[i], LAST_C)] != '1')
 				return (ft_printf_fd(2, ERR_WALL_MSG), 0);
-			while (data->map[i][j])
+			while (data->temp->map_check[i][j])
 			{
-				if (!check_map_items(data, data->map[i][j], i, j))
+				if (!check_map_items(data, data->temp->map_check[i][j], i, j))
 					return (0);
 				j++;
 			}
@@ -113,7 +109,7 @@ int	check_elements(t_data *data)
 
 void	check_input(t_data *data, int argc, char *map_file)
 {
-	if (argc != 2 || !map_file[0] || search_str_set(map_file, ALL_SPACES))
+	if (argc != 2 || !map_file[0] || is_str_inset(map_file, ALL_SPACES))
 	{
 		ft_printf_fd(2, ARGC_MSG);
 		exit(1);
@@ -123,15 +119,11 @@ void	check_input(t_data *data, int argc, char *map_file)
 		ft_printf_fd(2, ERR_EXT_MSG);
 		exit(1);
 	}
-	if (!check_elements(data))
+	if (!check_elements(data) || !check_map(data, data->height - 1))
 	{
 		err_free_exit(ERR_ELEM_MSG, data);
 	}
-	if (!check_map(data))
-	{
-		err_free_exit(NULL, data);
-	}
-	if (!data->player_x && !data->player_y)
+	if ((!data->player_x && !data->player_y) || !check_path(data))
 	{
 		ft_printf_fd(2, ERR_ITEM_MSG);
 		err_free_exit(NULL, data);

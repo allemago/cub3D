@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:20:26 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/17 15:47:19 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:54:18 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,7 @@ void	free_temp(t_data *data)
 	{
 		free_ptr((void **)&data->temp->file);
 		free_ptr((void **)&data->temp->line);
-		if (data->temp->rgb)
-		{
-			free_tab(&data->temp->rgb);
-		}
+		free_tab(&data->temp->rgb);
 		free_tab(&data->temp->map_check);
 		free_ptr((void **)&data->temp);
 	}

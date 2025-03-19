@@ -6,7 +6,7 @@
 #    By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/11 12:34:41 by magrabko          #+#    #+#              #
-#    Updated: 2025/02/18 15:56:42 by magrabko         ###   ########.fr        #
+#    Updated: 2025/03/19 18:18:53 by magrabko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,11 @@ GREEN=                          \033[1;32m
 RESET=                          \033[0m
 
 SRC_PATH= 		src
-SRC_FILES=		main.c cleanup.c	\
+SRC_FILES=		main.c cleanup.c												\
 
 PARS_PATH=		src/parsing
-PARS_FILES=		checks.c checks_utils.c init.c manager.c map_utils.c pars_utils.c	\
+PARS_FILES=		checks_utils.c checks.c flood_fill.c map_utils.c pars_init.c	\
+				pars_utils.c string_utils.c										\
 
 EXEC_PATH=		src/exec
 EXEC_FILES=
