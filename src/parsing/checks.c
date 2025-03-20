@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:11:08 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/19 18:17:52 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:55:54 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ static int	check_map_items(t_data *data, char item, int i, int j)
 	{
 		if (data->facing)
 			return (ft_printf_fd(2, ERR_PLAYER_MSG), 0);
-		data->player_x = j;
-		data->player_y = i;
+		data->pars->player_x = j;
+		data->pars->player_y = i;
+		data->player.pos_x = j + 0.5;
+		data->player.pos_y = i + 0.5;
 		data->facing = item;
 		data->map[i][j] = '0';
 	}
@@ -55,20 +57,20 @@ int	check_map(t_data *data, int last)
 	int	j;
 
 	i = 0;
-	while (data->temp->map_check[i])
+	while (data->pars->map_check[i])
 	{
-		if ((i == 0 || i == last) && !check_walls(data->temp->map_check, i))
+		if ((i == 0 || i == last) && !check_walls(data->pars->map_check, i))
 			return (ft_printf_fd(2, ERR_WALL_MSG), 0);
 		else
 		{
 			j = 0;
-			pass_spaces(data->temp->map_check[i], &j);
-			if (data->temp->map_check[i][j] != '1'
+			pass_spaces(data->pars->map_check[i], &j);
+			if (data->pars->map_check[i][j] != '1'
 				|| data->map[i][go_edge_char(data->map[i], LAST_C)] != '1')
 				return (ft_printf_fd(2, ERR_WALL_MSG), 0);
-			while (data->temp->map_check[i][j])
+			while (data->pars->map_check[i][j])
 			{
-				if (!check_map_items(data, data->temp->map_check[i][j], i, j))
+				if (!check_map_items(data, data->pars->map_check[i][j], i, j))
 					return (0);
 				j++;
 			}
@@ -88,21 +90,21 @@ int	check_elements(t_data *data)
 	i = 0;
 	while (i < 6)
 	{
-		start = get_element(data, data->temp->map_check[i],
-				ft_strlen(data->temp->map_check[i]));
+		start = get_element(data, data->pars->map_check[i],
+				ft_strlen(data->pars->map_check[i]));
 		if (!start)
 			return (0);
-		pass_spaces(&data->temp->map_check[i][start], &start);
-		if (!data->temp->map_check[i][start])
+		pass_spaces(&data->pars->map_check[i][start], &start);
+		if (!data->pars->map_check[i][start])
 			return (0);
-		if (!set_element(data, data->temp->map_check[i], start, 0))
+		if (!set_element(data, data->pars->map_check[i], start, 0))
 			return (0);
 		i++;
 	}
-	if (!data->north || !data->south || !data->west || !data->east
-		|| !data->f_color || !data->c_color)
-		return (0);
-	if (!fill_map_game(data, i))
+	if ((!data->north || !data->south ||
+		!data->west || !data->east ||
+		!data->f_color || !data->c_color) ||
+		!fill_map_game(data, i))
 		return (0);
 	return (1);
 }
@@ -123,10 +125,9 @@ void	check_input(t_data *data, int argc, char *map_file)
 	{
 		err_free_exit(ERR_ELEM_MSG, data);
 	}
-	if ((!data->player_x && !data->player_y) || !check_path(data))
+	if ((!data->pars->player_x && !data->pars->player_y) || !check_path(data))
 	{
 		ft_printf_fd(2, ERR_ITEM_MSG);
 		err_free_exit(NULL, data);
 	}
-	free_temp(data);
 }

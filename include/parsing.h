@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:17:48 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/19 18:07:27 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:02:40 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@
 
 /* STRUCT INIT */
 void	init_data(t_data *data);
-void	init_temp(t_data *data);
-int		set_element(t_data *data, char *line, int start, int index);
 
 /* CHECKS */
 void	check_input(t_data *data, int argc, char *map_file);
@@ -58,6 +56,7 @@ int		is_line_empty(char *line);
 int		is_rgb_valid(char **rgb);
 int		is_c_inset(char c, char *set);
 int		is_str_inset(char *str, char *set);
+int		set_element(t_data *data, char *line, int start, int index);
 
 /* MANAGEMENT */
 void	check_alloc(void *ptr, t_data *data);
@@ -65,6 +64,8 @@ void	err_free_exit(char *str, t_data *data);
 void	free_all(t_data *data);
 void	free_ptr(void **ptr);
 void	free_tab(char ***tab);
-void	free_temp(t_data *data);
+void	free_pars(t_data *data);
+void	free_assets(t_data *data);
+void	destroy_texture(t_data *data, t_text *texture, int i, int n);
 
 #endif

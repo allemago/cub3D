@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:29:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/19 15:15:42 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:43:42 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	err_free_exit(char *str, t_data *data)
 		ft_printf_fd(2, str);
 	if (data != NULL)
 	{
-		if (data->temp && data->temp->fd_map != -1)
+		if (data->pars && data->pars->fd_map != -1)
 			manage_file(data, 'C');
 		free_all(data);
 	}
@@ -47,24 +47,24 @@ void	manage_file(t_data *data, int flag)
 {
 	if (flag == 'O')
 	{
-		if (is_directory(data->temp->file))
+		if (is_directory(data->pars->file))
 		{
-			ft_printf_fd(2, "%s: ", data->temp->file);
+			ft_printf_fd(2, "%s: ", data->pars->file);
 			err_free_exit(strerror(errno), data);
 		}
-		data->temp->fd_map = open(data->temp->file, O_RDONLY);
-		if (data->temp->fd_map == -1)
+		data->pars->fd_map = open(data->pars->file, O_RDONLY);
+		if (data->pars->fd_map == -1)
 		{
-			ft_printf_fd(2, "%s: ", data->temp->file);
+			ft_printf_fd(2, "%s: ", data->pars->file);
 			err_free_exit(strerror(errno), data);
 		}
 	}
 	else if (flag == 'C')
 	{
-		if (data->temp->fd_map != -1)
+		if (data->pars->fd_map != -1)
 		{
-			close(data->temp->fd_map);
-			data->temp->fd_map = -1;
+			close(data->pars->fd_map);
+			data->pars->fd_map = -1;
 		}
 	}
 }
@@ -76,16 +76,20 @@ int	is_file_valid(t_data *data, char *map_file)
 	ext = ft_strlen(map_file) - 4;
 	if (ext < 0 || ft_strnstr(&map_file[ext], ".cub", 4) == NULL)
 		return (0);
-	data->temp = malloc(sizeof(t_temp));
-	if (data->temp == NULL)
+	data->pars = malloc(sizeof(t_pars));
+	if (data->pars == NULL)
 	{
 		perror("is_file_valid");
 		exit(1);
 	}
-	data->temp->file = ft_strdup(map_file);
-	if (data->temp->file == NULL)
-		err_free_exit(strerror(errno), data);
-	init_temp(data);
+	data->pars->file = ft_strdup(map_file);
+	if (data->pars->file == NULL)
+	{
+		free_ptr((void **)&data->pars);
+		ft_printf_fd(2, strerror(errno));
+		exit(1);
+	}
+	init_data(data);
 	manage_file(data, 'O');
 	return (1);
 }

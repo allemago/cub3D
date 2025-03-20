@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:09:35 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/19 19:04:31 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:14:38 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 static void	reset_maps(t_data *data, int i, int j)
 {
-	free_tab(&data->temp->map_check);
-	data->temp->map_check = malloc(sizeof(char *) * (data->height + 1));
-	check_alloc(data->temp->map_check, data);
+	free_tab(&data->pars->map_check);
+	data->pars->map_check = malloc(sizeof(char *) * (data->height + 1));
+	check_alloc(data->pars->map_check, data);
 	while (data->map[i])
 	{
-		data->temp->map_check[i] = ft_strdup(data->map[i]);
-		check_alloc(data->temp->map_check[i], data);
+		data->pars->map_check[i] = ft_strdup(data->map[i]);
+		check_alloc(data->pars->map_check[i], data);
 		i++;
 	}
-	data->temp->map_check[i] = NULL;
+	data->pars->map_check[i] = NULL;
 	i = 0;
-	while (data->map[i] && data->temp->map_check[i])
+	while (data->map[i] && data->pars->map_check[i])
 	{
-		while (data->map[i][j] && data->temp->map_check[i][j])
+		while (data->map[i][j] && data->pars->map_check[i][j])
 		{
 			if (is_c_inset(data->map[i][j], "\t\n\v\f\r"))
 			{
 				data->map[i][j] = ' ';
-				data->temp->map_check[i][j] = ' ';
+				data->pars->map_check[i][j] = ' ';
 			}
 			j++;
 		}
@@ -50,7 +50,7 @@ static int	get_map_size(t_data *data, char **map_check, int *i)
 		start++;
 	if (map_check[start] == NULL)
 		return (0);
-	data->height = data->temp->y - start;
+	data->height = data->pars->y - start;
 	*i = start;
 	while (map_check[start])
 	{
@@ -67,21 +67,21 @@ int	fill_map_game(t_data *data, int i)
 	int	j;
 	int	len;
 
-	if (!get_map_size(data, data->temp->map_check, &i))
+	if (!get_map_size(data, data->pars->map_check, &i))
 		return (0);
 	data->map = malloc(sizeof(char *) * (data->height + 1));
 	check_alloc(data->map, data);
 	j = 0;
-	while (data->temp->map_check[i])
+	while (data->pars->map_check[i])
 	{
-		if (is_line_empty(data->temp->map_check[i]))
+		if (is_line_empty(data->pars->map_check[i]))
 			return (data->map[j] = NULL, go_end_map(data, i));
 		data->map[j] = malloc(sizeof(char) * (data->width + 1));
 		check_alloc(data->map[j], data);
 		data->map[j][data->width] = '\0';
 		ft_memset(data->map[j], ' ', data->width);
-		len = go_edge_char(data->temp->map_check[i], LAST_C) + 1;
-		ft_memcpy(data->map[j++], data->temp->map_check[i++], len);
+		len = go_edge_char(data->pars->map_check[i], LAST_C) + 1;
+		ft_memcpy(data->map[j++], data->pars->map_check[i++], len);
 	}
 	data->map[j] = NULL;
 	reset_maps(data, 0, 0);
@@ -94,21 +94,21 @@ static char	**add_to_map(t_data *data, char *line)
 	int		i;
 
 	check_alloc(line, data);
-	new_map = malloc(sizeof(char *) * (data->temp->y + 1));
+	new_map = malloc(sizeof(char *) * (data->pars->y + 1));
 	check_alloc(new_map, data);
-	if (data->temp->map_check)
+	if (data->pars->map_check)
 	{
 		i = 0;
-		while (data->temp->map_check[i])
+		while (data->pars->map_check[i])
 		{
-			new_map[i] = ft_strdup(data->temp->map_check[i]);
+			new_map[i] = ft_strdup(data->pars->map_check[i]);
 			check_alloc(new_map[i], data);
 			i++;
 		}
 	}
-	free_tab(&data->temp->map_check);
-	new_map[data->temp->y - 1] = line;
-	new_map[data->temp->y] = NULL;
+	free_tab(&data->pars->map_check);
+	new_map[data->pars->y - 1] = line;
+	new_map[data->pars->y] = NULL;
 	return (new_map);
 }
 
@@ -119,25 +119,25 @@ static char	**add_to_map(t_data *data, char *line)
 */
 int	fill_map_check(t_data *data)
 {
-	while (data->temp->fd_map > 0)
+	while (data->pars->fd_map > 0)
 	{
-		data->temp->line = get_next_line(data->temp->fd_map);
-		if (data->temp->line == NULL)
+		data->pars->line = get_next_line(data->pars->fd_map);
+		if (data->pars->line == NULL)
 		{
 			manage_file(data, 'C');
 			break ;
 		}
-		if (is_line_empty(data->temp->line) && data->temp->y < 7)
-			free_ptr((void **)&data->temp->line);
+		if (is_line_empty(data->pars->line) && data->pars->y < 7)
+			free_ptr((void **)&data->pars->line);
 		else
 		{
-			data->temp->y++;
-			data->temp->map_check = add_to_map(data,
-					ft_strtrim(data->temp->line, "\n"));
-			free_ptr((void **)&data->temp->line);
+			data->pars->y++;
+			data->pars->map_check = add_to_map(data,
+					ft_strtrim(data->pars->line, "\n"));
+			free_ptr((void **)&data->pars->line);
 		}
 	}
-	if (data->temp->y < 9)
+	if (data->pars->y < 9)
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:09:20 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/19 18:37:26 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:14:38 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ int	go_end_map(t_data *data, int i)
 	int	map_end;
 
 	map_end = i;
-	while (data->temp->map_check[i] && is_line_empty(data->temp->map_check[i]))
+	while (data->pars->map_check[i] && is_line_empty(data->pars->map_check[i]))
 		i++;
-	if (data->temp->map_check[i])
+	if (data->pars->map_check[i])
 		return (0);
 	data->height -= (i - map_end);
 	return (1);
