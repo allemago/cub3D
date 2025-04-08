@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/20 13:16:26 by magrabko          #+#    #+#              #
-#    Updated: 2025/03/20 17:34:08 by magrabko         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME=			cub3D
 
 CFLAGS= 		-Wall -Wextra -Werror -g3
@@ -24,10 +12,10 @@ SRC_FILES=		main.c cleanup.c
 
 PARS_PATH=		src/parsing
 PARS_FILES=		checks_utils.c checks.c elem_utils.c flood_fill.c map_utils.c 	\
-				pars_init.c pars_utils.c string_utils.c							\
+				init_data.c pars_utils.c string_utils.c							\
 
 EXEC_PATH=		src/exec
-EXEC_FILES=		exec.c draw.c mlx.c init.c
+EXEC_FILES=		draw.c events.c game.c moves.c player.c raycasting.c
 
 LIBFT_PATH=    	./libft
 MLX_PATH=		./minilibx-linux
@@ -36,7 +24,7 @@ LIBFT_FLAGS=	-L$(LIBFT_PATH) -lft
 MLX_FLAGS =		-L$(MLX_PATH) -lmlx -lXext -lX11
 
 LIBFT=        	$(LIBFT_PATH)/libft.a
-MLX= 			$(MLX_PATH)/libmlx_Linux.a 
+MLX= 			$(MLX_PATH)/libmlx_Linux.a
 GCL= 			git clone
 MLX_URL= 		https://github.com/42Paris/minilibx-linux.git
 

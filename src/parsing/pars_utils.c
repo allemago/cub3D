@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:29:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/20 16:43:42 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/05 00:18:08 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../../include/cub3D.h"
 
 void	err_free_exit(char *str, t_data *data)
 {
@@ -76,12 +76,8 @@ int	is_file_valid(t_data *data, char *map_file)
 	ext = ft_strlen(map_file) - 4;
 	if (ext < 0 || ft_strnstr(&map_file[ext], ".cub", 4) == NULL)
 		return (0);
-	data->pars = malloc(sizeof(t_pars));
-	if (data->pars == NULL)
-	{
-		perror("is_file_valid");
-		exit(1);
-	}
+	data->pars = ft_calloc(1, sizeof(t_pars));
+	check_alloc(data->pars, data);
 	data->pars->file = ft_strdup(map_file);
 	if (data->pars->file == NULL)
 	{

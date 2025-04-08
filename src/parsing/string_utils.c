@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   string_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:31:30 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/19 18:18:46 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/01 17:08:10 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../../include/cub3D.h"
 
 void	pass_spaces(char *str, int *index)
 {

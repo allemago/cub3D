@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Moon <Moon@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:02:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/20 17:47:18 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/08 12:18:42 by Moon             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,40 @@
 
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
+# include "parsing.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <errno.h>
-# include <stdbool.h>
 # include <fcntl.h>
 # include <math.h>
+# include <limits.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include "parsing.h"
-# include "structures.h"
-
-# define RED_INT 0xFF0000
-# define KEY_ESC 65307
-# define KEY_W 119
-# define KEY_A 97
-# define KEY_S 115
-# define KEY_D 100
-# define KEY_RIGHT 65363
-# define KEY_LEFT 65361
 
 /*******************************************
- *                   MLX                    *
+ *                   INIT                    *
  ********************************************/
-void	ft_init_mlx(t_data *data);
+void	ft_init_game(t_data *data);
 void	ft_init_player(t_data *data);
-void	ft_events_mlx(t_data *data);
+void	ft_moves(t_data *data);
+int		ft_keypress(int keycode, t_data *data);
+int		ft_keyrelease(int keycode, t_data *data);
+int		ft_destroy(t_data *data);
 /*******************************************
  *                  DRAW                    *
  ********************************************/
-void	ft_put_pixel(t_text *img, int x, int y, int color);
-void	ft_draw_player(t_text *img, int x, int y, int size, int color);
-void	ft_clear_player(t_data *data);
+void	ft_put_pixel(t_data *data, int x, int y, int color);
+void	ft_draw_background(t_data *data);
 /*******************************************
  *                  EXEC                    *
  ********************************************/
-void	ft_ray_direction(t_player *player, t_ray *ray);
+void	ft_init_ray(t_data *data);
+void	ft_raycasting(t_data *data);
+void	ft_events_mlx(t_data *data);
+// void	ft_add_texture(t_data *data, int i);
 
 // /* TEMPORAIRE -> TESTS */
 void	print_all(t_data *data);

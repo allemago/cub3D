@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:16:19 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/20 16:34:34 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/01 17:08:25 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../../include/cub3D.h"
 
 static void	flood_fill(t_data *data, int i, int j)
 {

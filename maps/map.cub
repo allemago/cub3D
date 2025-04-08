@@ -1,9 +1,9 @@
 F 158,142,255
 C 0,98,133
-NO ./maps/walls/wall1.xpm
-SO ./maps/walls/wall2.xpm
-WE ./maps/walls/wall3.xpm  
-EA ./maps/walls/wall4.xpm
+NO ./textures/XPM/WALLS/NORTH_WALL.xpm
+SO ./textures/XPM/WALLS/SOUTH_WALL.xpm 
+WE ./textures/XPM/WALLS/WEST_WALL.xpm  
+EA ./textures/XPM/WALLS/EAST_WALL.xpm  
 
 
     11111111111111111111111111111

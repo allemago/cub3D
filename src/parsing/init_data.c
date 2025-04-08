@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_init.c                                        :+:      :+:    :+:   */
+/*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/20 17:42:37 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/07 14:51:45 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../../include/cub3D.h"
 
 void	init_assets(t_data *data)
 {
-	data->assets = malloc(sizeof(t_assets));
+	data->assets = ft_calloc(1, sizeof(t_assets));
 	check_alloc(data->assets, data);
 	data->assets->w_north = NULL;
 	data->assets->w_south = NULL;
@@ -30,10 +30,15 @@ void	init_assets(t_data *data)
 
 void	init_img(t_data *data)
 {
-	data->img = malloc(sizeof(t_text));
-	check_alloc(data->img, data);
-	data->img->img = NULL;
-	data->img->pixels = NULL;
+	int	i;
+
+	i = 0;
+	while (i < 5)
+	{
+		data->img[i].img = NULL;
+		data->img[i].path = NULL;
+		i++;
+	}
 }
 
 void	init_pars(t_data *data)
@@ -50,21 +55,17 @@ void	init_pars(t_data *data)
 
 void	init_data(t_data *data)
 {
+	data->map = NULL;
+	data->height = 0;
+	data->width = 0;
 	data->f_color = NULL;
 	data->c_color = NULL;
 	data->north = NULL;
 	data->south = NULL;
 	data->west = NULL;
 	data->east = NULL;
-	data->height = 0;
-	data->width = 0;
-	data->map = NULL;
 	data->facing = 0;
-	data->mlx_ptr = NULL;
-	data->window = NULL;
 	init_pars(data);
 	init_img(data);
 	init_assets(data);
-	data->player.pos_x = 0;
-	data->player.pos_y = 0;
 }

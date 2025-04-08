@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:11:08 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/20 17:55:54 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/04 23:56:58 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../../include/cub3D.h"
 
 static int	check_map_items(t_data *data, char item, int i, int j)
 {
@@ -101,10 +101,8 @@ int	check_elements(t_data *data)
 			return (0);
 		i++;
 	}
-	if ((!data->north || !data->south ||
-		!data->west || !data->east ||
-		!data->f_color || !data->c_color) ||
-		!fill_map_game(data, i))
+	if ((!data->north || !data->south || !data->west || !data->east
+			|| !data->f_color || !data->c_color) || !fill_map_game(data, i))
 		return (0);
 	return (1);
 }

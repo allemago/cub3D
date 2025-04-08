@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   elem_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:36:36 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/20 15:14:38 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/01 17:08:30 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../../include/cub3D.h"
 
 static int	set_rgb(t_data *data, char *info, char c)
 {
