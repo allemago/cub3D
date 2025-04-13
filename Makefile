@@ -8,25 +8,24 @@ GREEN=                          \033[1;32m
 RESET=                          \033[0m
 
 SRC_PATH= 		src
-SRC_FILES=		main.c cleanup.c
+SRC_FILES=		main.c cleanup.c												\
 
 PARS_PATH=		src/parsing
-PARS_FILES=		checks_utils.c checks.c elem_utils.c flood_fill.c map_utils.c 	\
-				init_data.c pars_utils.c string_utils.c							\
+PARS_FILES=		checks_utils.c checks.c elem_utils.c flood_fill.c init_data.c	\
+				map_utils.c pars_utils.c string_utils.c							\
 
 EXEC_PATH=		src/exec
-EXEC_FILES=		draw.c events.c game.c moves.c player.c raycasting.c
+EXEC_FILES=		draw.c event_moves.c events.c game.c init.c minimap.c player.c	\
+				raycasting.c textures.c							 				\
 
 LIBFT_PATH=    	./libft
 MLX_PATH=		./minilibx-linux
 
 LIBFT_FLAGS=	-L$(LIBFT_PATH) -lft
-MLX_FLAGS =		-L$(MLX_PATH) -lmlx -lXext -lX11
+MLX_FLAGS =		-L$(MLX_PATH) -lmlx -lXext -lX11 -lm
 
 LIBFT=        	$(LIBFT_PATH)/libft.a
-MLX= 			$(MLX_PATH)/libmlx_Linux.a
-GCL= 			git clone
-MLX_URL= 		https://github.com/42Paris/minilibx-linux.git
+MLX=			$(MLX_PATH)/libmlx.a
 
 SRC=			$(SRC_PATH)/$(SRC_FILES)	\
 				$(PARS_PATH)/$(PARS_FILES)	\
@@ -37,7 +36,7 @@ OBJ= 			$(addprefix $(OBJ_PATH)/, $(notdir $(SRC:.c=.o)))
 
 NOPRINT=		--no-print-directory
 
-all: $(MLX_PATH) $(LIBFT) $(NAME)
+all: $(MLX) $(LIBFT) $(NAME)
 
 $(OBJ_PATH):
 	@mkdir $(OBJ_PATH)
@@ -51,15 +50,11 @@ $(OBJ_PATH)/%.o: $(PARS_PATH)/%.c | $(OBJ_PATH)
 $(OBJ_PATH)/%.o: $(EXEC_PATH)/%.c | $(OBJ_PATH)
 	@$(CC) $(CFLAGS) $(INCLD) -c $< -o $@
 
-$(MLX_PATH):
-	@$(GCL) $(MLX_URL) > /dev/null 2>&1
-	@$(MAKE) -C $@ > /dev/null 2>&1
-
 $(MLX):
-	@$(MAKE) -C $(MLX_PATH) > /dev/null 2>&1
+	@$(MAKE) -s $(NOPRINT) -C $(MLX_PATH) > /dev/null 2>&1
 
 $(LIBFT):
-	@$(MAKE) -C $(LIBFT_PATH) > /dev/null 2>&1
+	@$(MAKE) $(NOPRINT) -C $(LIBFT_PATH)
 
 $(NAME): $(OBJ) $(MLX) $(LIBFT)
 	@$(CC) $(OBJ) -o $(NAME) $(MLX_FLAGS) $(LIBFT_FLAGS)
@@ -71,8 +66,8 @@ $(NAME): $(OBJ) $(MLX) $(LIBFT)
 
 clean:
 	@rm -rf $(OBJ_PATH)
-	@$(MAKE) -C $(LIBFT_PATH) clean > /dev/null
-	@$(MAKE) -C $(MLX_PATH) clean > /dev/null
+	@$(MAKE) $(NOPRINT) -C $(LIBFT_PATH) clean
+	@$(MAKE) $(NOPRINT) -C $(MLX_PATH) clean > /dev/null
 	@printf "\n\n${GREEN}"
 	@printf "  ░█▀▀░█░░░█▀▀░█▀█░█▀█░█░█░█▀█░░█\n"
 	@printf "  ░█░░░█░░░█▀▀░█▀█░█░█░█░█░█▀▀░░▀\n"
@@ -81,9 +76,11 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
-	@rm -rf $(MLX_PATH)
-	@$(MAKE) -C $(LIBFT_PATH) fclean > /dev/null
+	@$(MAKE) $(NOPRINT) -C $(LIBFT_PATH) fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+copy_mlx:
+		@cp -r ~/Documents/minilibx-linux minilibx-linux
+
+.PHONY: all clean fclean re input

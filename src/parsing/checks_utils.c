@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:09:20 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/01 17:08:44 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/09 13:03:02 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ int	is_open(char **map, char op, int i, int j)
 {
 	if (op == '&')
 	{
-		if ((!map[i][j + 1] || is_c_inset(map[i][j + 1], ALL_SPACES))
-			&& (j - 1 < 0 || is_c_inset(map[i][j - 1], ALL_SPACES))
-			&& (!map[i + 1] || is_c_inset(map[i + 1][j], ALL_SPACES))
-			&& (i - 1 < 0 || is_c_inset(map[i - 1][j], ALL_SPACES)))
+		if ((!map[i][j + 1] || is_c_inset(map[i][j + 1], ALL_SPACES)) && (j
+				- 1 < 0 || is_c_inset(map[i][j - 1], ALL_SPACES)) && (!map[i
+				+ 1] || is_c_inset(map[i + 1][j], ALL_SPACES)) && (i - 1 < 0
+				|| is_c_inset(map[i - 1][j], ALL_SPACES)))
 			return (0);
 	}
 	else if (op == '|')
 	{
-		if ((!map[i][j + 1] || is_c_inset(map[i][j + 1], ALL_SPACES))
-			|| (j - 1 < 0 || is_c_inset(map[i][j - 1], ALL_SPACES))
-			|| (!map[i + 1] || is_c_inset(map[i + 1][j], ALL_SPACES))
-			|| (i - 1 < 0 || is_c_inset(map[i - 1][j], ALL_SPACES)))
+		if ((!map[i][j + 1] || is_c_inset(map[i][j + 1], ALL_SPACES)) || (j
+				- 1 < 0 || is_c_inset(map[i][j - 1], ALL_SPACES)) || (!map[i
+				+ 1] || is_c_inset(map[i + 1][j], ALL_SPACES)) || (i - 1 < 0
+				|| is_c_inset(map[i - 1][j], ALL_SPACES)))
 			return (0);
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:09:35 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/01 17:08:21 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/13 20:27:02 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	reset_maps(t_data *data, int i, int j)
 {
 	free_tab(&data->pars->map_check);
-	data->pars->map_check = malloc(sizeof(char *) * (data->height + 1));
+	data->pars->map_check = ft_calloc((data->height + 1), sizeof(char *));
 	check_alloc(data->pars->map_check, data);
 	while (data->map[i])
 	{
@@ -69,14 +69,14 @@ int	fill_map_game(t_data *data, int i)
 
 	if (!get_map_size(data, data->pars->map_check, &i))
 		return (0);
-	data->map = malloc(sizeof(char *) * (data->height + 1));
+	data->map = ft_calloc((data->height + 1), sizeof(char *));
 	check_alloc(data->map, data);
 	j = 0;
 	while (data->pars->map_check[i])
 	{
 		if (is_line_empty(data->pars->map_check[i]))
 			return (data->map[j] = NULL, go_end_map(data, i));
-		data->map[j] = malloc(sizeof(char) * (data->width + 1));
+		data->map[j] = ft_calloc((data->width + 1), sizeof(char));
 		check_alloc(data->map[j], data);
 		data->map[j][data->width] = '\0';
 		ft_memset(data->map[j], ' ', data->width);
@@ -94,7 +94,7 @@ static char	**add_to_map(t_data *data, char *line)
 	int		i;
 
 	check_alloc(line, data);
-	new_map = malloc(sizeof(char *) * (data->pars->y + 1));
+	new_map = ft_calloc((data->pars->y + 1), sizeof(char *));
 	check_alloc(new_map, data);
 	if (data->pars->map_check)
 	{

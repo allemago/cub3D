@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/07 14:51:45 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/10 11:00:46 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	init_img(t_data *data)
 		data->img[i].path = NULL;
 		i++;
 	}
+	data->minimap.img = NULL;
 }
 
 void	init_pars(t_data *data)
@@ -64,6 +65,7 @@ void	init_data(t_data *data)
 	data->south = NULL;
 	data->west = NULL;
 	data->east = NULL;
+	data->texture = NULL;
 	data->facing = 0;
 	init_pars(data);
 	init_img(data);

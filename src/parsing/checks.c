@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:11:08 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/04 23:56:58 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/11 11:43:26 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ static int	check_map_items(t_data *data, char item, int i, int j)
 			return (ft_printf_fd(2, ERR_PLAYER_MSG), 0);
 		data->pars->player_x = j;
 		data->pars->player_y = i;
-		data->player.pos_x = j + 0.5;
-		data->player.pos_y = i + 0.5;
 		data->facing = item;
 		data->map[i][j] = '0';
 	}

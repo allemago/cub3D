@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:36:36 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/01 17:08:30 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/13 20:24:34 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	set_rgb(t_data *data, char *info, char c)
 		return (ft_printf_fd(2, ERR_COLOR_MSG), 0);
 	if (c == 'F')
 	{
-		data->f_color = malloc(sizeof(int) * 3);
+		data->f_color = ft_calloc(3, sizeof(int));
 		check_alloc(data->f_color, data);
 		data->f_color[0] = ft_atoi(data->pars->rgb[0]);
 		data->f_color[1] = ft_atoi(data->pars->rgb[1]);
@@ -30,7 +30,7 @@ static int	set_rgb(t_data *data, char *info, char c)
 	}
 	else if (c == 'C')
 	{
-		data->c_color = malloc(sizeof(int) * 3);
+		data->c_color = ft_calloc(3, sizeof(int));
 		check_alloc(data->c_color, data);
 		data->c_color[0] = ft_atoi(data->pars->rgb[0]);
 		data->c_color[1] = ft_atoi(data->pars->rgb[1]);
