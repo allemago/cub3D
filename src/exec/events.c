@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 10:58:58 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/13 20:16:52 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/15 17:55:00 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,26 @@ int	ft_loop(t_data *data)
 {
 	ft_draw_background(data);
 	ft_raycasting(data);
-	ft_moves(data);
 	ft_draw_minimap(data);
+	ft_rotate_lr(data);
+	ft_moves(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->window, data->img[4].img, 0,
 		0);
+	return (0);
+}
+
+int	ft_mouse_hook(int x, int y, t_data *data)
+{
+	(void)y;
+	if (x < (WIDTH / 2))
+	{
+		ft_rotate(data, -ROTSPEED);
+	}
+	else if (x > (WIDTH / 2))
+	{
+		ft_rotate(data, ROTSPEED);
+	}
+	mlx_mouse_move(data->mlx_ptr, data->window, WIDTH / 2, HEIGHT / 2);
 	return (0);
 }
 
@@ -60,6 +76,8 @@ void	ft_events_mlx(t_data *data)
 	mlx_loop_hook(data->mlx_ptr, &ft_loop, data);
 	mlx_hook(data->window, KeyPress, KeyPressMask, ft_keypress, data);
 	mlx_hook(data->window, KeyRelease, KeyReleaseMask, ft_keyrelease, data);
+	mlx_hook(data->window, MotionNotify, PointerMotionMask, ft_mouse_hook,
+		data);
 	mlx_hook(data->window, DestroyNotify, StructureNotifyMask, ft_destroy,
 		data);
 }

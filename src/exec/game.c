@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/13 20:45:50 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/14 17:38:04 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	ft_game(t_data *data)
 {
-	ft_init_player(data);
-	ft_init_ray(data);
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 	{
@@ -30,6 +28,9 @@ void	ft_game(t_data *data)
 		ft_destroy(data);
 		exit(EXIT_FAILURE);
 	}
+	ft_init_player(data);
 	ft_init_img(data);
+	ft_init_ray(data);
+	ft_set_player(data);
 	ft_events_mlx(data);
 }

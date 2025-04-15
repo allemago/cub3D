@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:07:28 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/13 23:50:17 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/15 17:36:51 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define WIDTH 680
 # define HEIGHT 480
 # define TEXTURE_SIZE 64
+
 # define KEY_ESC 65307
 # define KEY_W 119
 # define KEY_A 97
@@ -39,7 +40,8 @@
 # define KEY_D 100
 # define KEY_RIGHT 65363
 # define KEY_LEFT 65361
-# define SPEED 0.03
+
+# define SPEED 0.02
 # define ROTSPEED 0.02
 # define MARGIN 0.1
 
@@ -52,4 +54,6 @@
 # define COLOR_DOOR 0xFFCC00
 # define COLOR_PLAYER 0xFF0000
 
+# define DOOR 5
+# define HAND 6
 #endif

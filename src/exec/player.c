@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:47:02 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/14 01:01:26 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/14 17:45:40 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,20 +70,23 @@ void	ft_set_player(t_data *data)
 		j = 0;
 		while (j < ft_strlen(&data->map[i][j]))
 		{
-			data->player.pos_x = data->pars->player_x + 0.5;
+			if (data->map[i][j])
+			{
+				data->player.pos_x = (double)data->pars->player_x + 0.5;
+				data->player.pos_y = (double)data->pars->player_y + 0.5;
+				if (data->facing == 'N')
+					ft_N_face(data);
+				else if (data->facing == 'S')
+					ft_S_face(data);
+				else if (data->facing == 'W')
+					ft_W_face(data);
+				else if (data->facing == 'E')
+					ft_E_face(data);
+			}
 			j++;
 		}
-		data->player.pos_y = data->pars->player_y + 0.5;
 		i++;
 	}
-	if (data->facing == 'N')
-		ft_N_face(data);
-	else if (data->facing == 'S')
-		ft_S_face(data);
-	else if (data->facing == 'W')
-		ft_W_face(data);
-	else if (data->facing == 'E')
-		ft_E_face(data);
 }
 
 void	ft_init_player(t_data *data)
@@ -100,5 +103,4 @@ void	ft_init_player(t_data *data)
 	data->player.left = false;
 	data->player.rotate_left = false;
 	data->player.rotate_right = false;
-	ft_set_player(data);
 }

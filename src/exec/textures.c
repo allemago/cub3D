@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:54:43 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/13 20:57:41 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/15 15:19:23 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	ft_set_texture(t_data *data, int x)
 		color = *((unsigned int *)(data->texture->pixels + data->ray.tex_y
 					* data->texture->line_len + data->ray.tex_x
 					* (data->texture->bpp / 8)));
+		if (data->ray.wall_side == 1)
+			color = (color >> 1) & 8355711;
 		ft_put_pixel(data, x, y, color);
 		y++;
 	}

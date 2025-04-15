@@ -1,0 +1,8 @@
+RESTE A FAIRE EXEC :
+
+- rectifier les mouvements up & down pour que ce ne soit plus en diagonal
+- modifier les murs
+- afficher un rayon de dir du joueur
+
+rotation modification de plan en fonction de la direction NSEW
+set texture [DOOR]

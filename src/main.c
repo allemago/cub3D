@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:49:55 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/13 16:16:43 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:31:42 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 
 	check_input(&data, argc, argv[1]);
 	ft_game(&data);
-	print_all(&data);
+	// print_all(&data);
 	mlx_loop(data.mlx_ptr);
 	free_all(&data);
 	return (0);
