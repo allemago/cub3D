@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:23:59 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 16:01:37 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/16 18:17:39 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,6 @@ typedef struct s_img
 	int			height;
 
 }				t_img;
-
-typedef struct s_hand
-{
-	t_img		frames[4];
-	double		delay;
-	int			current_frame;
-}				t_hand;
 
 typedef struct s_player
 {
