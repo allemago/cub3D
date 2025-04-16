@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:07:28 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/16 11:14:38 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/16 13:46:47 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,5 @@
 # define ROTSPEED 0.02
 # define MARGIN 0.1
 
-# define MARGIN_X 10
-# define MARGIN_Y (HEIGHT - 10)
-# define MINI_SCALE 5
-
-# define COLOR_WALL 0x634100
-# define COLOR_FLOOR 0xDCDCDC
-# define COLOR_DOOR 0xFFCC00
-# define COLOR_PLAYER 0xFF0000
-
-# define DOOR 4
-# define HAND 5
 
 #endif

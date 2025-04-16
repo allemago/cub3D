@@ -6,27 +6,11 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/16 13:17:36 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/16 13:51:34 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3D.h"
-
-void	init_assets(t_data *data)
-{
-	data->assets = ft_calloc(1, sizeof(t_assets));
-	check_alloc(data->assets, data);
-	data->assets->w_north = NULL;
-	data->assets->w_south = NULL;
-	data->assets->w_west = NULL;
-	data->assets->w_east = NULL;
-	data->assets->sky = NULL;
-	data->assets->floor = NULL;
-	data->assets->door = NULL;
-	data->assets->donut = NULL;
-	data->assets->effect = NULL;
-	data->assets->hand = NULL;
-}
 
 void	init_img(t_data *data)
 {
@@ -68,5 +52,4 @@ void	init_data(t_data *data)
 	data->facing = 0;
 	init_pars(data);
 	init_img(data);
-	init_assets(data);
 }
