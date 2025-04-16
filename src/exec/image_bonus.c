@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 11:01:21 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 16:31:55 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/16 18:00:40 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static void	set_path(t_data *data)
 	data->img[SOUTH].path = data->south;
 	data->img[EAST].path = data->east;
 	data->img[WEST].path = data->west;
-	data->img[DOOR].path = "./textures/XPM/DOOR.xpm";
-	data->img[HAND].path = "./textures/XPM/HAND/HAND_1.xpm";
-	data->img[HAND + 1].path = "./textures/XPM/HAND/HAND_2.xpm";
-	data->img[HAND + 2].path = "./textures/XPM/HAND/HAND_3.xpm";
-	data->img[HAND + 3].path = "./textures/XPM/HAND/HAND_4.xpm";
+	data->img[DOOR].path = "./textures/DOOR.xpm";
+	data->img[HAND].path = "./textures/HAND/HAND_1.xpm";
+	data->img[HAND + 1].path = "./textures/HAND/HAND_2.xpm";
+	data->img[HAND + 2].path = "./textures/HAND/HAND_3.xpm";
+	data->img[HAND + 3].path = "./textures/HAND/HAND_4.xpm";
 }
 
 void	ft_init_img(t_data *data)

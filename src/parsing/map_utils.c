@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:09:35 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/16 14:41:55 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:53:45 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,11 +112,6 @@ static char	**add_to_map(t_data *data, char *line)
 	return (new_map);
 }
 
-/*
-**	manage_file function,
-**	'O' to open the file
-** 	'C' to close the file.
-*/
 int	fill_map_check(t_data *data)
 {
 	while (data->pars->fd_map > 0)

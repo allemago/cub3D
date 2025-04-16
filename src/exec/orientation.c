@@ -6,13 +6,13 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:17:45 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/16 15:49:06 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:44:08 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	ft_s_face(t_data *data)
+static void	ft_n_face(t_data *data)
 {
 	if (data->facing == 'N')
 	{

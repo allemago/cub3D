@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:36:13 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/16 16:39:45 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:41:51 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define BUFFER_SIZE 1
+# define BUFFER_SIZE 42
 # define BASE10 "0123456789"
 # define BASE16_LOW "0123456789abcdef"
 # define BASE16_UPP "0123456789ABCDEF"
