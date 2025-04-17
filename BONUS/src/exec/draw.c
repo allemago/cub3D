@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:42:30 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/17 18:27:48 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/17 19:53:58 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	ft_draw_hand(t_data *data, int i, int j)
 	}
 }
 
+
 int	convert_rgb(int r, int g, int b)
 {
 	return (r << 16 | g << 8 | b);
@@ -72,12 +73,4 @@ void	ft_draw_background(t_data *data)
 		}
 		x++;
 	}
-}
-
-void ft_animation(t_data *data)
-{
-		ft_draw_hand(data,WIDTH / 3, (HEIGHT / 3 + 20));
-		ft_draw_hand(data,WIDTH / 3, (HEIGHT / 3 + 20));
-		ft_draw_hand(data,WIDTH / 3, (HEIGHT / 3 + 20));
-		ft_draw_hand(data,WIDTH / 3, (HEIGHT / 3 + 20));
 }

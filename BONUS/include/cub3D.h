@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:02:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/17 18:26:29 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/17 20:00:19 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
  ********************************************/
 void	ft_game(t_data *data);
 void	ft_raycasting(t_data *data);
-void	ft_set_texture(t_data *data, int x);
+void	ft_calculate_texture(t_data *data, int x);
 void    ft_set_face(t_data *data);
 /*******************************************
  *                   INIT                    *

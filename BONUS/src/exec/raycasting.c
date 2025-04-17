@@ -6,13 +6,13 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 12:35:47 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/14 15:01:05 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/17 20:01:04 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3D.h"
 
-static void	ft_set_step_and_side(t_data *data)
+static void	ft_calculate_step_and_side(t_data *data)
 {
 	if (data->ray.dir_x < 0)
 	{
@@ -57,7 +57,7 @@ static void	ft_ray_set(t_data *data, int i)
 		data->ray.delta_dist_y = 1e30;
 	else
 		data->ray.delta_dist_y = fabs(1 / data->ray.dir_y);
-	ft_set_step_and_side(data);
+	ft_calculate_step_and_side(data);
 }
 
 static void	ft_dda(t_data *data)
@@ -115,7 +115,7 @@ void	ft_raycasting(t_data *data)
 		ft_ray_set(data, i);
 		ft_dda(data);
 		ft_wall_dist(data);
-		ft_set_texture(data, i);
+		ft_calculate_texture(data, i);
 		i++;
 	}
 }

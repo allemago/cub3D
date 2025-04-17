@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:23:59 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/17 18:03:42 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/17 20:06:51 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,34 +46,6 @@ typedef struct s_img
 	int			height;
 
 }				t_img;
-
-typedef struct s_hand
-{
-	t_img		frames[4];
-	double		delay;
-	int			current_frame;
-}				t_hand;
-
-typedef struct s_effect
-{
-	t_img		frames[11];
-	double delay;      //! oldtime ?
-	int current_frame; //! current_time ?
-}				t_effect;
-
-typedef struct s_assets
-{
-	t_img		*w_north;
-	t_img		*w_south;
-	t_img		*w_west;
-	t_img		*w_east;
-	t_img		*sky;
-	t_img		*floor;
-	t_img		*door;
-	t_img		*donut;
-	t_effect	*effect;
-	t_hand		*hand;
-}				t_assets;
 
 typedef struct s_player
 {
@@ -134,7 +106,6 @@ typedef struct s_data
 	char		*west;
 	char		*east;
 	t_pars		*pars;
-	t_assets	*assets;
 	t_player	player;
 	t_ray		ray;
 }				t_data;

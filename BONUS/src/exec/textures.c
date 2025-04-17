@@ -6,13 +6,13 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:54:43 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 13:31:15 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/17 20:00:09 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3D.h"
 
-void	ft_set_texture(t_data *data, int x)
+void	ft_calculate_texture(t_data *data, int x)
 {
 	int	color;
 	int	y;

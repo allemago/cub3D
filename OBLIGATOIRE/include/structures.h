@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:23:59 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 13:49:00 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/17 20:15:08 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*window;
-	t_img		img[10];
+	t_img		img[5];
 	t_img		*texture;
 	char		**map;
 	int			height;
