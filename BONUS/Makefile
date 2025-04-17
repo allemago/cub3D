@@ -15,7 +15,7 @@ PARS_FILES=		checks_utils.c checks.c elem_utils.c flood_fill.c init_data.c	\
 				map_utils.c pars_utils.c string_utils.c						\
 
 EXEC_PATH=		src/exec
-EXEC_FILES=		draw.c event_moves.c game.c init.c player.c minimap.c \
+EXEC_FILES=		draw.c event_moves.c game.c init.c player.c minimap.c 		\
 				raycasting.c textures.c loop.c image_bonus.c events_bonus.c	\
 
 LIBFT_PATH=    	./libft

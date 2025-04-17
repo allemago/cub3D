@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:48:45 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 12:54:33 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/17 18:25:30 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,6 @@ void	ft_moves(t_data *data)
 {
 	ft_moves_ud(data);
 	ft_moves_lr(data);
+	// if (data->player.espace)
+	// 	ft_animation(data, 0, 0);
 }

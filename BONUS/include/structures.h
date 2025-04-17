@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:23:59 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 12:08:06 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/17 18:03:42 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_player
 	bool		left;
 	bool		rotate_left;
 	bool		rotate_right;
+	bool		espace;
 }				t_player;
 
 typedef struct s_ray

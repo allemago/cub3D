@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 12:56:03 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 13:36:33 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/17 18:26:36 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_loop(t_data *data)
 {
 	ft_draw_background(data);
 	ft_raycasting(data);
+	ft_draw_hand(data, WIDTH / 3, (HEIGHT / 3 + 20));
 	ft_draw_minimap(data);
 	ft_rotate_lr(data);
 	ft_moves(data);

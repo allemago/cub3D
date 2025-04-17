@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:02:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/16 12:58:12 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/17 18:26:29 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int		ft_destroy(t_data *data);
 void	ft_put_pixel(t_data *data, int x, int y, int color);
 void	ft_draw_background(t_data *data);
 void	ft_draw_minimap(t_data *data);
+void	ft_draw_hand(t_data *data, int i, int j);
 
 // /* TEMPORAIRE -> TESTS */
 void	print_all(t_data *data);

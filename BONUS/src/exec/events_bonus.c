@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   events_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 10:58:58 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 12:55:55 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/17 18:04:22 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	ft_keypress(int keycode, t_data *data)
 		data->player.rotate_left = true;
 	else if (keycode == KEY_RIGHT)
 		data->player.rotate_right = true;
+	else if (keycode == KEY_ESPACE)
+		data->player.espace = true;
 	return (0);
 }
 
@@ -45,6 +47,8 @@ int	ft_keyrelease(int keycode, t_data *data)
 		data->player.rotate_left = false;
 	else if (keycode == KEY_RIGHT)
 		data->player.rotate_right = false;
+	else if (keycode == KEY_ESPACE)
+		data->player.espace = false;
 	return (0);
 }
 
