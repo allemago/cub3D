@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:17:48 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/18 20:12:47 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 22:15:08 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 /* STRUCT INIT */
 void	init_data(t_data *data);
+void	init_img(t_data *data);
 
 /* CHECKS */
 void	check_input(t_data *data, int argc, char *map_file);

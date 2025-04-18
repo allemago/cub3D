@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 19:21:26 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/18 20:01:58 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 22:53:35 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static void	process_tile(t_data *data, char tile, int i, int j)
 		draw_blip(data, j, i, COLOR_WALL);
 	if (tile == 'D')
 		draw_blip(data, j, i, COLOR_DOOR);
-	if (tile == '0' || ((int)data->player.pos_x == j && (int)data->player.pos_y == i))
+	if (tile == '0' || ((int)data->player.pos_x == j && (
+				int)data->player.pos_y == i))
 		draw_blip(data, j, i, COLOR_FLOOR);
 	if ((int)data->player.pos_x == j && (int)data->player.pos_y == i)
 		draw_blip(data, j, i, COLOR_PLAYER);

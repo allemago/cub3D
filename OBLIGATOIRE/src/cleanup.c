@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:20:26 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/18 20:10:53 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 21:43:26 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	free_tab(char ***tab)
 
 void	destroy_texture(t_data *data, t_img *texture)
 {
-		free_ptr((void **)&texture->pixels);
-		mlx_destroy_image(data->mlx_ptr, texture->img);
-		texture->img = NULL;
+	free_ptr((void **)&texture->pixels);
+	mlx_destroy_image(data->mlx_ptr, texture->img);
+	texture->img = NULL;
 }
 
 void	free_all(t_data *data)

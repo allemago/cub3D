@@ -1,83 +1,65 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_moves.c                                      :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:48:45 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/18 14:36:33 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 22:45:14 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3D.h"
 
-static void	ft_moves_ud(t_data *data)
+static	void	ft_move_direction(t_data *data, double x, double y, char sign)
 {
-	if (data->player.up)
-	{
-		// if (data->map[(int)(data->player.pos_y + data->player.dir_y
-		// 		* (SPEED + MARGIN))][(int)data->player.pos_x] == '0')
-		// 	data->player.pos_y += data->player.dir_y * SPEED;
-		if (data->map[(int)data->player.pos_y][(int)(data->player.pos_x
-				+ data->player.dir_x * (SPEED + MARGIN))] == '0')
-			data->player.pos_x += data->player.dir_x * SPEED;
-	}
-	else if (data->player.down)
-	{
-		// if (data->map[(int)(data->player.pos_y - data->player.dir_y
-		// 		* (SPEED + MARGIN))][(int)data->player.pos_x] == '0')
-		// 	data->player.pos_y -= data->player.dir_y * SPEED;
-		if (data->map[(int)data->player.pos_y][(int)(data->player.pos_x
-				- data->player.dir_x * (SPEED + MARGIN))] == '0')
-			data->player.pos_x -= data->player.dir_x * SPEED;
-	}
+	double	new_x;
+	double	new_y;
+
+	new_x = data->player.pos_x + (sign * x) * (SPEED + MARGIN);
+	new_y = data->player.pos_y + (sign * y) * (SPEED + MARGIN);
+	if (is_c_inset(data->map[(int)(new_y)][(int)(data->player.pos_x)], "0D"))
+		data->player.pos_y = new_y;
+	if (is_c_inset(data->map[(int)(data->player.pos_y)][(int)(new_x)], "0D"))
+		data->player.pos_x = new_x;
 }
 
-static void	ft_moves_lr(t_data *data)
+void	ft_moves(t_data *data)
 {
-	if (data->player.right)
-	{
-		if (data->map[(int)(data->player.pos_y + data->player.plane_y * (SPEED + MARGIN))][(int)data->player.pos_x] == '0')
-			data->player.pos_y += data->player.plane_y * SPEED;
-		// if (data->map[(int)data->player.pos_y][(int)(data->player.pos_x + data->player.plane_x * (SPEED + MARGIN))] == '0')
-		// 	data->player.pos_x += data->player.plane_x * SPEED;
-	}
-	else if (data->player.left)
-	{
-		if (data->map[(int)(data->player.pos_y - data->player.plane_y * (SPEED + MARGIN))][(int)data->player.pos_x] == '0')
-			data->player.pos_y -= data->player.plane_y * SPEED;
-		// if (data->map[(int)data->player.pos_y][(int)(data->player.pos_x - data->player.plane_x * (SPEED + MARGIN))] == '0')
-		// 	data->player.pos_x -= data->player.plane_x * SPEED;
-	}
+	if (data->player.up == true)
+		ft_move_direction(data, data->player.dir_x, data->player.dir_y, 1);
+	else if (data->player.down == true)
+		ft_move_direction(data, data->player.dir_x, data->player.dir_y, -1);
+	else if (data->player.right == true)
+		ft_move_direction(data, data->player.plane_x, data->player.plane_y, 1);
+	else if (data->player.left == true)
+		ft_move_direction(data, data->player.plane_x, data->player.plane_y, -1);
+	// if (data->player.espace)
+	// 	ft_animation(data, data->img);
 }
 
-void	ft_rotate(t_data *data, double angle)
+static	void	ft_calculate_rotate(t_data *data, double angle)
 {
 	double	old_dir_x;
 	double	old_plane_x;
 
 	old_dir_x = data->player.dir_x;
+	data->player.dir_x = data->player.dir_x * cos(
+			angle) - data->player.dir_y * sin(angle);
+	data->player.dir_y = old_dir_x * sin(
+			angle) + data->player.dir_y * cos(angle);
 	old_plane_x = data->player.plane_x;
-	data->player.dir_x = data->player.dir_x * cos(angle) - data->player.dir_y
-		* sin(angle);
-	data->player.dir_y = old_dir_x * sin(angle) + data->player.dir_y
-		* cos(angle);
-	data->player.plane_x = data->player.plane_x * cos(angle)
-		- data->player.plane_y * sin(angle);
-	data->player.plane_y = old_plane_x * sin(angle) + data->player.plane_y
-		* cos(angle);
-}
-void	ft_rotate_lr(t_data *data)
-{
-	if (data->player.rotate_right)
-		ft_rotate(data, ROTSPEED );
-	if (data->player.rotate_left)
-		ft_rotate(data, -ROTSPEED);
+	data->player.plane_x = data->player.plane_x * cos(
+			angle) - data->player.plane_y * sin(angle);
+	data->player.plane_y = old_plane_x * sin(
+			angle) + data->player.plane_y * cos(angle);
 }
 
-void	ft_moves(t_data *data)
+void	ft_rotate(t_data *data)
 {
-	ft_moves_ud(data);
-	ft_moves_lr(data);
+	if (data->player.rotate_right)
+		ft_calculate_rotate(data, ROTSPEED);
+	else if (data->player.rotate_left)
+		ft_calculate_rotate(data, -ROTSPEED);
 }

@@ -6,12 +6,11 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/17 20:08:18 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 21:39:43 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3D.h"
-
 
 void	init_img(t_data *data)
 {
@@ -25,6 +24,7 @@ void	init_img(t_data *data)
 		i++;
 	}
 }
+
 void	init_pars(t_data *data)
 {
 	data->pars->x = 0;

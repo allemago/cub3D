@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 12:35:47 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/17 20:01:04 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 22:36:52 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,7 @@ static void	ft_wall_dist(t_data *data)
 	else
 		data->ray.perpwalldist = (data->ray.side_dist_y
 				- data->ray.delta_dist_y);
-	// Calculate height of line to draw on screen
 	data->ray.line_height = (int)(HEIGHT / data->ray.perpwalldist);
-	// calculate lowest and highest pixel to fill in current stripe
 	data->ray.draw_start = (-data->ray.line_height / 2) + (HEIGHT / 2);
 	if (data->ray.draw_start < 0)
 		data->ray.draw_start = 0;

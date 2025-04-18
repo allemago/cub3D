@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 10:58:58 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/18 20:36:26 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 22:20:36 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	ft_destroy(t_data *data)
 	free_all(data);
 	exit(EXIT_SUCCESS);
 }
+
 int	ft_keypress(int keycode, t_data *data)
 {
 	if (keycode == KEY_ESC)
@@ -84,11 +85,11 @@ int	ft_mouse_hook(int x, int y, t_data *data)
 	(void)y;
 	if (x < (WIDTH / 2))
 	{
-		ft_rotate(data, -ROTSPEED);
+		ft_calculate_rotate(data, -ROTSPEED);
 	}
 	else if (x > (WIDTH / 2))
 	{
-		ft_rotate(data, ROTSPEED);
+		ft_calculate_rotate(data, ROTSPEED);
 	}
 	mlx_mouse_move(data->mlx_ptr, data->window, WIDTH / 2, HEIGHT / 2);
 	return (0);

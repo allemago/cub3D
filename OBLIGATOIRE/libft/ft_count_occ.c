@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_count_occ.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:58:44 by magrabko          #+#    #+#             */
-/*   Updated: 2025/03/17 17:01:30 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/18 21:42:16 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	ft_count_occ(const char *s, char c)
 	int		occ;
 
 	i = 0;
-    occ = 0;
+	occ = 0;
 	while (s[i])
 	{
 		if (s[i] == c)
-            occ++;
-        i++;
+			occ++;
+		i++;
 	}
 	return (occ);
 }

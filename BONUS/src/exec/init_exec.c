@@ -1,16 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_exec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:18:32 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/18 20:48:47 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 22:56:52 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3D.h"
+
+void	ft_init_player(t_data *data)
+{
+	data->player.pos_x = 0;
+	data->player.pos_y = 0;
+	data->player.dir_x = 0;
+	data->player.dir_y = 0;
+	data->player.plane_x = 0;
+	data->player.plane_y = 0;
+	data->player.up = false;
+	data->player.down = false;
+	data->player.right = false;
+	data->player.left = false;
+	data->player.rotate_left = false;
+	data->player.rotate_right = false;
+	ft_set_face(data);
+	ft_set_player(data);
+}
 
 void	ft_init_ray(t_data *data)
 {
@@ -38,8 +56,8 @@ void	ft_init_ray(t_data *data)
 
 static void	ft_addr_img(t_data *data)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (i < 10)
 	{
@@ -83,4 +101,3 @@ void	ft_create_img(t_data *data)
 	data->img[9].img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
 	ft_addr_img(data);
 }
-

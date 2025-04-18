@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:07:28 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/18 20:49:20 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 22:27:18 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@
 
 # define SPEED 0.02
 # define ROTSPEED 0.02
-# define MARGIN 0.1
+# define MARGIN 0.01
 
 #endif
