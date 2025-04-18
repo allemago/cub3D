@@ -6,11 +6,11 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 19:21:26 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/14 01:01:12 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 20:01:58 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../../include/cub3D.h"
 
 static void	draw_blip(t_data *data, int x, int y, uint32_t color)
 {

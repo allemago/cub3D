@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:54:43 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/17 20:00:09 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 20:57:35 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	ft_calculate_texture(t_data *data, int x)
 		data->texture = &data->img[EAST];
 	else if (data->ray.wall_side == 1 && data->ray.dir_y < 0)
 		data->texture = &data->img[WEST];
+	// if (data->map[(int)data->ray.map_y][(int)data->ray.map_x] == 'D')
+	// 	data->texture = &data->img[DOOR];
 	if (data->ray.wall_side == 0)
 		data->ray.wall_x = data->player.pos_y + (data->ray.perpwalldist
 				* data->ray.dir_y);
 	else
 		data->ray.wall_x = data->player.pos_x + (data->ray.perpwalldist
 				* data->ray.dir_x);
-	if (data->map[(int)data->ray.map_y][(int)data->ray.map_x] == 'D')
-		data->texture = &data->img[DOOR];
 	data->ray.wall_x -= floor(data->ray.wall_x);
 	data->ray.tex_x = (int)(data->ray.wall_x * (double)TEXTURE_SIZE);
 	if ((data->ray.wall_side == 0 && data->ray.dir_x > 0)

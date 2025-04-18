@@ -6,11 +6,36 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/16 12:52:11 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 20:54:26 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3D.h"
+
+int	ft_loop(t_data *data)
+{
+	ft_draw_background(data);
+	ft_raycasting(data);
+	ft_draw_hand(data, WIDTH / 3, (HEIGHT / 3 + 20));
+	ft_draw_minimap(data);
+	ft_rotate_lr(data);
+	ft_moves(data);
+	// ft_door_animation(data);
+	mlx_put_image_to_window(data->mlx_ptr, data->window, data->img[9].img, 0,
+		0);
+	return (0);
+}
+
+void	ft_events(t_data *data)
+{
+	mlx_loop_hook(data->mlx_ptr, &ft_loop, data);
+	mlx_hook(data->window, KeyPress, KeyPressMask, ft_keypress, data);
+	mlx_hook(data->window, KeyRelease, KeyReleaseMask, ft_keyrelease, data);
+	mlx_hook(data->window, MotionNotify, PointerMotionMask, ft_mouse_hook,
+		data);
+	mlx_hook(data->window, DestroyNotify, StructureNotifyMask, ft_destroy,
+		data);
+}
 
 void	ft_game(t_data *data)
 {
@@ -30,5 +55,5 @@ void	ft_game(t_data *data)
 		ft_destroy(data);
 		exit(EXIT_FAILURE);
 	}
-	ft_init_img(data);
+	ft_create_img(data);
 }

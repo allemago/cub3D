@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:23:59 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/17 20:06:51 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 19:57:29 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,22 @@ typedef enum s_dir
 	EAST,
 	WEST,
 }				t_dir;
+
+typedef struct s_point
+{
+	double		x;
+	double		y;
+}				t_point;
+
+typedef struct s_bresenham
+{
+	double		delta_x;
+	double		delta_y;
+	double		pixel_x;
+	double		pixel_y;
+	double		pixel_inc_x;
+	double		pixel_inc_y;
+}				t_bresenham;
 
 typedef struct s_pars
 {
@@ -44,7 +60,6 @@ typedef struct s_img
 	int			endian;
 	int			width;
 	int			height;
-
 }				t_img;
 
 typedef struct s_player
@@ -62,6 +77,7 @@ typedef struct s_player
 	bool		rotate_left;
 	bool		rotate_right;
 	bool		espace;
+	bool		door;
 }				t_player;
 
 typedef struct s_ray

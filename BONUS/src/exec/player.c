@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:47:02 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 10:56:21 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 18:21:59 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,7 @@ void	ft_set_player(t_data *data)
 
 void	ft_set_face(t_data *data)
 {
-	if (is_c_inset(data->facing, "NSEW"))
-	{
+
 		if (data->facing == 'N')
 			ft_N_face(data);
 		else if (data->facing == 'S')
@@ -94,7 +93,6 @@ void	ft_set_face(t_data *data)
 			ft_W_face(data);
 		else if (data->facing == 'E')
 			ft_E_face(data);
-	}
 }
 
 void	ft_init_player(t_data *data)
