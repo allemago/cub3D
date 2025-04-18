@@ -8,15 +8,15 @@ GREEN=                          \033[1;32m
 RESET=                          \033[0m
 
 SRC_PATH= 		src
-SRC_FILES=		main.c cleanup.c												\
+SRC_FILES=		main.c cleanup.c										\
 
 PARS_PATH=		src/parsing
 PARS_FILES=		checks_utils.c checks.c elem_utils.c flood_fill.c init_data.c	\
 				map_utils.c pars_utils.c string_utils.c						\
 
 EXEC_PATH=		src/exec
-EXEC_FILES=		draw.c event_moves.c events.c game.c init.c player.c	\
-				raycasting.c textures.c loop.c					 				\
+EXEC_FILES=		draw.c moves.c events.c game.c init.c player.c	\
+				raycasting.c textures.c					 				\
 
 LIBFT_PATH=    	./libft
 MLX_PATH=		./minilibx-linux

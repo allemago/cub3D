@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:42:30 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 13:20:50 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 20:52:01 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_put_pixel(t_data *data, int x, int y, int color)
 	*(unsigned int *)pixel = color;
 }
 
-int	convert_rgb(int r, int g, int b)
+static int	convert_rgb(int r, int g, int b)
 {
 	return (r << 16 | g << 8 | b);
 }

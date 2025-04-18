@@ -13,3 +13,8 @@ set texture [DOOR]
 TO DO :
 - Animations
 - porte 
+
+- porte pas entouree de mures a 3 faces ???
+- tester d'autres map
+- destrot_texture non utilisee ?
+- est-ce q'uon rajoute le player dans la partie obligatoire ?

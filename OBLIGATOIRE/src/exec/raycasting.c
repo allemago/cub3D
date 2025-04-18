@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 12:35:47 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 13:31:42 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 20:53:02 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	ft_raycasting(t_data *data)
 		ft_ray_set(data, i);
 		ft_dda(data);
 		ft_wall_dist(data);
-		ft_set_texture(data, i);
+		ft_calculate_texture(data, i);
 		i++;
 	}
 }

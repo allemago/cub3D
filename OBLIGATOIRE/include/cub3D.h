@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:02:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/16 12:58:12 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 20:50:47 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,34 @@
  ********************************************/
 void	ft_game(t_data *data);
 void	ft_raycasting(t_data *data);
-void	ft_set_texture(t_data *data, int x);
+void	ft_calculate_texture(t_data *data, int x);
 void    ft_set_face(t_data *data);
 /*******************************************
  *                   INIT                    *
  ********************************************/
-void	init_img(t_data *data);
 void	ft_init_player(t_data *data);
 void	ft_init_ray(t_data *data);
-void	ft_init_img(t_data *data);
+void	ft_create_img(t_data *data);
 void	ft_set_player(t_data *data);
-int	    ft_loop(t_data *data);
 /*******************************************
  *                  EVENTS                   *
  ********************************************/
 void	ft_events(t_data *data);
+int	    ft_loop(t_data *data);
+int		ft_destroy(t_data *data);
+int		ft_keypress(int keycode, t_data *data);
+int		ft_keyrelease(int keycode, t_data *data);
+/*******************************************
+ *                  MOVES                   *
+ ********************************************/
 void	ft_moves(t_data *data);
 void	ft_rotate_lr(t_data *data);
 void	ft_rotate(t_data *data, double angle);
-int		ft_keypress(int keycode, t_data *data);
-int		ft_keyrelease(int keycode, t_data *data);
-int		ft_destroy(t_data *data);
 /*******************************************
  *                  DRAW                    *
  ********************************************/
 void	ft_put_pixel(t_data *data, int x, int y, int color);
 void	ft_draw_background(t_data *data);
-void	ft_draw_minimap(t_data *data);
 
 // /* TEMPORAIRE -> TESTS */
 void	print_all(t_data *data);

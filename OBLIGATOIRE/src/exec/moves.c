@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:48:45 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 13:39:34 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/18 14:36:33 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ static void	ft_moves_ud(t_data *data)
 {
 	if (data->player.up)
 	{
-		if (data->map[(int)(data->player.pos_y + data->player.dir_y
-				* (SPEED + MARGIN))][(int)data->player.pos_x] == '0')
-			data->player.pos_y += data->player.dir_y * SPEED;
+		// if (data->map[(int)(data->player.pos_y + data->player.dir_y
+		// 		* (SPEED + MARGIN))][(int)data->player.pos_x] == '0')
+		// 	data->player.pos_y += data->player.dir_y * SPEED;
 		if (data->map[(int)data->player.pos_y][(int)(data->player.pos_x
 				+ data->player.dir_x * (SPEED + MARGIN))] == '0')
 			data->player.pos_x += data->player.dir_x * SPEED;
 	}
 	else if (data->player.down)
 	{
-		if (data->map[(int)(data->player.pos_y - data->player.dir_y
-				* (SPEED + MARGIN))][(int)data->player.pos_x] == '0')
-			data->player.pos_y -= data->player.dir_y * SPEED;
+		// if (data->map[(int)(data->player.pos_y - data->player.dir_y
+		// 		* (SPEED + MARGIN))][(int)data->player.pos_x] == '0')
+		// 	data->player.pos_y -= data->player.dir_y * SPEED;
 		if (data->map[(int)data->player.pos_y][(int)(data->player.pos_x
 				- data->player.dir_x * (SPEED + MARGIN))] == '0')
 			data->player.pos_x -= data->player.dir_x * SPEED;
@@ -40,15 +40,15 @@ static void	ft_moves_lr(t_data *data)
 	{
 		if (data->map[(int)(data->player.pos_y + data->player.plane_y * (SPEED + MARGIN))][(int)data->player.pos_x] == '0')
 			data->player.pos_y += data->player.plane_y * SPEED;
-		if (data->map[(int)data->player.pos_y][(int)(data->player.pos_x + data->player.plane_x * (SPEED + MARGIN))] == '0')
-			data->player.pos_x += data->player.plane_x * SPEED;
+		// if (data->map[(int)data->player.pos_y][(int)(data->player.pos_x + data->player.plane_x * (SPEED + MARGIN))] == '0')
+		// 	data->player.pos_x += data->player.plane_x * SPEED;
 	}
 	else if (data->player.left)
 	{
 		if (data->map[(int)(data->player.pos_y - data->player.plane_y * (SPEED + MARGIN))][(int)data->player.pos_x] == '0')
 			data->player.pos_y -= data->player.plane_y * SPEED;
-		if (data->map[(int)data->player.pos_y][(int)(data->player.pos_x - data->player.plane_x * (SPEED + MARGIN))] == '0')
-			data->player.pos_x -= data->player.plane_x * SPEED;
+		// if (data->map[(int)data->player.pos_y][(int)(data->player.pos_x - data->player.plane_x * (SPEED + MARGIN))] == '0')
+		// 	data->player.pos_x -= data->player.plane_x * SPEED;
 	}
 }
 
