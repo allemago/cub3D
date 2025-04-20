@@ -6,13 +6,13 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/16 18:17:50 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/20 11:38:02 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	init_img(t_data *data)
+static void	init_img(t_data *data)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ void	init_img(t_data *data)
 	}
 }
 
-void	init_pars(t_data *data)
+static void	init_pars(t_data *data)
 {
 	data->pars->line = NULL;
 	data->pars->x = 0;

@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:42:30 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 14:41:55 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/20 10:59:57 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,29 @@ void	ft_put_pixel(t_data *data, int x, int y, int color)
 	pixel = data->img[9].pixels + (y * data->img[9].line_len + (x
 				* (data->img[9].bpp / 8)));
 	*(unsigned int *)pixel = color;
+}
+
+void	ft_draw_hand(t_data *data, int i, int j)
+{
+	int				x;
+	int				y;
+	unsigned int	color;
+
+	x = 0;
+	while (x < data->img[7].width)
+	{
+		y = 0;
+		while (y < data->img[7].height)
+		{
+			color = (*(unsigned int *)(data->img[7].pixels + (y
+							* data->img[7].line_len + (x * (data->img[7].bpp
+									/ 8)))));
+			if (color != 0xFF000000)
+				ft_put_pixel(data, x + i, y + j, color);
+			y++;
+		}
+		x++;
+	}
 }
 
 int	convert_rgb(int r, int g, int b)

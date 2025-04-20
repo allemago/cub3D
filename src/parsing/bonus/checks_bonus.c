@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checks.c                                           :+:      :+:    :+:   */
+/*   checks_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/11 17:11:08 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/20 16:03:18 by magrabko         ###   ########.fr       */
+/*   Created: 2025/04/20 14:25:16 by magrabko          #+#    #+#             */
+/*   Updated: 2025/04/20 16:09:10 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ static int	check_map_items(t_data *data, char item, int i, int j)
 		data->facing = item;
 		data->map[i][j] = '0';
 	}
-	else if (!is_c_inset(item, "01 "))
+	else if (!is_c_inset(item, "01D "))
 		return (ft_printf_fd(2, ERR_ITEM_MSG), 0);
 	if (item == '1' && !is_open(data->map, '&', i, j))
 		return (ft_printf_fd(2, ERR_WALL_MSG), 0);
-	if (is_c_inset(item, "NSEW0") && !is_open(data->map, '|', i, j))
+	if (is_c_inset(item, "NSEW0D") && !is_open(data->map, '|', i, j))
 		return (ft_printf_fd(2, ERR_ITEM_MSG), 0);
 	return (1);
 }
 
-static int	check_walls(char **map, int i)
+static int	check_wall_b(char **map, int i)
 {
 	int	j;
 
@@ -49,7 +49,7 @@ static int	check_walls(char **map, int i)
 	return (1);
 }
 
-int	check_map(t_data *data, int last)
+int	check_map_bonus(t_data *data, int last)
 {
 	int	i;
 	int	j;
@@ -57,7 +57,7 @@ int	check_map(t_data *data, int last)
 	i = 0;
 	while (data->pars->map_check[i])
 	{
-		if ((i == 0 || i == last) && !check_walls(data->pars->map_check, i))
+		if ((i == 0 || i == last) && !check_wall_b(data->pars->map_check, i))
 			return (ft_printf_fd(2, ERR_WALL_MSG), 0);
 		else
 		{
@@ -75,32 +75,5 @@ int	check_map(t_data *data, int last)
 		}
 		i++;
 	}
-	return (1);
-}
-
-int	check_elements(t_data *data)
-{
-	int	start;
-	int	i;
-
-	if (!fill_map_check(data))
-		return (0);
-	i = 0;
-	while (i < 6)
-	{
-		start = get_element(data, data->pars->map_check[i],
-				ft_strlen(data->pars->map_check[i]));
-		if (!start)
-			return (0);
-		pass_spaces(&data->pars->map_check[i][start], &start);
-		if (!data->pars->map_check[i][start])
-			return (0);
-		if (!set_element(data, data->pars->map_check[i], start, 0))
-			return (0);
-		i++;
-	}
-	if ((!data->north || !data->south || !data->west || !data->east
-			|| !data->f_color || !data->c_color) || !fill_map_game(data, i))
-		return (0);
 	return (1);
 }

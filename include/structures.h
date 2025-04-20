@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:23:59 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 18:17:39 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/20 16:44:35 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,22 @@ typedef struct s_pars
 	char		**rgb;
 	char		**map_check;
 }				t_pars;
+
+typedef struct s_point
+{
+	double		x;
+	double		y;
+}				t_point;
+
+typedef struct s_bresenham
+{
+	double		delta_x;
+	double		delta_y;
+	double		pixel_x;
+	double		pixel_y;
+	double		pixel_inc_x;
+	double		pixel_inc_y;
+}				t_bresenham;
 
 typedef struct s_img
 {
@@ -61,6 +77,8 @@ typedef struct s_player
 	bool		left;
 	bool		rotate_left;
 	bool		rotate_right;
+	bool		espace;
+	bool		door;
 }				t_player;
 
 typedef struct s_ray

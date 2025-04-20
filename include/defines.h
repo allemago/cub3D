@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:07:28 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/16 17:41:37 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:10:58 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # define ERR_ITEM_MSG "Error: item conditions not met.\n"
 # define XTI_FAIL_MSG "create img failed\n"
 # define GDA_FAIL_MSG "add img failed\n"
+# define MLX_INIT_MSG "mlx_init failed\n"
+# define MLX_WIN_MSG "mlx_new_window failed\n"
 
 /********************************************
  *                  EXEC                    *
@@ -56,8 +58,9 @@
 # define DOOR 4
 # define HAND 5
 
-# define MARGIN_X 10
-# define MARGIN_Y 470
+/* MINIMAP */
+# define MINI_MARGE_X 670
+# define MINI_MARGE_Y 10
 # define MINI_SCALE 5
 
 # define COLOR_WALL 0x634100

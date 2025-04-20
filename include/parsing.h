@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:17:48 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/16 16:48:51 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/20 14:55:07 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	init_data(t_data *data);
 /********************************************
  *                 CHECKS                   *
  ********************************************/
-void	ft_check_input(t_data *data, int argc, char *map_file);
 int		check_elements(t_data *data);
 int		check_map(t_data *data, int last);
 int		check_path(t_data *data);
@@ -59,5 +58,10 @@ void	err_exit(char *str);
 void	free_all(t_data *data, int is_destroy);
 void	free_ptr(void **ptr);
 void	free_tab(char ***tab);
+
+/********************************************
+ *                 BONUS                    *
+ ********************************************/
+int		check_map_bonus(t_data *data, int last);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_bonus.c                                      :+:      :+:    :+:   */
+/*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 10:58:58 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 16:57:17 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/20 11:18:52 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,12 @@ int	ft_mouse_hook(int x, int y, t_data *data)
 	(void)y;
 	if (x < (WIDTH / 2))
 	{
-		ft_rotate(data, -ROTSPEED);
+		ft_calculate_rotate(data, -ROTSPEED);
 	}
 	else if (x > (WIDTH / 2))
 	{
-		ft_rotate(data, ROTSPEED);
+		ft_calculate_rotate(data, ROTSPEED);
 	}
 	mlx_mouse_move(data->mlx_ptr, data->window, WIDTH / 2, HEIGHT / 2);
 	return (0);
-}
-
-void	ft_events(t_data *data)
-{
-	mlx_loop_hook(data->mlx_ptr, &ft_loop, data);
-	mlx_hook(data->window, KeyPress, KeyPressMask, ft_keypress, data);
-	mlx_hook(data->window, KeyRelease, KeyReleaseMask, ft_keyrelease, data);
-	mlx_hook(data->window, MotionNotify, PointerMotionMask, ft_mouse_hook,
-		data);
-	mlx_hook(data->window, DestroyNotify, StructureNotifyMask, ft_destroy,
-		data);
 }

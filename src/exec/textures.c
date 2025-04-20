@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:54:43 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/16 16:38:59 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/20 14:56:44 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	set_wall(t_data *data)
 				* data->ray.dir_x);
 }
 
-void	ft_set_texture(t_data *data, int x)
+void	ft_calculate_texture(t_data *data, int x)
 {
 	set_wall(data);
 	if (data->map[(int)data->ray.map_y][(int)data->ray.map_x] == 'D')

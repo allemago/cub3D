@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:09:35 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/16 17:53:45 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/20 16:01:29 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,10 @@ int	fill_map_game(t_data *data, int i)
 	while (data->pars->map_check[i])
 	{
 		if (is_line_empty(data->pars->map_check[i]))
-			return (data->map[j] = NULL, go_end_map(data, i));
+		{
+			data->map[j] = NULL;
+			return (reset_maps(data, 0, 0), go_end_map(data, i));
+		}
 		data->map[j] = ft_calloc((data->width + 1), sizeof(char));
 		check_alloc(data->map[j], data);
 		data->map[j][data->width] = '\0';

@@ -6,49 +6,83 @@
 #    By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/16 14:26:58 by magrabko          #+#    #+#              #
-#    Updated: 2025/04/16 15:18:06 by magrabko         ###   ########.fr        #
+#    Updated: 2025/04/20 15:02:30 by magrabko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=			cub3D
+################################### SETTINGS ###################################
 
-CFLAGS= 		-Wall -Wextra -Werror -g3
-INCLD=  		-I ./include/ -I ./minilibx-linux/
+NAME=				cub3D
 
-CYAN=                           \033[1;36m
-GREEN=                          \033[1;32m
-RESET=                          \033[0m
+CFLAGS= 			-Wall -Wextra -Werror -g3
 
-SRC_PATH= 		src
-SRC_FILES=		main.c cleanup.c												\
+INCLD=  			-I ./include/ -I ./minilibx-linux/
 
-PARS_PATH=		src/parsing
-PARS_FILES=		checks_utils.c checks.c elem_utils.c flood_fill.c init_data.c	\
-				map_utils.c pars_utils.c string_utils.c							\
+CYAN=				\033[1;36m
+GREEN=				\033[1;32m
+RESET=				\033[0m
+NOPRINT=			--no-print-directory
 
-EXEC_PATH=		src/exec
-EXEC_FILES=		draw.c event_moves.c event_bonus.c game.c image_bonus.c init.c	\
-				loop.c minimap.c orientation.c player.c raycasting.c textures.c	\
+##################################### PATHS #####################################
 
-MLX_REPO=		https://github.com/42paris/minilibx-linux.git
+SRC_PATH= 			src
+PARS_PATH=			src/parsing
+EXEC_PATH=			src/exec
+MANDATORY_PATH=		$(EXEC_PATH)/mandatory
+BONUS_PARS_PATH=	$(PARS_PATH)/bonus
+BONUS_EXEC_PATH=	$(EXEC_PATH)/bonus
 
-LIBFT_PATH=    	./libft
-MLX_PATH=		./minilibx-linux
+################################### SRC FILES ###################################
 
-LIBFT_FLAGS=	-L$(LIBFT_PATH) -lft
-MLX_FLAGS =		-L$(MLX_PATH) -lmlx -lXext -lX11 -lm
+SRC_FILES=			cleanup.c													\
 
-LIBFT=        	$(LIBFT_PATH)/libft.a
-MLX=			$(MLX_PATH)/libmlx.a
+PARS_FILES=			checks_utils.c checks.c elem_utils.c flood_fill.c			\
+					init_data.c map_utils.c pars_utils.c string_utils.c			\
+					
+EXEC_FILES=			draw.c events.c init_exec.c moves.c player.c raycasting.c	\
+					textures.c													\
+					
+MANDATORY_FILES= 	game.c main.c 												\
 
-SRC=			$(SRC_PATH)/$(SRC_FILES)	\
-				$(PARS_PATH)/$(PARS_FILES)	\
-				$(EXEC_PATH)/$(EXEC_FILES)	\
+BONUS_EXEC_FILES=	game_bonus.c main_bonus.c minimap_bonus.c					\
+					minimap_ray_bonus.c 										\
 
-OBJ_PATH= 		obj
-OBJ= 			$(addprefix $(OBJ_PATH)/, $(notdir $(SRC:.c=.o)))
+BONUS_PARS_FILES=	checks_bonus.c												\
 
-NOPRINT=		--no-print-directory
+################################### LIBRARIES ###################################
+
+MLX_REPO=			https://github.com/42paris/minilibx-linux.git
+
+LIBFT_PATH=    		./libft
+MLX_PATH=			./minilibx-linux
+
+LIBFT_FLAGS=		-L$(LIBFT_PATH) -lft
+MLX_FLAGS =			-L$(MLX_PATH) -lmlx -lXext -lX11 -lm
+
+LIBFT=        		$(LIBFT_PATH)/libft.a
+MLX=				$(MLX_PATH)/libmlx.a
+
+################################# SRC FILE LISTS ################################
+
+SRC_MANDATORY=		$(MANDATORY_PATH)/$(MANDATORY_FILES)	\
+					$(SRC_PATH)/$(SRC_FILES)				\
+					$(PARS_PATH)/$(PARS_FILES)				\
+					$(EXEC_PATH)/$(EXEC_FILES)				\
+
+SRC_BONUS=			$(BONUS_PARS_PATH)/$(BONUS_PARS_FILES)	\
+					$(BONUS_EXEC_PATH)/$(BONUS_EXEC_FILES)	\
+					$(SRC_PATH)/$(SRC_FILES)				\
+					$(PARS_PATH)/$(PARS_FILES)				\
+					$(EXEC_PATH)/$(EXEC_FILES)				\
+
+################################### OBJ FILES ###################################
+
+OBJ_PATH= 			obj
+
+OBJ_MANDATORY= 		$(addprefix $(OBJ_PATH)/, $(notdir $(SRC_MANDATORY:.c=.o)))
+OBJ_BONUS=			$(addprefix $(OBJ_PATH)/, $(notdir $(SRC_BONUS:.c=.o)))
+
+################################# MAIN TARGETS ##################################
 
 all: $(MLX) $(LIBFT) $(NAME)
 
@@ -64,6 +98,17 @@ $(OBJ_PATH)/%.o: $(PARS_PATH)/%.c | $(OBJ_PATH)
 $(OBJ_PATH)/%.o: $(EXEC_PATH)/%.c | $(OBJ_PATH)
 	@$(CC) $(CFLAGS) $(INCLD) -c $< -o $@
 
+$(OBJ_PATH)/%.o: $(MANDATORY_PATH)/%.c | $(OBJ_PATH)
+	@$(CC) $(CFLAGS) $(INCLD) -c $< -o $@
+
+$(OBJ_PATH)/%.o: $(BONUS_PARS_PATH)/%.c | $(OBJ_PATH)
+	@$(CC) $(CFLAGS) $(INCLD) -c $< -o $@
+
+$(OBJ_PATH)/%.o: $(BONUS_EXEC_PATH)/%.c | $(OBJ_PATH)
+	@$(CC) $(CFLAGS) $(INCLD) -c $< -o $@
+
+############################### SETUP LIBRARIES #################################
+
 $(MLX):
 	@rm -rf $(MLX_PATH)
 	@git clone $(MLX_REPO) $(MLX_PATH) > /dev/null 2>&1
@@ -71,21 +116,23 @@ $(MLX):
 
 $(LIBFT):
 	@$(MAKE) $(NOPRINT) -C $(LIBFT_PATH)
+	
+################################# BUILD PROJECT #################################
 
-$(NAME): $(OBJ) $(MLX) $(LIBFT)
-	@$(CC) $(OBJ) -o $(NAME) $(MLX_FLAGS) $(LIBFT_FLAGS)
+$(NAME): $(OBJ_MANDATORY) $(MLX) $(LIBFT)
+	@$(CC) $(OBJ_MANDATORY) -o $(NAME) $(MLX_FLAGS) $(LIBFT_FLAGS)
 	@printf "\n${CYAN}"
 	@printf "  ░█▀▀░█░█░█▀▄░▀▀█░█▀▄\n"
 	@printf "  ░█░░░█░█░█▀▄░░▀▄░█░█\n"
 	@printf "  ░▀▀▀░▀▀▀░▀▀░░▀▀░░▀▀░\n"
 	@printf "\n\n${RESET}"
 
-bonus: all
+################################# CLEAN TARGETS #################################
 
 clean:
 	@rm -rf $(OBJ_PATH)
 	@$(MAKE) $(NOPRINT) -C $(LIBFT_PATH) clean
-	@$(MAKE) -C $(MLX_PATH) clean > /dev/null
+	@if [ -d $(MLX_PATH) ]; then $(MAKE) -C $(MLX_PATH) clean > /dev/null; fi
 	@printf "\n\n${GREEN}"
 	@printf "  ░█▀▀░█░░░█▀▀░█▀█░█▀█░█░█░█▀█░░█\n"
 	@printf "  ░█░░░█░░░█▀▀░█▀█░█░█░█░█░█▀▀░░▀\n"
@@ -94,8 +141,21 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
+	@rm -rf minilibx-linux
 	@$(MAKE) $(NOPRINT) -C $(LIBFT_PATH) fclean
 
 re: fclean all
+
+################################# BONUS TARGET #################################
+
+bonus: $(MLX) $(LIBFT) $(OBJ_BONUS)
+	@$(CC) $(OBJ_BONUS) -o $(NAME) $(MLX_FLAGS) $(LIBFT_FLAGS)
+	@printf "\n${CYAN}"
+	@printf "  ░█▀▄░█▀█░█▀█░█░█░█▀▀\n"
+	@printf "  ░█▀▄░█░█░█░█░█░█░▀▀█\n"
+	@printf "  ░▀▀░░▀▀▀░▀░▀░▀▀▀░▀▀▀\n"
+	@printf "\n\n${RESET}"
+
+##################################### PHONY ####################################
 
 .PHONY: all clean fclean re input

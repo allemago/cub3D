@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.c                                          :+:      :+:    :+:   */
+/*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 19:21:26 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/16 15:49:58 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:14:35 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ static void	draw_blip(t_data *data, int x, int y, uint32_t color)
 		j = 0;
 		while (j < MINI_SCALE)
 		{
-			pixel_x = MARGIN_X + (x * MINI_SCALE + i);
-			pixel_y = MARGIN_Y - ((data->height - y - 1) * MINI_SCALE + j);
+			pixel_x = MINI_MARGE_X - (data->width * MINI_SCALE);
+			pixel_x += x * MINI_SCALE + i;
+			pixel_y = MINI_MARGE_Y + (y * MINI_SCALE + j);
 			ft_put_pixel(data, pixel_x, pixel_y, color);
 			j++;
 		}
