@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:23:59 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/20 16:44:35 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/21 13:57:01 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@ typedef struct s_pars
 	char		**rgb;
 	char		**map_check;
 }				t_pars;
+
+typedef struct s_radar
+{
+	int			len_x;
+	int			len_y;
+	int			x;
+	int			y;
+}				t_radar;
 
 typedef struct s_point
 {
@@ -123,6 +131,7 @@ typedef struct s_data
 	char		*west;
 	char		*east;
 	t_pars		*pars;
+	t_radar		radar;
 	t_player	player;
 	t_ray		ray;
 }				t_data;

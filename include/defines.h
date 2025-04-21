@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:07:28 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/20 17:10:58 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/21 17:58:57 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define GDA_FAIL_MSG "add img failed\n"
 # define MLX_INIT_MSG "mlx_init failed\n"
 # define MLX_WIN_MSG "mlx_new_window failed\n"
+# define RADAR_MEM_MSG "minimap: malloc failed\n"
 
 /********************************************
  *                  EXEC                    *
@@ -67,5 +68,6 @@
 # define COLOR_FLOOR 0xDCDCDC
 # define COLOR_DOOR 0xFFCC00
 # define COLOR_PLAYER 0xFF0000
+# define COLOR_VOID 0x696969
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:02:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/20 14:56:39 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:49:32 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	ft_draw_background(t_data *data);
  *                 BONUS                    *
  ********************************************/
 void	ft_events_bonus(t_data *data);
+void	draw_blip(t_data *data, int x, int y, uint32_t color);
 void	ft_draw_hand(t_data *data, int i, int j);
 void	ft_draw_minimap(t_data *data);
 
