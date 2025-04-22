@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:23:59 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/21 13:57:01 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/22 11:34:09 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ typedef struct s_pars
 
 typedef struct s_radar
 {
-	int			len_x;
-	int			len_y;
-	int			x;
-	int			y;
+	float		scale_x;
+	float		scale_y;
+	float		scale;
+	float		tile_x;
+	float		tile_y;
+	float		tile;
 }				t_radar;
 
 typedef struct s_point

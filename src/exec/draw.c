@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:42:30 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/21 17:13:44 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/22 11:23:47 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,6 @@ void	ft_put_pixel(t_data *data, int x, int y, int color)
 	pixel = data->img[9].pixels + (y * data->img[9].line_len + (x
 				* (data->img[9].bpp / 8)));
 	*(unsigned int *)pixel = color;
-}
-
-void	draw_blip(t_data *data, int x, int y, uint32_t color)
-{
-	int	i;
-	int	j;
-	int	pixel_x;
-	int	pixel_y;
-
-	i = 0;
-	while (i < MINI_SCALE)
-	{
-		j = 0;
-		while (j < MINI_SCALE)
-		{
-			pixel_y = MINI_MARGE_Y + (y * MINI_SCALE + j);
-			pixel_x = MINI_MARGE_X - (data->radar.len_x * MINI_SCALE);
-			pixel_x += x * MINI_SCALE + i;
-			ft_put_pixel(data, pixel_x, pixel_y, color);
-			j++;
-		}
-		i++;
-	}
 }
 
 void	ft_draw_hand(t_data *data, int i, int j)

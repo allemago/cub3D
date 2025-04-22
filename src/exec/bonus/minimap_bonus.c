@@ -6,11 +6,36 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 19:21:26 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/22 10:53:17 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/22 12:03:28 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static void	draw_blip(t_data *data, int x, int y, uint32_t color)
+{
+	int		i;
+	int		j;
+	int		pixel_x;
+	int		pixel_y;
+	t_radar	radar;
+
+	radar = data->radar;
+	i = 0;
+	while (i < radar.tile)
+	{
+		j = 0;
+		while (j < radar.tile)
+		{
+			pixel_y = MINI_MARGE_Y + (y * radar.tile + j);
+			pixel_x = MINI_MARGE_X - (data->width * radar.tile);
+			pixel_x += x * radar.tile + i;
+			ft_put_pixel(data, pixel_x, pixel_y, color);
+			j++;
+		}
+		i++;
+	}
+}
 
 static void	process_tile(t_data *data, char tile, int i, int j)
 {
@@ -23,94 +48,35 @@ static void	process_tile(t_data *data, char tile, int i, int j)
 	if (tile == 'P')
 		draw_blip(data, j, i, COLOR_PLAYER);
 }
-/* 	if (tile == 'V' || tile == ' ')
-		draw_blip(data, j, i, COLOR_VOID); */
-
-static char	**init_radar_map(t_data *data, t_radar *radar)
-{
-	char	**radar_map;
-	int		i;
-
-	radar_map = malloc(sizeof(char *) * (radar->len_y + 1));
-	if (!radar_map)
-	{
-		free_all(data, DESTROY);
-		err_exit(RADAR_MEM_MSG);
-	}
-	radar_map[radar->len_y] = NULL;
-	i = 0;
-	while (i < radar->len_y)
-	{
-		radar_map[i] = ft_calloc(radar->len_x + 1, sizeof(char));
-		if (!radar_map[i])
-		{
-			free_tab(&radar_map);
-			free_all(data, DESTROY);
-			err_exit(RADAR_MEM_MSG);
-		}
-		ft_memset(radar_map[i], 'V', radar->len_x);
-		i++;
-	}
-	return (radar_map);
-}
-
-static char	**get_radar(t_data *data, t_radar *radar)
-{
-	char	**radar_map;
-	int		i;
-	int		max_x;
-
-	radar_map = init_radar_map(data, radar);
-	i = 0;
-	while (i < radar->len_y && radar->y < data->height)
-	{
-		if (ft_strlen(&data->map[radar->y][radar->x]) > (size_t)radar->len_x)
-			max_x = radar->len_x;
-		else
-			max_x = ft_strlen(&data->map[radar->y][radar->x]);
-		ft_memcpy(radar_map[i], &data->map[radar->y][radar->x], max_x);
-		i++;
-		radar->y++;
-	}
-	return (radar_map);
-}
 
 static void	calculate_radar(t_data *data)
 {
-	if (data->width < 20)
-		data->radar.len_x = data->width;
+	data->radar.tile_x = MINI_MAX / data->width;
+	data->radar.tile_y = MINI_MAX / data->height;
+	if (data->radar.tile_x < data->radar.tile_y)
+		data->radar.tile = data->radar.tile_x;
 	else
-		data->radar.len_x = 20;
-	if (data->height < 20)
-		data->radar.len_y = data->height;
-	else
-		data->radar.len_y = 20;
-	if (((int)data->player.pos_x - ((data->radar.len_x) / 2)) >= 0)
-		data->radar.x = (int)data->player.pos_x - ((data->radar.len_x) / 2);
-	else
-		data->radar.x = 0;
-	if (((int)data->player.pos_y - ((data->radar.len_y) / 2)) >= 0)
-		data->radar.y = (int)data->player.pos_y - ((data->radar.len_y) / 2);
-	else
-		data->radar.y = 0;
+		data->radar.tile = data->radar.tile_y;
+	if (data->radar.tile < 3)
+		data->radar.tile = 3;
+	if (data->radar.tile > 8)
+		data->radar.tile = 8;
 }
 
 void	ft_draw_minimap(t_data *data)
 {
-	char	**radar_map;
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	data->map[(int)data->player.pos_y][(int)data->player.pos_x] = 'P';
 	calculate_radar(data);
-	radar_map = get_radar(data, &data->radar);
 	i = 0;
-	while (radar_map[i])
+	while (data->map[i])
 	{
 		j = 0;
-		while (radar_map[i][j])
+		while (data->map[i][j])
 		{
-			process_tile(data, radar_map[i][j], i, j);
+			process_tile(data, data->map[i][j], i, j);
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:07:28 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/22 10:51:43 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/22 12:02:59 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@
 /* MINIMAP */
 # define MINI_MARGE_X 1014
 # define MINI_MARGE_Y 10
-# define MINI_SCALE 5
+# define MINI_MAX 200
 
 # define COLOR_WALL 0x634100
 # define COLOR_FLOOR 0xDCDCDC
