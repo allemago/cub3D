@@ -6,36 +6,40 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:47:02 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/22 12:49:37 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/22 14:47:53 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void ft_face(t_data *data, double d_y, double p_x, double p_y)
+static void	ft_face(t_data *data, double d_y, double p_x, double p_y)
 {
 	data->player.dir_y = d_y;
 	data->player.plane_x = p_x;
 	data->player.plane_y = p_y;
 }
 
-static void ft_set_face(t_data *data)
+static void	ft_set_face(t_data *data)
 {
-	if (data->facing == 'N' && data->player.dir_x == 0)
-		ft_face(data, -1, 0.66, 0);
-	else if (data->facing == 'S' && data->player.dir_x == 0)
-		ft_face(data, 1, -0.66, 0);
-	else if (data->facing == 'W' && data->player.dir_x == -1)
-		ft_face(data, 0, 0, 0.66);
-	else if (data->facing == 'E' && data->player.dir_x == 1)
-		ft_face(data, 0, 0, -0.66);
+	if (is_c_inset(data->map[i][j], "NSEW"))
+	{
+		if (data->facing == 'N' && data->player.dir_x == 0)
+			ft_face(data, -1, 0.66, 0);
+		else if (data->facing == 'S' && data->player.dir_x == 0)
+			ft_face(data, 1, -0.66, 0);
+		else if (data->facing == 'W' && data->player.dir_x == -1)
+			ft_face(data, 0, 0, 0.66);
+		else if (data->facing == 'E' && data->player.dir_x == 1)
+			ft_face(data, 0, 0, -0.66);
+		break ;
+	}
 }
 
-static void ft_set_player(t_data *data)
+static void	ft_set_player(t_data *data)
 {
-	int i;
-	size_t j;
-	int len;
+	int		i;
+	size_t	j;
+	int		len;
 
 	i = 0;
 	len = 0;
@@ -46,16 +50,12 @@ static void ft_set_player(t_data *data)
 		j = 0;
 		while (j < ft_strlen(data->map[i]))
 		{
-			if (is_c_inset(data->map[i][j], "NSEW"))
-			{
-				ft_set_face(data);
-				break;
-			}
+			ft_set_face(data);
 			if (is_c_inset(data->map[i][j], "0D"))
 			{
 				data->player.pos_x = (double)j + 0.5;
 				data->player.pos_y = (double)i + 0.5;
-				break;
+				break ;
 			}
 			j++;
 		}
@@ -63,7 +63,7 @@ static void ft_set_player(t_data *data)
 	}
 }
 
-void ft_init_player(t_data *data)
+void	ft_init_player(t_data *data)
 {
 	data->player.pos_x = data->pars->player_y;
 	data->player.pos_y = data->pars->player_x;

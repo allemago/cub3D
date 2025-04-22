@@ -6,47 +6,47 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 12:35:47 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/22 12:02:57 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/22 14:45:05 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	ft_calculate_step_and_side(t_data *data)
+static	void	ft_calculate_step_and_side(t_data *data)
 {
 	if (data->ray.dir_x < 0)
 	{
 		data->ray.step_x = -1;
-		data->ray.side_dist_x = (data->player.pos_x - data->ray.map_x)
-			* data->ray.delta_dist_x;
+		data->ray.side_dist_x = (data->player.pos_x - data->ray.map_x
+				) * data->ray.delta_dist_x;
 	}
 	else
 	{
 		data->ray.step_x = 1;
-		data->ray.side_dist_x = (data->ray.map_x + 1.0 - data->player.pos_x)
-			* data->ray.delta_dist_x;
+		data->ray.side_dist_x = (data->ray.map_x + 1.0 - data->player.pos_x
+				) * data->ray.delta_dist_x;
 	}
 	if (data->ray.dir_y < 0)
 	{
 		data->ray.step_y = -1;
-		data->ray.side_dist_y = (data->player.pos_y - data->ray.map_y)
-			* data->ray.delta_dist_y;
+		data->ray.side_dist_y = (data->player.pos_y - data->ray.map_y
+				) * data->ray.delta_dist_y;
 	}
 	else
 	{
 		data->ray.step_y = 1;
-		data->ray.side_dist_y = (data->ray.map_y + 1.0 - data->player.pos_y)
-			* data->ray.delta_dist_y;
+		data->ray.side_dist_y = (data->ray.map_y + 1.0 - data->player.pos_y
+				) * data->ray.delta_dist_y;
 	}
 }
 
-static void	ft_ray_set(t_data *data, int i)
+static	void	t_ray_set(t_data *data, int i)
 {
 	data->ray.camera_x = 2 * i / (double)WIDTH - 1;
 	data->ray.dir_x = data->player.dir_x + data->player.plane_x
-			* data->ray.camera_x;
+		* data->ray.camera_x;
 	data->ray.dir_y = data->player.dir_y + data->player.plane_y
-			* data->ray.camera_x;
+		* data->ray.camera_x;
 	data->ray.map_x = (int)data->player.pos_x;
 	data->ray.map_y = (int)data->player.pos_y;
 	if (data->ray.dir_x == 0)
@@ -60,7 +60,7 @@ static void	ft_ray_set(t_data *data, int i)
 	ft_calculate_step_and_side(data);
 }
 
-static void	ft_dda(t_data *data)
+static	void	ft_dda(t_data *data)
 {
 	int	hit;
 
@@ -84,14 +84,12 @@ static void	ft_dda(t_data *data)
 	}
 }
 
-static void	ft_wall_dist(t_data *data)
+static	void	ft_wall_dist(t_data *data)
 {
 	if (data->ray.wall_side == 0)
-		data->ray.perpwalldist = data->ray.side_dist_x
-				- data->ray.delta_dist_x;
+		data->ray.perpwalldist = data->ray.side_dist_x - data->ray.delta_dist_x;
 	else
-		data->ray.perpwalldist = data->ray.side_dist_y
-				- data->ray.delta_dist_y;
+		data->ray.perpwalldist = data->ray.side_dist_y - data->ray.delta_dist_y;
 	data->ray.line_height = (int)(HEIGHT / data->ray.perpwalldist);
 	data->ray.draw_start = -data->ray.line_height / 2 + HEIGHT / 2;
 	if (data->ray.draw_start < 0)
