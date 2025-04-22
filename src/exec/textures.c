@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:54:43 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/20 14:56:44 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/22 15:48:04 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	draw_texture(t_data *data, int x)
 {
-	int	color;
-	int	y;
+	uint32_t	color;
+	int			y;
 
 	y = data->ray.draw_start;
 	while (y < data->ray.draw_end)
@@ -27,7 +27,8 @@ static void	draw_texture(t_data *data, int x)
 					* (data->texture->bpp / 8)));
 		if (data->ray.wall_side == 1)
 			color = (color >> 1) & 8355711;
-		ft_put_pixel(data, x, y, color);
+		if (color != 0xFF000000)
+			ft_put_pixel(data, x, y, color);
 		y++;
 	}
 }
