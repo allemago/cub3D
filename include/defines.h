@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:07:28 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/22 10:51:43 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/22 13:26:37 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@
 # define KEY_RIGHT 65363
 # define KEY_LEFT 65361
 
-# define SPEED 0.02
-# define ROTSPEED 0.02
+# define SPEED 0.03
+# define ROTSPEED 0.016
 # define MARGIN 0.1
 
 # define DOOR 4

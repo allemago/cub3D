@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:49:55 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/20 15:21:31 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/22 12:53:13 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_game(t_data *data)
 {
-	ft_init_player(data);
 	ft_init_ray(data);
+	ft_init_player(data);
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 	{

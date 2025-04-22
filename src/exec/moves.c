@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:48:45 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/20 11:57:02 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/22 13:11:35 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	ft_move_direction(t_data *data, double x, double y, char sign)
+static void	ft_move_direction(t_data *data, double x, double y, double sign)
 {
 	double	new_x;
 	double	new_y;
 
-	new_x = data->player.pos_x + (sign * x) * (SPEED + MARGIN);
-	new_y = data->player.pos_y + (sign * y) * (SPEED + MARGIN);
+	new_x = data->player.pos_x + (sign * x) * (SPEED);
+	new_y = data->player.pos_y + (sign * y) * (SPEED);
 	if (is_c_inset(data->map[(int)(new_y)][(int)(data->player.pos_x)], "0D"))
 		data->player.pos_y = new_y;
 	if (is_c_inset(data->map[(int)(data->player.pos_y)][(int)(new_x)], "0D"))
