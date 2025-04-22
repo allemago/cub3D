@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:07:28 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/21 17:58:57 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/22 10:51:43 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@
 /********************************************
  *                  EXEC                    *
  ********************************************/
-# define WIDTH 680
-# define HEIGHT 480
+# define WIDTH 1024
+# define HEIGHT 680
 # define TEXTURE_SIZE 64
 
 # define KEY_ESC 65307
@@ -60,7 +60,7 @@
 # define HAND 5
 
 /* MINIMAP */
-# define MINI_MARGE_X 670
+# define MINI_MARGE_X 1014
 # define MINI_MARGE_Y 10
 # define MINI_SCALE 5
 

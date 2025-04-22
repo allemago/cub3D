@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/04/16 14:26:58 by magrabko          #+#    #+#              #
-#    Updated: 2025/04/20 15:02:30 by magrabko         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 ################################### SETTINGS ###################################
 
 NAME=				cub3D
@@ -64,16 +52,16 @@ MLX=				$(MLX_PATH)/libmlx.a
 
 ################################# SRC FILE LISTS ################################
 
-SRC_MANDATORY=		$(MANDATORY_PATH)/$(MANDATORY_FILES)	\
-					$(SRC_PATH)/$(SRC_FILES)				\
-					$(PARS_PATH)/$(PARS_FILES)				\
-					$(EXEC_PATH)/$(EXEC_FILES)				\
+SRC_MANDATORY=		$(MANDATORY_PATH)/$(MANDATORY_FILES)						\
+					$(SRC_PATH)/$(SRC_FILES)									\
+					$(PARS_PATH)/$(PARS_FILES)									\
+					$(EXEC_PATH)/$(EXEC_FILES)									\
 
-SRC_BONUS=			$(BONUS_PARS_PATH)/$(BONUS_PARS_FILES)	\
-					$(BONUS_EXEC_PATH)/$(BONUS_EXEC_FILES)	\
-					$(SRC_PATH)/$(SRC_FILES)				\
-					$(PARS_PATH)/$(PARS_FILES)				\
-					$(EXEC_PATH)/$(EXEC_FILES)				\
+SRC_BONUS=			$(BONUS_PARS_PATH)/$(BONUS_PARS_FILES)						\
+					$(BONUS_EXEC_PATH)/$(BONUS_EXEC_FILES)						\
+					$(SRC_PATH)/$(SRC_FILES)									\
+					$(PARS_PATH)/$(PARS_FILES)									\
+					$(EXEC_PATH)/$(EXEC_FILES)									\
 
 ################################### OBJ FILES ###################################
 
@@ -148,13 +136,23 @@ re: fclean all
 
 ################################# BONUS TARGET #################################
 
-bonus: $(MLX) $(LIBFT) $(OBJ_BONUS)
+bonus:
+	@$(MAKE) re > /dev/null
+	@$(MAKE) $(MLX) $(LIBFT) $(OBJ_BONUS) > /dev/null
 	@$(CC) $(OBJ_BONUS) -o $(NAME) $(MLX_FLAGS) $(LIBFT_FLAGS)
 	@printf "\n${CYAN}"
 	@printf "  ░█▀▄░█▀█░█▀█░█░█░█▀▀\n"
 	@printf "  ░█▀▄░█░█░█░█░█░█░▀▀█\n"
 	@printf "  ░▀▀░░▀▀▀░▀░▀░▀▀▀░▀▀▀\n"
 	@printf "\n\n${RESET}"
+
+##################################### TESTS ####################################
+
+test:
+			./cub3D maps/map_ok.cub
+
+test_bonus: bonus
+			./cub3D maps/map_ok_bonus.cub
 
 ##################################### PHONY ####################################
 
