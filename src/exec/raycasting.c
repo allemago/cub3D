@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 12:35:47 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/22 14:45:05 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/22 14:56:54 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static	void	ft_calculate_step_and_side(t_data *data)
 	}
 }
 
-static	void	t_ray_set(t_data *data, int i)
+static	void	ft_ray_set(t_data *data, int i)
 {
 	data->ray.camera_x = 2 * i / (double)WIDTH - 1;
 	data->ray.dir_x = data->player.dir_x + data->player.plane_x

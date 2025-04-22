@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:47:02 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/22 14:47:53 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/22 15:02:22 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_face(t_data *data, double d_y, double p_x, double p_y)
 
 static void	ft_set_face(t_data *data)
 {
-	if (is_c_inset(data->map[i][j], "NSEW"))
+	if (is_c_inset(data->facing, "NSEW"))
 	{
 		if (data->facing == 'N' && data->player.dir_x == 0)
 			ft_face(data, -1, 0.66, 0);
@@ -31,7 +31,6 @@ static void	ft_set_face(t_data *data)
 			ft_face(data, 0, 0, 0.66);
 		else if (data->facing == 'E' && data->player.dir_x == 1)
 			ft_face(data, 0, 0, -0.66);
-		break ;
 	}
 }
 
@@ -50,7 +49,6 @@ static void	ft_set_player(t_data *data)
 		j = 0;
 		while (j < ft_strlen(data->map[i]))
 		{
-			ft_set_face(data);
 			if (is_c_inset(data->map[i][j], "0D"))
 			{
 				data->player.pos_x = (double)j + 0.5;
