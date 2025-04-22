@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:47:02 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/22 15:02:22 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/22 15:33:15 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,14 @@ void	ft_init_player(t_data *data)
 	data->player.dir_y = 0;
 	data->player.plane_x = 0;
 	data->player.plane_y = 0;
+	data->player.time_frame = 20;
 	data->player.up = false;
 	data->player.down = false;
 	data->player.right = false;
 	data->player.left = false;
 	data->player.rotate_left = false;
 	data->player.rotate_right = false;
+	data->player.espace = false;
 	ft_set_face(data);
 	ft_set_player(data);
 }

@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:07:28 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/22 14:35:51 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/22 15:30:10 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define TEXTURE_SIZE 64
 
 # define KEY_ESC 65307
+# define KEY_ESPACE 32
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115

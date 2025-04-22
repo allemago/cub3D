@@ -33,7 +33,7 @@ EXEC_FILES=			draw.c events.c init_exec.c moves.c player.c raycasting.c	\
 MANDATORY_FILES= 	game.c main.c 												\
 
 BONUS_EXEC_FILES=	game_bonus.c main_bonus.c minimap_bonus.c					\
-					minimap_ray_bonus.c 										\
+					minimap_ray_bonus.c animation.c									\
 
 BONUS_PARS_FILES=	checks_bonus.c												\
 
