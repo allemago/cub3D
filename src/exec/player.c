@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:47:02 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/23 13:46:11 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/23 15:38:02 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	ft_set_face(t_data *data)
 	}
 }
 
-static void	ft_set_player(t_data *data)
+/* static void	ft_set_player(t_data *data)
 {
 	int		i;
 	size_t	j;
@@ -59,12 +59,12 @@ static void	ft_set_player(t_data *data)
 		}
 		i++;
 	}
-}
+} */
 
 void	ft_init_player(t_data *data)
 {
-	data->player.pos_x = data->pars->player_y;
-	data->player.pos_y = data->pars->player_x;
+	data->player.pos_y = (double)data->pars->player_y + 0.5;
+	data->player.pos_x = (double)data->pars->player_x + 0.5;
 	data->player.dir_x = 0;
 	data->player.dir_y = 0;
 	data->player.plane_x = 0;
@@ -76,5 +76,4 @@ void	ft_init_player(t_data *data)
 	data->player.rotate_left = false;
 	data->player.rotate_right = false;
 	ft_set_face(data);
-	ft_set_player(data);
 }

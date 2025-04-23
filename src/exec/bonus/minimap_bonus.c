@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 19:21:26 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/23 13:24:43 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:19:20 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,13 @@ static void	calculate_radar(t_data *data)
 
 void	ft_draw_minimap(t_data *data)
 {
-	int	i;
-	int	j;
-
-	data->map[(int)data->player.pos_y][(int)data->player.pos_x] = 'P';
+	int		i;
+	int		j;
+	char	tile;
+	
+	tile = data->map[(int)data->player.pos_y][(int)data->player.pos_x];
+	if (!is_c_inset(tile, "1XD"))
+		data->map[(int)data->player.pos_y][(int)data->player.pos_x] = 'P';
 	calculate_radar(data);
 	i = 0;
 	while (data->map[i])
@@ -81,5 +84,6 @@ void	ft_draw_minimap(t_data *data)
 		}
 		i++;
 	}
-	data->map[(int)data->player.pos_y][(int)data->player.pos_x] = '0';
+	if (!is_c_inset(tile, "1XD"))
+		data->map[(int)data->player.pos_y][(int)data->player.pos_x] = '0';
 }
