@@ -6,25 +6,25 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:24:42 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/22 15:55:00 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/23 14:20:08 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void ft_draw_hand(t_data *data, t_img *img, int i, int j)
+void ft_draw_hand(t_data *data, t_img img, int i, int j)
 {
 	int x;
 	int y;
 	unsigned int color;
 
 	x = 0;
-	while (x < img[i].width)
+	while (x < img.width)
 	{
 		y = 0;
-		while (y < img[i].height)
+		while (y < img.height)
 		{
-			color = (*(unsigned int *)(img[i].pixels + (y * img[i].line_len + (x * (img[i].bpp / 8)))));
+			color = (*(unsigned int *)(img.pixels + (y * img.line_len + (x * (img.bpp / 8)))));
 			if (color != 0xFF000000)
 				ft_put_pixel(data, x + i, y + j, color);
 			y++;
@@ -33,31 +33,29 @@ void ft_draw_hand(t_data *data, t_img *img, int i, int j)
 	}
 }
 
-void ft_animation(t_data *data)
+int ft_animation(t_data *data)
 {
-	if (data->player.espace == true)
+	int frame;
+	int flag = 0;
+
+	frame = data->time_frame / 14 % 4;
+	if (data->player.espace && flag == 0)
 	{
-		while (data->player.time_frame)
+		if (frame == 0)
+			ft_draw_hand(data, data->img[5], WIDTH / 3, (HEIGHT / 2 + 40));
+		else if (frame == 1)
+			ft_draw_hand(data, data->img[6], WIDTH / 3, (HEIGHT / 2 + 40));
+		else if (frame == 2)
+			ft_draw_hand(data, data->img[7], WIDTH / 3, (HEIGHT / 2 + 40));
+		else if (frame == 3)
 		{
-			ft_draw_hand(data, data->img[5].img, WIDTH / 3, (HEIGHT / 2 + 40));
-			data->player.time_frame--;
-		}
-		while (data->player.time_frame == 15)
-		{
-			ft_draw_hand(data, data->img[6].img, WIDTH / 3, (HEIGHT / 2 + 40));
-			data->player.time_frame--;
-		}
-		while (data->player.time_frame == 10)
-		{
-			ft_draw_hand(data, data->img[7].img, WIDTH / 3, (HEIGHT / 2 + 40));
-			data->player.time_frame--;
-		}
-		while (data->player.time_frame == 5)
-		{
-			ft_draw_hand(data, data->img[8].img, WIDTH / 3, (HEIGHT / 2 + 40));
-			data->player.time_frame--;
+			ft_draw_hand(data, data->img[8], WIDTH / 3, (HEIGHT / 2 + 40));
+			flag = 1;
 		}
 	}
 	else
-		ft_draw_hand(data, data->img[7].img, WIDTH / 3, (HEIGHT / 2 + 40));
-}
+		ft_draw_hand(data, data->img[5], WIDTH / 3, (HEIGHT / 2 + 40));
+	if (data->player.espace && flag == 1)
+		return (1);
+	return (0);
+}    

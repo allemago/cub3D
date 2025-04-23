@@ -6,17 +6,33 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:30:14 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/22 15:51:09 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/23 14:15:08 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+int	ft_mouse_hook(int x, int y, t_data *data)
+{
+	(void)y;
+	if (x < (WIDTH / 2))
+	{
+		ft_calculate_rotate(data, -ROTSPEED);
+	}
+	else if (x > (WIDTH / 2))
+	{
+		ft_calculate_rotate(data, ROTSPEED);
+	}
+	mlx_mouse_move(data->mlx_ptr, data->window, WIDTH / 2, HEIGHT / 2);
+	return (0);
+}
+
 static int	ft_loop_bonus(t_data *data)
 {
 	ft_draw_background(data);
 	ft_raycasting(data);
-	ft_animation(data);
+	if (!ft_animation(data))
+		data->time_frame++;
 	// ft_draw_hand(data, WIDTH / 3, (HEIGHT / 2 + 40));
 	ft_draw_minimap(data);
 	ft_rotate(data);

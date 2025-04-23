@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:02:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/22 15:49:31 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/23 14:13:31 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ int		ft_mouse_hook(int x, int y, t_data *data);
  ********************************************/
 void	ft_put_pixel(t_data *data, int x, int y, int color);
 void	ft_draw_background(t_data *data);
-void    ft_animation(t_data *data);
+int     ft_animation(t_data *data);
 /********************************************
  *                 BONUS                    *
  ********************************************/
 void	ft_events_bonus(t_data *data);
-void	ft_draw_hand(t_data *data, t_img *img, int i, int j);
+void	ft_draw_hand(t_data *data, t_img img, int i, int j);
 void	ft_draw_minimap(t_data *data);
 
 #endif

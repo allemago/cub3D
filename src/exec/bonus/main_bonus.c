@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:34:41 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/20 14:26:47 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/23 13:43:56 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	ft_game_bonus(t_data *data)
+static void ft_game_bonus(t_data *data)
 {
 	ft_init_player(data);
 	ft_init_ray(data);
@@ -33,7 +33,7 @@ static void	ft_game_bonus(t_data *data)
 	mlx_loop(data->mlx_ptr);
 }
 
-static void	ft_check_input(t_data *data, int argc, char *map_file)
+static void ft_check_input(t_data *data, int argc, char *map_file)
 {
 	if (argc != 2 || !map_file[0] || is_str_inset(map_file, ALL_SPACES))
 	{
@@ -57,9 +57,9 @@ static void	ft_check_input(t_data *data, int argc, char *map_file)
 	}
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	t_data	data;
+	t_data data;
 
 	ft_check_input(&data, argc, argv[1]);
 	ft_game_bonus(&data);

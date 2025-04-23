@@ -28,7 +28,7 @@ PARS_FILES=			checks_utils.c checks.c elem_utils.c flood_fill.c			\
 					init_data.c map_utils.c pars_utils.c string_utils.c			\
 					
 EXEC_FILES=			draw.c events.c init_exec.c moves.c player.c raycasting.c	\
-					textures.c													\
+					textures.c										\
 					
 MANDATORY_FILES= 	game.c main.c 												\
 
