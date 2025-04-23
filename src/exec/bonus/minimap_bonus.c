@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 19:21:26 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/22 12:03:28 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/23 13:24:43 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	process_tile(t_data *data, char tile, int i, int j)
 		draw_blip(data, j, i, COLOR_WALL);
 	if (tile == 'D')
 		draw_blip(data, j, i, COLOR_DOOR);
-	if (tile == '0' || tile == 'P')
+	if (tile == '0' || tile == 'X' || tile == 'P')
 		draw_blip(data, j, i, COLOR_FLOOR);
 	if (tile == 'P')
 		draw_blip(data, j, i, COLOR_PLAYER);

@@ -6,11 +6,35 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:25:16 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/20 16:09:10 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/23 13:40:20 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static int	is_door_next_to_wall(char **map, int i, int j)
+{
+	int	is_next;
+
+	is_next = 0;
+	if (map[i][j + 1] && map[i][j + 1] == '1')
+		is_next++;
+	else if (map[i][j + 1] && map[i][j + 1] == '0')
+		map[i][j + 1] = 'X';
+	if (j - 1 >= 0 && map[i][j - 1] == '1')
+		is_next++;
+	else if (j - 1 >= 0 && map[i][j - 1] == '0')
+		map[i][j - 1] = 'X';
+	if (map[i + 1] && map[i + 1][j] == '1')
+		is_next++;
+	else if (map[i + 1] && map[i + 1][j] == '0')
+		map[i + 1][j] = 'X';
+	if (i - 1 >= 0 && map[i - 1][j] == '1')
+		is_next++;
+	else if (i - 1 >= 0 && map[i - 1][j] == '0')
+		map[i - 1][j] = 'X';
+	return (is_next > 1);
+}
 
 static int	check_map_items(t_data *data, char item, int i, int j)
 {
@@ -29,6 +53,8 @@ static int	check_map_items(t_data *data, char item, int i, int j)
 		return (ft_printf_fd(2, ERR_WALL_MSG), 0);
 	if (is_c_inset(item, "NSEW0D") && !is_open(data->map, '|', i, j))
 		return (ft_printf_fd(2, ERR_ITEM_MSG), 0);
+	if (item == 'D' && !is_door_next_to_wall(data->map, i, j))
+		return (ft_printf_fd(2, ERR_DOOR_MSG), 0);
 	return (1);
 }
 

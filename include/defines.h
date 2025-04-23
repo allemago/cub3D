@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:07:28 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/22 14:35:51 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/23 12:46:02 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define ERR_PLAYER_MSG "Map: only one player allowed.\n"
 # define ERR_MISS_MSG "Missing elements in file.\n"
 # define ERR_ITEM_MSG "Error: item conditions not met.\n"
+# define ERR_DOOR_MSG "Error: door must be walled on both sides.\n"
 # define XTI_FAIL_MSG "create img failed\n"
 # define GDA_FAIL_MSG "add img failed\n"
 # define MLX_INIT_MSG "mlx_init failed\n"
