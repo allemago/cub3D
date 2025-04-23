@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/20 12:30:59 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/23 13:30:39 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	ft_events(t_data *data)
 	mlx_loop_hook(data->mlx_ptr, &ft_loop, data);
 	mlx_hook(data->window, KeyPress, KeyPressMask, ft_keypress, data);
 	mlx_hook(data->window, KeyRelease, KeyReleaseMask, ft_keyrelease, data);
-	mlx_hook(data->window, MotionNotify, PointerMotionMask, ft_mouse_hook,
-		data);
 	mlx_hook(data->window, DestroyNotify, StructureNotifyMask, ft_destroy,
 		data);
 }

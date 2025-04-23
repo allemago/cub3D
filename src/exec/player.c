@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:47:02 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/22 15:02:22 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/23 13:46:11 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	ft_set_player(t_data *data)
 		j = 0;
 		while (j < ft_strlen(data->map[i]))
 		{
-			if (is_c_inset(data->map[i][j], "0D"))
+			if (is_c_inset(data->map[i][j], "X0"))
 			{
 				data->player.pos_x = (double)j + 0.5;
 				data->player.pos_y = (double)i + 0.5;

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/20 11:38:02 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/23 12:55:11 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	init_img(t_data *data)
+static void init_img(t_data *data)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < 10)
@@ -26,7 +26,7 @@ static void	init_img(t_data *data)
 	}
 }
 
-static void	init_pars(t_data *data)
+static void init_pars(t_data *data)
 {
 	data->pars->line = NULL;
 	data->pars->x = 0;
@@ -38,11 +38,12 @@ static void	init_pars(t_data *data)
 	data->pars->map_check = NULL;
 }
 
-void	init_data(t_data *data)
+void init_data(t_data *data)
 {
 	data->mlx_ptr = NULL;
 	data->window = NULL;
 	init_img(data);
+	data->time_frame = 0;
 	data->texture = NULL;
 	data->map = NULL;
 	data->height = 0;

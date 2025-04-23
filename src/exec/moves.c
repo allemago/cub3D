@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:48:45 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/22 14:50:15 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/23 14:22:27 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ static void	ft_move_direction(t_data *data, double x, double y, double sign)
 
 	new_x = data->player.pos_x + (sign * x) * SPEED;
 	new_y = data->player.pos_y + (sign * y) * SPEED;
-	if (is_c_inset(data->map[(int)(new_y)][(int)(data->player.pos_x)], "0D"))
+	if (is_c_inset(data->map[(int)(new_y)][(int)(data->player.pos_x)], "X0"))
 		data->player.pos_y = new_y;
-	if (is_c_inset(data->map[(int)(data->player.pos_y)][(int)(new_x)], "0D"))
+	if (is_c_inset(data->map[(int)(data->player.pos_y)][(int)(new_x)], "X0"))
 		data->player.pos_x = new_x;
 }
 
 void	ft_moves(t_data *data)
 {
-	if (data->player.up == true)
+	if (data->player.up)
 		ft_move_direction(data, data->player.dir_x, data->player.dir_y, 1);
-	else if (data->player.down == true)
+	else if (data->player.down)
 		ft_move_direction(data, data->player.dir_x, data->player.dir_y, -1);
-	else if (data->player.right == true)
+	else if (data->player.right)
 		ft_move_direction(data, data->player.plane_x, data->player.plane_y, 1);
-	else if (data->player.left == true)
+	else if (data->player.left)
 		ft_move_direction(data, data->player.plane_x, data->player.plane_y, -1);
 }
 

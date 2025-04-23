@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:23:59 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/22 14:50:51 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/23 13:48:15 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ typedef struct s_player
 	bool		rotate_left;
 	bool		rotate_right;
 	bool		espace;
-	bool		door;
 }				t_player;
 
 typedef struct s_ray
@@ -121,6 +120,7 @@ typedef struct s_data
 	void		*mlx_ptr;
 	void		*window;
 	t_img		img[10];
+	int			time_frame;
 	t_img		*texture;
 	char		**map;
 	int			height;
