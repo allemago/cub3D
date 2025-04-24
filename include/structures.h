@@ -6,12 +6,28 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:23:59 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/24 10:59:05 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 13:43:35 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
+
+typedef enum s_hand
+{
+	HAND1,
+	HAND2,
+	HAND3,
+	HAND4,
+}				t_hand;
+
+typedef enum s_door
+{
+	DOOR1,
+	DOOR2,
+	DOOR3,
+	DOOR4,
+}				t_door;
 
 typedef enum s_dir
 {
@@ -115,12 +131,17 @@ typedef struct s_ray
 	int			tex_y;
 }				t_ray;
 
+typedef struct s_sprite
+{
+	t_img 		frame[4];
+	int			time_frame;
+}				t_sprite;
+
 typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*window;
-	t_img		img[10];
-	int			time_frame;
+	t_img		img[5];
 	t_img		*texture;
 	char		**map;
 	int			height;
@@ -136,6 +157,8 @@ typedef struct s_data
 	t_radar		radar;
 	t_player	player;
 	t_ray		ray;
+	t_sprite	hand;
+	t_sprite	door;
 }				t_data;
 
 #endif

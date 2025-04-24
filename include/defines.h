@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:07:28 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 10:59:10 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 13:42:41 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,6 @@
 # define SPEED 0.03
 # define ROTSPEED 0.016
 # define MARGIN 0.1
-
-# define DOOR 4
-# define HAND 5
 
 /* MINIMAP */
 # define MINI_MARGE_X 1014

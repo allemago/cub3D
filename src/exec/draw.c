@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:42:30 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/24 11:14:00 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 13:30:19 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	ft_put_pixel(t_data *data, int x, int y, int color)
 
 	if (!data || !data->img->img || x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
 		return ;
-	pixel = data->img[9].pixels + (y * data->img[9].line_len + (x
-				* (data->img[9].bpp / 8)));
+	pixel = data->img[4].pixels + (y * data->img[4].line_len + (x
+				* (data->img[4].bpp / 8)));
 	*(unsigned int *)pixel = color;
 }
 

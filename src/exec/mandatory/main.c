@@ -6,11 +6,39 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:49:55 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/22 12:53:13 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 13:27:29 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	free_all(t_data *data, int is_destroy)
+{
+	if (is_destroy == DESTROY)
+		destroy_all(data);
+	if (data->f_color != NULL)
+		free_ptr((void **)&data->f_color);
+	if (data->c_color != NULL)
+		free_ptr((void **)&data->c_color);
+	if (data->north)
+		free_ptr((void **)&data->north);
+	if (data->south)
+		free_ptr((void **)&data->south);
+	if (data->east)
+		free_ptr((void **)&data->east);
+	if (data->west)
+		free_ptr((void **)&data->west);
+	if (data->map != NULL)
+		free_tab(&data->map);
+	if (data->pars != NULL)
+	{
+		free_ptr((void **)&data->pars->file);
+		free_ptr((void **)&data->pars->line);
+		free_tab(&data->pars->rgb);
+		free_tab(&data->pars->map_check);
+		free_ptr((void **)&data->pars);
+	}
+}
 
 void	ft_game(t_data *data)
 {

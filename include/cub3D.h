@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:02:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 11:15:37 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 13:51:26 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
  ********************************************/
 void	ft_raycasting(t_data *data);
 void	ft_calculate_texture(t_data *data, int x);
+void	destroy_all(t_data *data);
 
 /*********************************************
  *                   INIT                    *
@@ -51,26 +52,31 @@ int		ft_loop(t_data *data);
  *                  EVENTS                   *
  *********************************************/
 void	ft_calculate_rotate(t_data *data, double angle);
-// void	ft_door_animation(t_data *data);
 void	ft_events(t_data *data);
 void	ft_moves(t_data *data);
 void	ft_rotate(t_data *data);
 int		ft_destroy(t_data *data);
 int		ft_keypress(int keycode, t_data *data);
 int		ft_keyrelease(int keycode, t_data *data);
-int		ft_mouse_hook(int x, int y, t_data *data);
 
 /********************************************
  *                  DRAW                    *
  ********************************************/
 void	ft_put_pixel(t_data *data, int x, int y, int color);
 void	ft_draw_background(t_data *data);
-int     ft_anim_hand(t_data *data);
 /********************************************
  *                 BONUS                    *
  ********************************************/
+int		ft_mouse_hook(int x, int y, t_data *data);
 void	ft_events_bonus(t_data *data);
-void	ft_draw_hand(t_data *data, t_img img, int i, int j);
 void	ft_draw_minimap(t_data *data);
 
+/********************************************
+ *               ANIMATION                    *
+ ********************************************/
+void	ft_draw_anim(t_data *data, t_img img, int i, int j);
+int     ft_anim_hand(t_data *data);
+void	ft_init_hand(t_data *data);
+void	ft_init_door(t_data *data);
+ 
 #endif

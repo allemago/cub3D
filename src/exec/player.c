@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:47:02 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/23 15:38:02 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:58:28 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ void	ft_init_player(t_data *data)
 	data->player.left = false;
 	data->player.rotate_left = false;
 	data->player.rotate_right = false;
+	data->player.espace = false;
 	ft_set_face(data);
 }

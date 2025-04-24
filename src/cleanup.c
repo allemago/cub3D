@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:20:26 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/21 12:57:13 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:25:52 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,8 @@ void	free_tab(char ***tab)
 	free_ptr((void **)tab);
 }
 
-static void	destroy_all(t_data *data)
+void destroy_mlx(t_data *data)
 {
-	int	i;
-
-	i = 0;
-	while (i < 10)
-	{
-		if (data->img[i].img)
-		{
-			mlx_destroy_image(data->mlx_ptr, data->img[i].img);
-			data->img[i].img = NULL;
-		}
-		i++;
-	}
 	if (data->window)
 	{
 		mlx_destroy_window(data->mlx_ptr, data->window);
@@ -69,30 +57,29 @@ static void	destroy_all(t_data *data)
 	}
 }
 
-void	free_all(t_data *data, int is_destroy)
+void	destroy_all(t_data *data)
 {
-	if (is_destroy == DESTROY)
-		destroy_all(data);
-	if (data->f_color != NULL)
-		free_ptr((void **)&data->f_color);
-	if (data->c_color != NULL)
-		free_ptr((void **)&data->c_color);
-	if (data->north)
-		free_ptr((void **)&data->north);
-	if (data->south)
-		free_ptr((void **)&data->south);
-	if (data->east)
-		free_ptr((void **)&data->east);
-	if (data->west)
-		free_ptr((void **)&data->west);
-	if (data->map != NULL)
-		free_tab(&data->map);
-	if (data->pars != NULL)
+	int	i;
+
+	i = 0;
+	while (i < 5)
 	{
-		free_ptr((void **)&data->pars->file);
-		free_ptr((void **)&data->pars->line);
-		free_tab(&data->pars->rgb);
-		free_tab(&data->pars->map_check);
-		free_ptr((void **)&data->pars);
+		if (data->img[i].img)
+		{
+			mlx_destroy_image(data->mlx_ptr, data->img[i].img);
+			data->img[i].img = NULL;
+		}
+		if (i < 4 && data->door.frame[i].img)
+		{
+			mlx_destroy_image(data->mlx_ptr, data->door.frame[i].img);
+			data->door.frame[i].img = NULL;
+		}
+		if (i < 4 && data->hand.frame[i].img)
+		{
+			mlx_destroy_image(data->mlx_ptr, data->hand.frame[i].img);
+			data->hand.frame[i].img = NULL;
+		}
+		i++;
 	}
+	destroy_mlx(data);
 }

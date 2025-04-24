@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:25:16 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/23 13:40:20 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:04:26 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,12 @@ static int	is_door_next_to_wall(char **map, int i, int j)
 	is_next = 0;
 	if (map[i][j + 1] && map[i][j + 1] == '1')
 		is_next++;
-	else if (map[i][j + 1] && map[i][j + 1] == '0')
-		map[i][j + 1] = 'X';
 	if (j - 1 >= 0 && map[i][j - 1] == '1')
 		is_next++;
-	else if (j - 1 >= 0 && map[i][j - 1] == '0')
-		map[i][j - 1] = 'X';
 	if (map[i + 1] && map[i + 1][j] == '1')
 		is_next++;
-	else if (map[i + 1] && map[i + 1][j] == '0')
-		map[i + 1][j] = 'X';
 	if (i - 1 >= 0 && map[i - 1][j] == '1')
 		is_next++;
-	else if (i - 1 >= 0 && map[i - 1][j] == '0')
-		map[i - 1][j] = 'X';
 	return (is_next > 1);
 }
 

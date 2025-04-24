@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 10:59:28 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 13:21:37 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_loop(t_data *data)
 	ft_raycasting(data);
 	ft_rotate(data);
 	ft_moves(data);
-	mlx_put_image_to_window(data->mlx_ptr, data->window, data->img[9].img, 0,
+	mlx_put_image_to_window(data->mlx_ptr, data->window, data->img[4].img, 0,
 		0);
 	return (0);
 }

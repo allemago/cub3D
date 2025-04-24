@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:30:14 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 11:16:14 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 13:53:18 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,11 @@ static int	ft_loop_bonus(t_data *data)
 	ft_draw_background(data);
 	ft_raycasting(data);
 	if (!ft_anim_hand(data))
-		data->time_frame++;
-	// ft_draw_hand(data, WIDTH / 3, (HEIGHT / 2 + 40));
+		data->hand.time_frame++;
 	ft_draw_minimap(data);
 	ft_rotate(data);
 	ft_moves(data);
-	mlx_put_image_to_window(data->mlx_ptr, data->window, data->img[9].img, 0,
+	mlx_put_image_to_window(data->mlx_ptr, data->window, data->img[4].img, 0,
 		0);
 	return (0);
 }

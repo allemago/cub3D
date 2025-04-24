@@ -6,24 +6,56 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 10:58:55 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 13:30:00 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static void init_door(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (i < 5)
+	{
+		data->door.frame[i].img = NULL;
+		data->door.frame[i].pixels = NULL;
+		data->door.frame[i].path = NULL;
+		i++;
+	}
+	data->door.time_frame = 0;
+}
+
+static void init_hand(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (i < 4)
+	{
+		data->hand.frame[i].img = NULL;
+		data->hand.frame[i].pixels = NULL;
+		data->hand.frame[i].path = NULL;
+		i++;
+	}
+	data->hand.time_frame = 0;
+}
 
 static void init_img(t_data *data)
 {
 	int i;
 
 	i = 0;
-	while (i < 10)
+	while (i < 4)
 	{
 		data->img[i].img = NULL;
 		data->img[i].pixels = NULL;
 		data->img[i].path = NULL;
 		i++;
 	}
+	init_hand(data);
+	init_door(data);
 }
 
 static void init_pars(t_data *data)
@@ -43,7 +75,6 @@ void init_data(t_data *data)
 	data->mlx_ptr = NULL;
 	data->window = NULL;
 	init_img(data);
-	data->time_frame = 0;
 	data->texture = NULL;
 	data->map = NULL;
 	data->height = 0;
