@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:02:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 13:51:26 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 15:55:27 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	ft_draw_minimap(t_data *data);
  ********************************************/
 void	ft_draw_anim(t_data *data, t_img img, int i, int j);
 int     ft_anim_hand(t_data *data);
+int 	ft_anim_door(t_data *data);
 void	ft_init_hand(t_data *data);
 void	ft_init_door(t_data *data);
  

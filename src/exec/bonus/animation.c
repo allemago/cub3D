@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:24:42 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/24 13:44:30 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 15:58:21 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int ft_anim_hand(t_data *data)
 	int frame;
 	int flag = 0;
 
-	frame = data->hand.time_frame / 14 % 4;
+	frame = data->hand.time_frame / 24 % 4;
 	if (data->player.espace && flag == 0)
 	{
 		if (frame == 0)
@@ -49,7 +49,13 @@ int ft_anim_hand(t_data *data)
 			ft_draw_anim(data, data->hand.frame[2], WIDTH / 3, (HEIGHT / 2 + 40));
 		else if (frame == 3)
 		{
-			ft_draw_anim(data, data->hand.frame[2], WIDTH / 3, (HEIGHT / 2 + 40));
+			ft_draw_anim(data, data->hand.frame[3], WIDTH / 3, (HEIGHT / 2 + 40));
+			if (data->map[data->ray.map_y][data->ray.map_x] == 'D')
+			{
+				data->map[data->ray.map_y][data->ray.map_x] = '0';
+				ft_anim_door(data);
+					data->door.time_frame++;
+			}
 			flag = 1;
 		}
 	}
@@ -58,4 +64,4 @@ int ft_anim_hand(t_data *data)
 	if (data->player.espace && flag == 1)
 		return (1);
 	return (0);
-}    
+}
