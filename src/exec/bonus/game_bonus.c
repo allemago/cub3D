@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:30:14 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 10:58:18 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 11:16:14 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	ft_loop_bonus(t_data *data)
 {
 	ft_draw_background(data);
 	ft_raycasting(data);
-	if (!ft_animation(data))
+	if (!ft_anim_hand(data))
 		data->time_frame++;
 	// ft_draw_hand(data, WIDTH / 3, (HEIGHT / 2 + 40));
 	ft_draw_minimap(data);

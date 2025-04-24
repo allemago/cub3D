@@ -6,13 +6,13 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:24:42 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/23 14:20:08 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 11:15:49 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void ft_draw_hand(t_data *data, t_img img, int i, int j)
+void ft_draw_anim(t_data *data, t_img img, int i, int j)
 {
 	int x;
 	int y;
@@ -33,7 +33,7 @@ void ft_draw_hand(t_data *data, t_img img, int i, int j)
 	}
 }
 
-int ft_animation(t_data *data)
+int ft_anim_hand(t_data *data)
 {
 	int frame;
 	int flag = 0;
@@ -42,19 +42,19 @@ int ft_animation(t_data *data)
 	if (data->player.espace && flag == 0)
 	{
 		if (frame == 0)
-			ft_draw_hand(data, data->img[5], WIDTH / 3, (HEIGHT / 2 + 40));
+			ft_draw_anim(data, data->img[5], WIDTH / 3, (HEIGHT / 2 + 40));
 		else if (frame == 1)
-			ft_draw_hand(data, data->img[6], WIDTH / 3, (HEIGHT / 2 + 40));
+			ft_draw_anim(data, data->img[6], WIDTH / 3, (HEIGHT / 2 + 40));
 		else if (frame == 2)
-			ft_draw_hand(data, data->img[7], WIDTH / 3, (HEIGHT / 2 + 40));
+			ft_draw_anim(data, data->img[7], WIDTH / 3, (HEIGHT / 2 + 40));
 		else if (frame == 3)
 		{
-			ft_draw_hand(data, data->img[8], WIDTH / 3, (HEIGHT / 2 + 40));
+			ft_draw_anim(data, data->img[8], WIDTH / 3, (HEIGHT / 2 + 40));
 			flag = 1;
 		}
 	}
 	else
-		ft_draw_hand(data, data->img[5], WIDTH / 3, (HEIGHT / 2 + 40));
+		ft_draw_anim(data, data->img[5], WIDTH / 3, (HEIGHT / 2 + 40));
 	if (data->player.espace && flag == 1)
 		return (1);
 	return (0);
