@@ -148,11 +148,17 @@ bonus:
 
 ##################################### TESTS ####################################
 
-test:
-			./cub3D maps/map_ok.cub
+test: re
+	./cub3D maps/map_ok.cub
 
 test_bonus: bonus
-			./cub3D maps/map_ok_bonus.cub
+	./cub3D maps/map_ok_bonus.cub
+
+valgrind: re
+	valgrind --tool=memcheck --track-origins=yes ./cub3D maps/map.cub
+
+valgrind_bonus: bonus
+	valgrind --tool=memcheck --track-origins=yes ./cub3D maps/map_ok_bonus.cub
 
 ##################################### PHONY ####################################
 

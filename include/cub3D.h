@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:02:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 13:51:26 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 16:45:09 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ void	ft_draw_minimap(t_data *data);
 /********************************************
  *               ANIMATION                    *
  ********************************************/
+int		ft_anim_hand(t_data *data);
 void	ft_draw_anim(t_data *data, t_img img, int i, int j);
-int     ft_anim_hand(t_data *data);
 void	ft_init_hand(t_data *data);
 void	ft_init_door(t_data *data);
- 
+
 #endif

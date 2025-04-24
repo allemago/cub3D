@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 13:30:00 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 16:43:43 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void init_door(t_data *data)
+static void	init_door(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 5)
@@ -27,9 +27,9 @@ static void init_door(t_data *data)
 	data->door.time_frame = 0;
 }
 
-static void init_hand(t_data *data)
+static void	init_hand(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)
@@ -42,9 +42,9 @@ static void init_hand(t_data *data)
 	data->hand.time_frame = 0;
 }
 
-static void init_img(t_data *data)
+static void	init_img(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)
@@ -58,7 +58,7 @@ static void init_img(t_data *data)
 	init_door(data);
 }
 
-static void init_pars(t_data *data)
+static void	init_pars(t_data *data)
 {
 	data->pars->line = NULL;
 	data->pars->x = 0;
@@ -70,7 +70,7 @@ static void init_pars(t_data *data)
 	data->pars->map_check = NULL;
 }
 
-void init_data(t_data *data)
+void	init_data(t_data *data)
 {
 	data->mlx_ptr = NULL;
 	data->window = NULL;

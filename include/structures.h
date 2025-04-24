@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:23:59 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/24 13:43:35 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 16:42:47 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ typedef struct s_ray
 
 typedef struct s_sprite
 {
-	t_img 		frame[4];
+	t_img		frame[4];
 	int			time_frame;
 }				t_sprite;
 

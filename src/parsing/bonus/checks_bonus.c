@@ -3,29 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   checks_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 14:25:16 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 14:04:26 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/24 16:25:31 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	is_door_next_to_wall(char **map, int i, int j)
+static bool	is_door_walled(char **map, int i, int j)
 {
-	int	is_next;
+	bool	is_next;
 
-	is_next = 0;
-	if (map[i][j + 1] && map[i][j + 1] == '1')
-		is_next++;
-	if (j - 1 >= 0 && map[i][j - 1] == '1')
-		is_next++;
-	if (map[i + 1] && map[i + 1][j] == '1')
-		is_next++;
-	if (i - 1 >= 0 && map[i - 1][j] == '1')
-		is_next++;
-	return (is_next > 1);
+	is_next = false;
+	if ((map[i][j + 1] && map[i][j + 1] == '1')
+		&& (j - 1 >= 0 && map[i][j - 1] == '1'))
+		is_next = true;
+	if ((map[i + 1] && map[i + 1][j] == '1')
+		&& (i - 1 >= 0 && map[i - 1][j] == '1'))
+		is_next = true;
+	return (is_next);
 }
 
 static int	check_map_items(t_data *data, char item, int i, int j)
@@ -45,7 +43,7 @@ static int	check_map_items(t_data *data, char item, int i, int j)
 		return (ft_printf_fd(2, ERR_WALL_MSG), 0);
 	if (is_c_inset(item, "NSEW0D") && !is_open(data->map, '|', i, j))
 		return (ft_printf_fd(2, ERR_ITEM_MSG), 0);
-	if (item == 'D' && !is_door_next_to_wall(data->map, i, j))
+	if (item == 'D' && !is_door_walled(data->map, i, j))
 		return (ft_printf_fd(2, ERR_DOOR_MSG), 0);
 	return (1);
 }

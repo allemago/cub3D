@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:11:08 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/23 12:42:02 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/24 16:21:25 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ int	check_elements(t_data *data)
 	if ((!data->north || !data->south || !data->west || !data->east
 			|| !data->f_color || !data->c_color) || !fill_map_game(data, i))
 		return (0);
+	reset_maps(data, 0, 0);
 	return (1);
 }

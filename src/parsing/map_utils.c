@@ -6,13 +6,13 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:09:35 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/20 16:01:29 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/24 16:22:24 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	reset_maps(t_data *data, int i, int j)
+void	reset_maps(t_data *data, int i, int j)
 {
 	free_tab(&data->pars->map_check);
 	data->pars->map_check = ft_calloc((data->height + 1), sizeof(char *));
@@ -77,7 +77,7 @@ int	fill_map_game(t_data *data, int i)
 		if (is_line_empty(data->pars->map_check[i]))
 		{
 			data->map[j] = NULL;
-			return (reset_maps(data, 0, 0), go_end_map(data, i));
+			return (go_end_map(data, i));
 		}
 		data->map[j] = ft_calloc((data->width + 1), sizeof(char));
 		check_alloc(data->map[j], data);
@@ -87,7 +87,6 @@ int	fill_map_game(t_data *data, int i)
 		ft_memcpy(data->map[j++], data->pars->map_check[i++], len);
 	}
 	data->map[j] = NULL;
-	reset_maps(data, 0, 0);
 	return (1);
 }
 
