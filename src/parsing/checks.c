@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:11:08 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 20:36:37 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 21:06:03 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	check_elements(t_data *data)
 	{
 		start = get_element(data, data->pars->map_check[i],
 				ft_strlen(data->pars->map_check[i]));
-		if (!start)
+		if (!start || !is_c_inset(data->pars->map_check[i][start], ALL_SPACES))
 			return (0);
 		pass_spaces(&data->pars->map_check[i][start], &start);
 		if (!data->pars->map_check[i][start])

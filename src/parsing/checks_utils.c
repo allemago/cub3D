@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:09:20 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 20:38:33 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 21:03:57 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,17 @@ int	get_element(t_data *data, char *line, int n)
 	char	*temp;
 
 	temp = NULL;
-	if (start_valid(line) && ft_strnstr(line, "NO ", n) && !data->north)
+	if (start_valid(line) && ft_strnstr(line, "NO", n) && !data->north)
 		temp = ft_strnstr(line, "NO", n);
-	else if (start_valid(line) && ft_strnstr(line, "SO ", n) && !data->south)
+	else if (start_valid(line) && ft_strnstr(line, "SO", n) && !data->south)
 		temp = ft_strnstr(line, "SO", n);
-	else if (start_valid(line) && ft_strnstr(line, "WE ", n) && !data->west)
+	else if (start_valid(line) && ft_strnstr(line, "WE", n) && !data->west)
 		temp = ft_strnstr(line, "WE", n);
-	else if (start_valid(line) && ft_strnstr(line, "EA ", n) && !data->east)
+	else if (start_valid(line) && ft_strnstr(line, "EA", n) && !data->east)
 		temp = ft_strnstr(line, "EA", n);
-	else if (start_valid(line) && ft_strnstr(line, "F ", n) && !data->f_color)
+	else if (start_valid(line) && ft_strnstr(line, "F", n) && !data->f_color)
 		temp = ft_strnstr(line, "F", n);
-	else if (start_valid(line) && ft_strnstr(line, "C ", n) && !data->c_color)
+	else if (start_valid(line) && ft_strnstr(line, "C", n) && !data->c_color)
 		temp = ft_strnstr(line, "C", n);
 	else if (temp == NULL)
 		return (0);
