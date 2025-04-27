@@ -6,13 +6,13 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:18:32 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/24 13:55:02 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 20:11:57 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	ft_add_img(t_data *data)
+void	ft_add_img(t_data *data)
 {
 	int	i;
 
@@ -31,7 +31,7 @@ static void	ft_add_img(t_data *data)
 	}
 }
 
-static void	ft_set_path(t_data *data)
+void	ft_set_path(t_data *data)
 {
 	data->img[NORTH].path = data->north;
 	data->img[SOUTH].path = data->south;
@@ -57,8 +57,6 @@ void	ft_init_img(t_data *data)
 		i++;
 	}
 	data->img[4].img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
-	ft_init_hand(data);
-	ft_init_door(data);
 	ft_add_img(data);
 }
 

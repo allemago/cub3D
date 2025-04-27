@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:34:41 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 17:24:11 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 20:09:52 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static	void	ft_game_bonus(t_data *data)
 		free_all(data, DESTROY);
 		err_exit(MLX_WIN_MSG);
 	}
-	ft_init_img(data);
+	ft_init_img_bonus(data);
 	ft_events_bonus(data);
 	mlx_loop(data->mlx_ptr);
 }

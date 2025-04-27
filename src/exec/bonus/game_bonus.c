@@ -6,13 +6,13 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:30:14 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 17:31:03 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 20:12:59 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	ft_mouse_hook(int x, int y, t_data *data)
+static int	ft_mouse_hook(int x, int y, t_data *data)
 {
 	(void)y;
 	if (x < (WIDTH / 2))

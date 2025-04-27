@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:54:43 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/27 15:50:09 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/27 19:47:02 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_calculate_texture(t_data *data, int x)
 {
 	set_wall(data);
 	if (data->map[(int)data->ray.map_y][(int)data->ray.map_x] == 'D')
-		data->texture = &data->door.frame[DOOR1];
+		data->texture = &data->door.frame[DOOR];
 	data->ray.wall_x -= floor(data->ray.wall_x);
 	data->ray.tex_x = (int)(data->ray.wall_x * (double)TEXTURE_SIZE);
 	if ((data->ray.wall_side == 0 && data->ray.dir_x > 0)

@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:20:26 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 17:22:00 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 20:21:06 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,6 @@ void	destroy_all(t_data *data)
 		{
 			mlx_destroy_image(data->mlx_ptr, data->img[i].img);
 			data->img[i].img = NULL;
-		}
-		if (i < 4 && data->door.frame[i].img)
-		{
-			mlx_destroy_image(data->mlx_ptr, data->door.frame[i].img);
-			data->door.frame[i].img = NULL;
-		}
-		if (i < 4 && data->hand.frame[i].img)
-		{
-			mlx_destroy_image(data->mlx_ptr, data->hand.frame[i].img);
-			data->hand.frame[i].img = NULL;
 		}
 		i++;
 	}

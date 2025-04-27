@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:09:20 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 18:02:28 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/27 20:38:33 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,18 @@ int	is_open(char **map, char op, int i, int j)
 {
 	if (op == '&')
 	{
-		if ((!map[i][j + 1] || map[i][j + 1] == ' ') && (j - 1 < 0 || map[i][j
-				- 1] == ' ') && (!map[i + 1] || map[i + 1][j] == ' ') && (i
-				- 1 < 0 || map[i - 1][j] == ' '))
+		if ((!map[i][j + 1] || map[i][j + 1] == ' ')
+			&& (j - 1 < 0 || map[i][j - 1] == ' ')
+			&& (!map[i + 1] || map[i + 1][j] == ' ')
+			&& (i - 1 < 0 || map[i - 1][j] == ' '))
 			return (0);
 	}
 	else if (op == '|')
 	{
-		if ((!map[i][j + 1] || map[i][j + 1] == ' ') || (j - 1 < 0 || map[i][j
-				- 1] == ' ') || (!map[i + 1] || map[i + 1][j] == ' ') || (i
-				- 1 < 0 || map[i - 1][j] == ' '))
+		if ((!map[i][j + 1] || map[i][j + 1] == ' ')
+			|| (j - 1 < 0 || map[i][j - 1] == ' ')
+			|| (!map[i + 1] || map[i + 1][j] == ' ')
+			|| (i - 1 < 0 || map[i - 1][j] == ' '))
 			return (0);
 	}
 	return (1);

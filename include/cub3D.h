@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:02:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 18:27:15 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 20:25:29 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	ft_init_ray(t_data *data);
 void	ft_init_img(t_data *data);
 void	ft_change_face(t_data *data);
 int		ft_loop(t_data *data);
+void	ft_add_img(t_data *data);
+void	ft_set_path(t_data *data);
 
 /*********************************************
  *                  EVENTS                   *
@@ -66,12 +68,13 @@ void	ft_move_direction(t_data *data, double x, double y, double sign);
  ********************************************/
 void	ft_put_pixel(t_data *data, int x, int y, int color);
 void	ft_draw_background(t_data *data);
+
 /********************************************
  *                 BONUS                    *
  ********************************************/
-int		ft_mouse_hook(int x, int y, t_data *data);
 void	ft_events_bonus(t_data *data);
 void	ft_draw_minimap(t_data *data);
+void	ft_init_img_bonus(t_data *data);
 
 /********************************************
  *               ANIMATION                    *
@@ -80,6 +83,5 @@ int		ft_anim_hand(t_data *data);
 void	ft_draw_anim(t_data *data, t_img img, int i, int j);
 void	ft_init_hand(t_data *data);
 void	ft_init_door(t_data *data);
-
 
 #endif

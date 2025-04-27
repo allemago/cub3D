@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:49:55 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 13:27:29 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 20:20:01 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,25 +64,15 @@ void	ft_game(t_data *data)
 void	ft_check_input(t_data *data, int argc, char *map_file)
 {
 	if (argc != 2 || !map_file[0] || is_str_inset(map_file, ALL_SPACES))
-	{
 		err_exit(ARGC_MSG);
-	}
 	if (!is_file_valid(data, map_file))
-	{
 		err_exit(ERR_EXT_MSG);
-	}
 	if (!check_elements(data))
-	{
 		err_free_exit(ERR_ELEM_MSG, data);
-	}
 	if (!check_map(data, data->height - 1))
-	{
 		err_free_exit(NULL, data);
-	}
 	if (!check_path(data))
-	{
 		err_free_exit(ERR_ITEM_MSG, data);
-	}
 }
 
 int	main(int argc, char **argv)

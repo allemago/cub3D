@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 18:32:44 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 19:24:16 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static	void	init_door(t_data *data)
 		data->door.frame[i].path = NULL;
 		i++;
 	}
-	data->door.time_frame = 0;
 	data->door.current_pos = 0;
 	data->door.is_open = false;
 }

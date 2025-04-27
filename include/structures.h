@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:23:59 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/27 18:30:56 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 20:26:41 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,6 @@ typedef enum s_hand
 	HAND3 = 2,
 	HAND4 = 3,
 }				t_hand;
-
-typedef enum s_door
-{
-	DOOR1 = 0,
-	DOOR2 = 1,
-	DOOR3 = 2,
-	DOOR4 = 3,
-}				t_door;
 
 typedef enum s_dir
 {
@@ -52,9 +44,6 @@ typedef struct s_pars
 
 typedef struct s_radar
 {
-	float		scale_x;
-	float		scale_y;
-	float		scale;
 	float		tile_x;
 	float		tile_y;
 	float		tile;
@@ -119,16 +108,20 @@ typedef struct s_sprite
 {
 	t_img		frame[4];
 	int			time_frame;
+}				t_sprite;
+
+typedef struct s_door
+{
+	t_img		frame[1];
 	char		current_pos;
 	bool		is_open;
-}				t_sprite;
+}				t_door;
 
 typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*window;
 	t_img		img[5];
-	int			time_frame;
 	t_img		*texture;
 	char		**map;
 	int			height;
@@ -145,7 +138,7 @@ typedef struct s_data
 	t_player	player;
 	t_ray		ray;
 	t_sprite	hand;
-	t_sprite	door;
+	t_door		door;
 }				t_data;
 
 #endif

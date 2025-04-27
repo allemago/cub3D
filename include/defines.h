@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:07:28 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 13:42:41 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 20:25:53 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define WIDTH 1024
 # define HEIGHT 680
 # define TEXTURE_SIZE 64
+# define DOOR 0
 
 # define KEY_ESC 65307
 # define KEY_ESPACE 32
