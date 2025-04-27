@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:36:36 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/20 15:23:58 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/27 18:01:12 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,19 @@ int	set_element(t_data *data, char *line, int start, int index)
 		}
 		set_orientation(data, line, info);
 	}
+	return (1);
+}
+
+int	start_valid(char *line)
+{
+	int	i;
+
+	i = go_edge_char(line, FIRST_C);
+	if (line[i + 1]
+		&& is_c_inset(line[i + 1], ALL_SPACES)
+		&& !is_c_inset(line[i], "FC"))
+		return (0);
+	if (line[i + 1] && line[i + 1] == line[i])
+		return (0);
 	return (1);
 }

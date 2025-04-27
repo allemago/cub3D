@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:17:48 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 16:22:40 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/27 18:01:59 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int		is_rgb_valid(char **rgb);
 int		is_c_inset(char c, char *set);
 int		is_str_inset(char *str, char *set);
 int		set_element(t_data *data, char *line, int start, int index);
+int		start_valid(char *line);
 
 /********************************************
  *        ERROR HANDLERS & CLEANUP          *

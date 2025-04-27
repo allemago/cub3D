@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:09:20 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 16:45:38 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/27 18:02:28 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,16 @@ int	is_open(char **map, char op, int i, int j)
 {
 	if (op == '&')
 	{
-		if ((!map[i][j + 1] || map[i][j + 1] == ' ')
-			&& (j - 1 < 0 || map[i][j - 1] == ' ')
-			&& (!map[i + 1] || map[i + 1][j] == ' ')
-			&& (i - 1 < 0 || map[i - 1][j] == ' '))
+		if ((!map[i][j + 1] || map[i][j + 1] == ' ') && (j - 1 < 0 || map[i][j
+				- 1] == ' ') && (!map[i + 1] || map[i + 1][j] == ' ') && (i
+				- 1 < 0 || map[i - 1][j] == ' '))
 			return (0);
 	}
 	else if (op == '|')
 	{
-		if ((!map[i][j + 1] || map[i][j + 1] == ' ')
-			|| (j - 1 < 0 || map[i][j - 1] == ' ')
-			|| (!map[i + 1] || map[i + 1][j] == ' ')
-			|| (i - 1 < 0 || map[i - 1][j] == ' '))
+		if ((!map[i][j + 1] || map[i][j + 1] == ' ') || (j - 1 < 0 || map[i][j
+				- 1] == ' ') || (!map[i + 1] || map[i + 1][j] == ' ') || (i
+				- 1 < 0 || map[i - 1][j] == ' '))
 			return (0);
 	}
 	return (1);
@@ -66,17 +64,17 @@ int	get_element(t_data *data, char *line, int n)
 	char	*temp;
 
 	temp = NULL;
-	if (ft_strnstr(line, "NO ", n) && !data->north)
+	if (start_valid(line) && ft_strnstr(line, "NO ", n) && !data->north)
 		temp = ft_strnstr(line, "NO", n);
-	else if (ft_strnstr(line, "SO ", n) && !data->south)
+	else if (start_valid(line) && ft_strnstr(line, "SO ", n) && !data->south)
 		temp = ft_strnstr(line, "SO", n);
-	else if (ft_strnstr(line, "WE ", n) && !data->west)
+	else if (start_valid(line) && ft_strnstr(line, "WE ", n) && !data->west)
 		temp = ft_strnstr(line, "WE", n);
-	else if (ft_strnstr(line, "EA ", n) && !data->east)
+	else if (start_valid(line) && ft_strnstr(line, "EA ", n) && !data->east)
 		temp = ft_strnstr(line, "EA", n);
-	else if (ft_strnstr(line, "F ", n) && !data->f_color)
+	else if (start_valid(line) && ft_strnstr(line, "F ", n) && !data->f_color)
 		temp = ft_strnstr(line, "F", n);
-	else if (ft_strnstr(line, "C ", n) && !data->c_color)
+	else if (start_valid(line) && ft_strnstr(line, "C ", n) && !data->c_color)
 		temp = ft_strnstr(line, "C", n);
 	else if (temp == NULL)
 		return (0);
