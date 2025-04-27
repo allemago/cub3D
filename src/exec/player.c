@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:47:02 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/24 13:58:28 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 17:18:12 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	ft_change_face(t_data *data)
+{
+	if (data->player.dir_x > 0.7 && data->player.dir_y < 0.3
+		&& data->player.dir_y > -0.3)
+		data->facing = 'E';
+	else if (data->player.dir_x < -0.7 && data->player.dir_y < 0.3
+		&& data->player.dir_y > -0.3)
+		data->facing = 'W';
+	else if (data->player.dir_y > 0.7 && data->player.dir_x < 0.3
+			&& data->player.dir_x > -0.3)
+		data->facing = 'S';
+	else if (data->player.dir_y < -0.7 && data->player.dir_x < 0.3
+			&& data->player.dir_x > -0.3)
+		data->facing = 'N';
+
+}
 
 static void	ft_face(t_data *data, double d_y, double p_x, double p_y)
 {
@@ -33,33 +50,6 @@ static void	ft_set_face(t_data *data)
 			ft_face(data, 0, 0, -0.66);
 	}
 }
-
-/* static void	ft_set_player(t_data *data)
-{
-	int		i;
-	size_t	j;
-	int		len;
-
-	i = 0;
-	len = 0;
-	while (data->map[len])
-		len++;
-	while (i < len)
-	{
-		j = 0;
-		while (j < ft_strlen(data->map[i]))
-		{
-			if (is_c_inset(data->map[i][j], "X0"))
-			{
-				data->player.pos_x = (double)j + 0.5;
-				data->player.pos_y = (double)i + 0.5;
-				break ;
-			}
-			j++;
-		}
-		i++;
-	}
-} */
 
 void	ft_init_player(t_data *data)
 {

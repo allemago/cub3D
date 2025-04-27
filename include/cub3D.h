@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:02:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 12:44:26 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 17:04:44 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	destroy_all(t_data *data);
 void	ft_init_player(t_data *data);
 void	ft_init_ray(t_data *data);
 void	ft_init_img(t_data *data);
+void	ft_change_face(t_data *data);
 int		ft_loop(t_data *data);
 
 /*********************************************

@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:48:45 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/27 16:30:45 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/27 17:17:12 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ void	ft_rotate(t_data *data)
 		ft_calculate_rotate(data, ROTSPEED);
 	else if (data->player.rotate_left)
 		ft_calculate_rotate(data, -ROTSPEED);
+	ft_change_face(data);
 }

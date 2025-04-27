@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:24:42 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/27 16:21:18 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/27 16:48:16 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ int ft_anim_hand(t_data *data)
 	if (data->player.espace && flag == 0)
 	{
 		if (frame == 0)
-			ft_draw_anim(data, data->hand.frame[0], WIDTH / 3, (HEIGHT / 2 + 40));
+			ft_draw_anim(data, data->hand.frame[0], WIDTH / 2, (HEIGHT / 2 + 40));
 		else if (frame == 1)
-			ft_draw_anim(data, data->hand.frame[1], WIDTH / 3, (HEIGHT / 2 + 40));
+			ft_draw_anim(data, data->hand.frame[1], WIDTH / 2, (HEIGHT / 2 + 40));
 		else if (frame == 2)
-			ft_draw_anim(data, data->hand.frame[2], WIDTH / 3, (HEIGHT / 2 + 40));
+			ft_draw_anim(data, data->hand.frame[2], WIDTH / 2, (HEIGHT / 2 + 40));
 		else if (frame == 3)
 		{
-			ft_draw_anim(data, data->hand.frame[3], WIDTH / 3, (HEIGHT / 2 + 40));
+			ft_draw_anim(data, data->hand.frame[3], WIDTH / 2, (HEIGHT / 2 + 40));
 			if (data->map[data->ray.map_y][data->ray.map_x] == 'D')
 			{
 				data->door.is_open = true;
@@ -59,7 +59,7 @@ int ft_anim_hand(t_data *data)
 		}
 	}
 	else
-		ft_draw_anim(data, data->hand.frame[0], WIDTH / 3, (HEIGHT / 2 + 40));
+		ft_draw_anim(data, data->hand.frame[0], WIDTH / 2, (HEIGHT / 2 + 40));
 	if (data->player.espace && flag == 1)
 		return (1);
 	return (0);

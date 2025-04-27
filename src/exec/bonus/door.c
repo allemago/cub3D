@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 11:06:01 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/27 12:21:37 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 16:49:05 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int ft_anim_door(t_data *data)
 	int flag;
 
 	flag = 0;
-	frame = data->door.time_frame / 10 % 4;
+	frame = data->door.time_frame / 14 % 4;
 	if (data->player.espace && flag == 0)
 	{
 		if (frame == 0)
@@ -34,7 +34,7 @@ int ft_anim_door(t_data *data)
 		}
 	}
 	else
-		ft_draw_anim(data, data->door.frame[DOOR1], WIDTH / 3, (HEIGHT / 2 + 40));
+		ft_draw_anim(data, data->door.frame[DOOR1], WIDTH / 2, (HEIGHT / 2 + 40));
 	if (data->player.espace && data->map[data->ray.map_y][data->ray.map_x] == 'D' && flag == 1)
 		return (1);
 	return (0);
