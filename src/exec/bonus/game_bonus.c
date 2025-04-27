@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:30:14 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 13:53:18 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 17:31:03 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,3 @@ void	ft_events_bonus(t_data *data)
 	mlx_hook(data->window, DestroyNotify, StructureNotifyMask, ft_destroy,
 		data);
 }
-
-// void	ft_door_animation(t_data *data)
-// {
-// 	if (data->player.espace == false)
-// 		data->player.door = false;
-// 	if (data->player.espace == true && data->player.door == false)
-// 	{
-// 		if (data->map[data->ray.map_y][data->ray.map_x] == 'D')
-// 			data->map[data->ray.map_y][data->ray.map_x] = 'O';
-// 		else if (data->map[data->ray.map_y][data->ray.map_x] == 'O')
-// 			data->map[data->ray.map_y][data->ray.map_x] = 'D';
-// 		data->player.door = false;
-// 	}
-// }

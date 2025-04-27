@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:23:59 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/24 16:42:47 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/27 18:30:56 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,26 @@
 
 typedef enum s_hand
 {
-	HAND1,
-	HAND2,
-	HAND3,
-	HAND4,
+	HAND1 = 0,
+	HAND2 = 1,
+	HAND3 = 2,
+	HAND4 = 3,
 }				t_hand;
 
 typedef enum s_door
 {
-	DOOR1,
-	DOOR2,
-	DOOR3,
-	DOOR4,
+	DOOR1 = 0,
+	DOOR2 = 1,
+	DOOR3 = 2,
+	DOOR4 = 3,
 }				t_door;
 
 typedef enum s_dir
 {
-	NORTH,
-	SOUTH,
-	EAST,
-	WEST,
+	NORTH = 0,
+	SOUTH = 1,
+	EAST = 2,
+	WEST = 3,
 }				t_dir;
 
 typedef struct s_pars
@@ -59,22 +59,6 @@ typedef struct s_radar
 	float		tile_y;
 	float		tile;
 }				t_radar;
-
-typedef struct s_point
-{
-	double		x;
-	double		y;
-}				t_point;
-
-typedef struct s_bresenham
-{
-	double		delta_x;
-	double		delta_y;
-	double		pixel_x;
-	double		pixel_y;
-	double		pixel_inc_x;
-	double		pixel_inc_y;
-}				t_bresenham;
 
 typedef struct s_img
 {
@@ -135,6 +119,8 @@ typedef struct s_sprite
 {
 	t_img		frame[4];
 	int			time_frame;
+	char		current_pos;
+	bool		is_open;
 }				t_sprite;
 
 typedef struct s_data
@@ -142,6 +128,7 @@ typedef struct s_data
 	void		*mlx_ptr;
 	void		*window;
 	t_img		img[5];
+	int			time_frame;
 	t_img		*texture;
 	char		**map;
 	int			height;

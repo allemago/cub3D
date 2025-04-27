@@ -28,12 +28,11 @@ PARS_FILES=			checks_utils.c checks.c elem_utils.c flood_fill.c			\
 					init_data.c map_utils.c pars_utils.c string_utils.c			\
 					
 EXEC_FILES=			draw.c events.c init_exec.c moves.c player.c raycasting.c	\
-					textures.c init_door.c init_hand.c												\
+					textures.c init_door.c init_hand.c animation.c										\
 					
 MANDATORY_FILES= 	game.c main.c 												\
 
-BONUS_EXEC_FILES=	game_bonus.c main_bonus.c minimap_bonus.c					\
-					minimap_ray_bonus.c animation.c									\
+BONUS_EXEC_FILES=	game_bonus.c main_bonus.c minimap_bonus.c door.c			\
 
 BONUS_PARS_FILES=	checks_bonus.c												\
 

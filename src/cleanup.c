@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:20:26 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 13:25:52 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 17:22:00 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	free_tab(char ***tab)
 	free_ptr((void **)tab);
 }
 
-void destroy_mlx(t_data *data)
+void	destroy_mlx(t_data *data)
 {
 	if (data->window)
 	{

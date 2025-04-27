@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:02:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 16:45:09 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/27 18:27:15 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	destroy_all(t_data *data);
 void	ft_init_player(t_data *data);
 void	ft_init_ray(t_data *data);
 void	ft_init_img(t_data *data);
+void	ft_change_face(t_data *data);
 int		ft_loop(t_data *data);
 
 /*********************************************
@@ -58,6 +59,7 @@ void	ft_rotate(t_data *data);
 int		ft_destroy(t_data *data);
 int		ft_keypress(int keycode, t_data *data);
 int		ft_keyrelease(int keycode, t_data *data);
+void	ft_move_direction(t_data *data, double x, double y, double sign);
 
 /********************************************
  *                  DRAW                    *
@@ -78,5 +80,6 @@ int		ft_anim_hand(t_data *data);
 void	ft_draw_anim(t_data *data, t_img img, int i, int j);
 void	ft_init_hand(t_data *data);
 void	ft_init_door(t_data *data);
+
 
 #endif
