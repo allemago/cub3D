@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:47:02 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/27 17:18:12 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/27 17:45:22 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ void	ft_change_face(t_data *data)
 		&& data->player.dir_y > -0.3)
 		data->facing = 'W';
 	else if (data->player.dir_y > 0.7 && data->player.dir_x < 0.3
-			&& data->player.dir_x > -0.3)
+		&& data->player.dir_x > -0.3)
 		data->facing = 'S';
 	else if (data->player.dir_y < -0.7 && data->player.dir_x < 0.3
-			&& data->player.dir_x > -0.3)
+		&& data->player.dir_x > -0.3)
 		data->facing = 'N';
-
 }
 
 static void	ft_face(t_data *data, double d_y, double p_x, double p_y)

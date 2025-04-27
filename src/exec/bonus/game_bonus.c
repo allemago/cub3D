@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:30:14 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 16:36:44 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/27 17:31:03 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,7 @@ static int	ft_loop_bonus(t_data *data)
 	ft_draw_background(data);
 	ft_raycasting(data);
 	if (!ft_anim_hand(data))
-	{
-		// if (data->map[data->ray.map_y][data->ray.map_x] == 'D')
-		// {
-		// 	if (!ft_anim_door(data))
-		// 		data->door.time_frame++;
-		// }
 		data->hand.time_frame++;
-	}
 	ft_draw_minimap(data);
 	ft_rotate(data);
 	ft_moves(data);
