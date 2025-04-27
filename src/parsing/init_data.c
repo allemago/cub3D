@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 13:30:00 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 12:54:28 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void init_door(t_data *data)
 		i++;
 	}
 	data->door.time_frame = 0;
+	data->door.is_open = false;
 }
 
 static void init_hand(t_data *data)

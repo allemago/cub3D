@@ -6,13 +6,13 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 19:21:26 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 11:01:53 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 13:22:51 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	draw_blip(t_data *data, int x, int y, uint32_t color)
+static void	draw_tile(t_data *data, int x, int y, uint32_t color)
 {
 	int		i;
 	int		j;
@@ -40,16 +40,17 @@ static void	draw_blip(t_data *data, int x, int y, uint32_t color)
 static void	process_tile(t_data *data, char tile, int i, int j)
 {
 	if (tile == '1')
-		draw_blip(data, j, i, COLOR_WALL);
+		draw_tile(data, j, i, COLOR_WALL);
 	if (tile == 'D')
-		draw_blip(data, j, i, COLOR_DOOR);
-	if (tile == '0' || tile == 'X' || tile == 'P')
-		draw_blip(data, j, i, COLOR_FLOOR);
-	if (tile == 'P')
-		draw_blip(data, j, i, COLOR_PLAYER);
+		draw_tile(data, j, i, COLOR_DOOR);
+	if (tile == '0')
+		draw_tile(data, j, i, COLOR_FLOOR);
+	if (tile == 'P' || ((int)data->player.pos_x == j
+			&& (int)data->player.pos_y == i))
+		draw_tile(data, j, i, COLOR_PLAYER);
 }
 
-static void	calculate_radar(t_data *data)
+static void	init_radar(t_data *data)
 {
 	data->radar.tile_x = MINI_MAX / data->width;
 	data->radar.tile_y = MINI_MAX / data->height;
@@ -68,11 +69,11 @@ void	ft_draw_minimap(t_data *data)
 	int		i;
 	int		j;
 	char	tile;
-	
+
 	tile = data->map[(int)data->player.pos_y][(int)data->player.pos_x];
-	if (!is_c_inset(tile, "1XD"))
+	if (tile != 'D')
 		data->map[(int)data->player.pos_y][(int)data->player.pos_x] = 'P';
-	calculate_radar(data);
+	init_radar(data);
 	i = 0;
 	while (data->map[i])
 	{
@@ -84,6 +85,6 @@ void	ft_draw_minimap(t_data *data)
 		}
 		i++;
 	}
-	if (!is_c_inset(tile, "1XD"))
+	if (!is_c_inset(tile, "D"))
 		data->map[(int)data->player.pos_y][(int)data->player.pos_x] = '0';
 }

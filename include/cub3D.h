@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:02:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 15:55:27 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 12:44:26 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	ft_rotate(t_data *data);
 int		ft_destroy(t_data *data);
 int		ft_keypress(int keycode, t_data *data);
 int		ft_keyrelease(int keycode, t_data *data);
+void	ft_move_direction(t_data *data, double x, double y, double sign);
 
 /********************************************
  *                  DRAW                    *

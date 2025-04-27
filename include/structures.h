@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:23:59 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/24 15:49:41 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 12:52:22 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,26 @@
 
 typedef enum s_hand
 {
-	HAND1,
-	HAND2,
-	HAND3,
-	HAND4,
+	HAND1 = 0,
+	HAND2 = 1,
+	HAND3 = 2,
+	HAND4 = 3,
 }				t_hand;
 
 typedef enum s_door
 {
-	DOOR1,
-	DOOR2,
-	DOOR3,
-	DOOR4,
+	DOOR1 = 0,
+	DOOR2 = 1,
+	DOOR3 = 2,
+	DOOR4 = 3,
 }				t_door;
 
 typedef enum s_dir
 {
-	NORTH,
-	SOUTH,
-	EAST,
-	WEST,
+	NORTH = 0,
+	SOUTH = 1,
+	EAST = 2,
+	WEST = 3,
 }				t_dir;
 
 typedef struct s_pars
@@ -135,6 +135,7 @@ typedef struct s_sprite
 {
 	t_img 		frame[4];
 	int			time_frame;
+	bool		is_open;
 }				t_sprite;
 
 typedef struct s_data

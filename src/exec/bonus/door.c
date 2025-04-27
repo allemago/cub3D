@@ -6,7 +6,7 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 11:06:01 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/24 16:02:46 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 12:21:37 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,23 @@ int ft_anim_door(t_data *data)
 
 	flag = 0;
 	frame = data->door.time_frame / 10 % 4;
-	if (!ft_anim_hand(data) && flag == 0)
+	if (data->player.espace && flag == 0)
 	{
 		if (frame == 0)
-			ft_draw_anim(data, data->door.frame[0], WIDTH / 3, (HEIGHT / 2 + 40));
+			ft_draw_anim(data, data->door.frame[DOOR1], 0, 0);
 		else if (frame == 1)
-			ft_draw_anim(data, data->door.frame[1], WIDTH / 3, (HEIGHT / 2 + 40));
+			ft_draw_anim(data, data->door.frame[DOOR2], 0, 0);
 		else if (frame == 2)
-			ft_draw_anim(data, data->door.frame[2], WIDTH / 3, (HEIGHT / 2 + 40));
+			ft_draw_anim(data, data->door.frame[DOOR3], 0, 0);
 		else if (frame == 3)
 		{
-			ft_draw_anim(data, data->door.frame[3], WIDTH / 3, (HEIGHT / 2 + 40));
+			ft_draw_anim(data, data->door.frame[DOOR4], 0, 0);
 			flag = 1;
 		}
 	}
 	else
-		ft_draw_anim(data, data->hand.frame[0], WIDTH / 3, (HEIGHT / 2 + 40));
-	if (data->map[data->ray.map_y][data->ray.map_x] == 'D' && flag == 1)
+		ft_draw_anim(data, data->door.frame[DOOR1], WIDTH / 3, (HEIGHT / 2 + 40));
+	if (data->player.espace && data->map[data->ray.map_y][data->ray.map_x] == 'D' && flag == 1)
 		return (1);
 	return (0);
 }

@@ -6,22 +6,24 @@
 /*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:48:45 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/24 16:03:39 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 13:56:26 by imatek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	ft_move_direction(t_data *data, double x, double y, double sign)
+void	ft_move_direction(t_data *data, double x, double y, double sign)
 {
 	double	new_x;
 	double	new_y;
 
 	new_x = data->player.pos_x + sign * x * SPEED;
 	new_y = data->player.pos_y + sign * y * SPEED;
-	if (data->map[(int)(new_y)][(int)(data->player.pos_x)] == '0')
+	// if (data->map[data->ray.map_y][data->ray.map_x] != 'D')
+	// 	data->door.is_open = false;
+	if ((data->map[(int)(new_y)][(int)(data->player.pos_x)] == '0') || (data->map[data->ray.map_y][data->ray.map_x] == 'D' && data->door.is_open))
 		data->player.pos_y = new_y;
-	if (data->map[(int)(data->player.pos_y)][(int)(new_x)] == '0')
+	if ((data->map[(int)(data->player.pos_y)][(int)(new_x)] == '0') || (data->map[data->ray.map_y][data->ray.map_x] == 'D' && data->door.is_open))
 		data->player.pos_x = new_x;
 }
 
