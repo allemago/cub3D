@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:48:45 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/27 13:56:26 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 16:30:45 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,23 @@ void	ft_move_direction(t_data *data, double x, double y, double sign)
 {
 	double	new_x;
 	double	new_y;
-
+	
 	new_x = data->player.pos_x + sign * x * SPEED;
-	new_y = data->player.pos_y + sign * y * SPEED;
-	// if (data->map[data->ray.map_y][data->ray.map_x] != 'D')
-	// 	data->door.is_open = false;
-	if ((data->map[(int)(new_y)][(int)(data->player.pos_x)] == '0') || (data->map[data->ray.map_y][data->ray.map_x] == 'D' && data->door.is_open))
+	new_y = data->player.pos_y + sign * y * SPEED;	
+	if ((data->map[(int)(new_y)][(int)(data->player.pos_x)] == '0') || data->door.is_open)
+	{
+		data->door.current_pos = data->map[(int)(new_y)][(int)(data->player.pos_x)];
 		data->player.pos_y = new_y;
-	if ((data->map[(int)(data->player.pos_y)][(int)(new_x)] == '0') || (data->map[data->ray.map_y][data->ray.map_x] == 'D' && data->door.is_open))
+	}
+	if ((data->map[(int)(data->player.pos_y)][(int)(new_x)] == '0') || data->door.is_open)
+	{
+		data->door.current_pos = data->map[(int)(data->player.pos_y)][(int)(new_x)];
 		data->player.pos_x = new_x;
+	}
 }
 
 void	ft_moves(t_data *data)
-{
+{	
 	if (data->player.up)
 		ft_move_direction(data, data->player.dir_x, data->player.dir_y, 1);
 	else if (data->player.down)
@@ -37,6 +41,11 @@ void	ft_moves(t_data *data)
 		ft_move_direction(data, data->player.plane_x, data->player.plane_y, 1);
 	else if (data->player.left)
 		ft_move_direction(data, data->player.plane_x, data->player.plane_y, -1);
+	if (data->door.current_pos == '0')
+	{
+		data->door.is_open = false;
+		data->door.current_pos = 0;
+	}
 }
 
 void	ft_calculate_rotate(t_data *data, double angle)

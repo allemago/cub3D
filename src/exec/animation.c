@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:24:42 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/27 14:46:26 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/27 16:21:18 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ int ft_anim_hand(t_data *data)
 		{
 			ft_draw_anim(data, data->hand.frame[3], WIDTH / 3, (HEIGHT / 2 + 40));
 			if (data->map[data->ray.map_y][data->ray.map_x] == 'D')
-				data->door.is_open = true, ft_move_direction(data, data->player.dir_x, data->player.dir_y, 1);
+			{
+				data->door.is_open = true;
+				ft_move_direction(data, data->player.dir_x, data->player.dir_y, 1);
+			}
 			flag = 1;
 		}
 	}
