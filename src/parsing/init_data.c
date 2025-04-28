@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/28 19:30:27 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/28 19:59:44 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,9 @@
 
 static	void	init_door(t_data *data)
 {
-	int	i;
-
-	i = 0;
-	while (i < 5)
-	{
-		data->door.frame[i].img = NULL;
-		data->door.frame[i].pixels = NULL;
-		data->door.frame[i].path = NULL;
-		i++;
-	}
+	data->door.frame[DOOR].img = NULL;
+	data->door.frame[DOOR].pixels = NULL;
+	data->door.frame[DOOR].path = NULL;
 	data->door.current_pos = 0;
 	data->door.is_open = false;
 }
@@ -48,7 +41,7 @@ static	void	init_img(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		data->img[i].img = NULL;
 		data->img[i].pixels = NULL;

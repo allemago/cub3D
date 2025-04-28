@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 12:49:55 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 20:20:01 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/28 20:04:15 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,14 @@ void	ft_game(t_data *data)
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 	{
-		free_all(data, DESTROY);
+		free_all(data, NO_DESTROY);
 		err_exit(MLX_INIT_MSG);
 	}
 	data->window = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "Cub3D");
 	if (!data->window)
 	{
-		free_all(data, DESTROY);
+		destroy_mlx(data);
+		free_all(data, NO_DESTROY);
 		err_exit(MLX_WIN_MSG);
 	}
 	ft_init_img(data);

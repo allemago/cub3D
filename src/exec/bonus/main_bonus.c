@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:34:41 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/28 16:32:18 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/28 20:02:38 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,14 @@ static	void	ft_game_bonus(t_data *data)
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 	{
-		free_all(data, DESTROY);
+		free_all(data, NO_DESTROY);
 		err_exit(MLX_INIT_MSG);
 	}
 	data->window = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "Cub3D");
 	if (!data->window)
 	{
-		free_all(data, DESTROY);
+		destroy_mlx(data);
+		free_all(data, NO_DESTROY);
 		err_exit(MLX_WIN_MSG);
 	}
 	ft_init_img_bonus(data);
@@ -64,25 +65,15 @@ static	void	ft_game_bonus(t_data *data)
 static	void	ft_check_input(t_data *data, int argc, char *map_file)
 {
 	if (argc != 2 || !map_file[0] || is_str_inset(map_file, ALL_SPACES))
-	{
 		err_exit(ARGC_MSG);
-	}
 	if (!is_file_valid(data, map_file))
-	{
 		err_exit(ERR_EXT_MSG);
-	}
 	if (!check_elements(data))
-	{
 		err_free_exit(ERR_ELEM_MSG, data);
-	}
 	if (!check_map_bonus(data, data->height - 1))
-	{
 		err_free_exit(NULL, data);
-	}
 	if (!check_path(data))
-	{
 		err_free_exit(ERR_ITEM_MSG, data);
-	}
 }
 
 int	main(int argc, char **argv)
