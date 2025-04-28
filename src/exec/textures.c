@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:54:43 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/28 17:08:30 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/28 18:02:25 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ static void	draw_texture(t_data *data, int x)
 static void	set_wall(t_data *data)
 {
 	if (data->ray.wall_side == 0 && data->ray.dir_x > 0)
-		data->texture = &data->img[NORTH];
-	else if (data->ray.wall_side == 0 && data->ray.dir_x < 0)
-		data->texture = &data->img[SOUTH];
-	else if (data->ray.wall_side == 1 && data->ray.dir_y > 0)
 		data->texture = &data->img[EAST];
-	else if (data->ray.wall_side == 1 && data->ray.dir_y < 0)
+	else if (data->ray.wall_side == 0 && data->ray.dir_x < 0)
 		data->texture = &data->img[WEST];
+	else if (data->ray.wall_side == 1 && data->ray.dir_y > 0)
+		data->texture = &data->img[SOUTH];
+	else if (data->ray.wall_side == 1 && data->ray.dir_y < 0)
+		data->texture = &data->img[NORTH];
 	if (data->ray.wall_side == 0)
 		data->ray.wall_x = data->player.pos_y + (data->ray.perpwalldist
 				* data->ray.dir_y);

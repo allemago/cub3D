@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:48:45 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/28 17:13:38 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/28 18:25:30 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_move_direction(t_data *data, double x, double y, double sign)
 	new_x = data->player.pos_x + (sign * x) * SPEED;
 	new_y = data->player.pos_y + (sign * y) * SPEED;
 	if ((data->map[(int)(new_y)][(int)(data->player.pos_x
-	)] == '0') || data->door.is_open)
+		)] == '0') || data->door.is_open)
 	{
 		data->door.current_pos = data->map[(int)(new_y
 				)][(int)(data->player.pos_x)];
@@ -68,6 +68,7 @@ void	ft_calculate_rotate(t_data *data, double angle)
 	data->player.plane_y = old_plane_x * sin(angle
 			) + data->player.plane_y * cos(angle);
 	ft_change_face(data);
+	printf("facing = %c\n", data->facing);
 }
 
 void	ft_rotate(t_data *data)
