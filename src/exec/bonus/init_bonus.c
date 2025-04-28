@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:18:32 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/27 20:23:26 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/28 14:09:50 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	ft_init_door(t_data *data)
 	data->door.frame[DOOR].img = mlx_xpm_file_to_image(data->mlx_ptr,
 			data->door.frame[DOOR].path, &data->door.frame[DOOR
 		].width, &data->door.frame[DOOR].height);
-	printf("path %s\n", data->door.frame[DOOR].path);
 	if (!data->door.frame[DOOR].img)
 	{
 		free_all(data, DESTROY);

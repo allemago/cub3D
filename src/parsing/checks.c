@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:11:08 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 21:06:03 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/28 13:26:40 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ int	check_elements(t_data *data)
 			return (0);
 		i++;
 	}
-	if ((!data->north || !data->south || !data->west || !data->east
-			|| !data->f_color || !data->c_color) || !fill_map_game(data, i))
+	if ((!data->north || !data->south || !data->west
+			|| !data->east || !data->f_color || !data->c_color)
+		|| !fill_map_game(data, i) || !reset_maps(data, 0, 0))
 		return (0);
-	reset_maps(data, 0, 0);
 	return (1);
 }

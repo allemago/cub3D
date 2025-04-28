@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:48:45 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/27 17:46:35 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/28 13:56:38 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	ft_move_direction(t_data *data, double x, double y, double sign)
 	double	new_x;
 	double	new_y;
 
-	new_x = data->player.pos_x + sign * x * SPEED;
-	new_y = data->player.pos_y + sign * y * SPEED;
+	new_x = data->player.pos_x + (sign * x) * SPEED;
+	new_y = data->player.pos_y + (sign * y) * SPEED;
 	if ((data->map[(int)(new_y)][(int)(data->player.pos_x
 	)] == '0') || data->door.is_open)
 	{

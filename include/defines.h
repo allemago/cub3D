@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:07:28 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 20:25:53 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/28 13:54:43 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define NO_DESTROY 0
 # define DESTROY 1
 # define ALL_SPACES " \t\n\v\f\r"
+# define W_SPACES "\t\n\v\f\r"
 
 # define ARGC_MSG "Error: try ./cub3D map.cub\n"
 # define ERR_EXT_MSG "Error: wrong file extension, use a .cub file.\n"
@@ -55,9 +56,8 @@
 # define KEY_RIGHT 65363
 # define KEY_LEFT 65361
 
-# define SPEED 0.03
-# define ROTSPEED 0.016
-# define MARGIN 0.1
+# define SPEED 0.04
+# define ROTSPEED 0.02
 
 /* MINIMAP */
 # define MINI_MARGE_X 1014

@@ -6,13 +6,13 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:09:35 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/24 16:22:24 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/28 13:29:38 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	reset_maps(t_data *data, int i, int j)
+int	reset_maps(t_data *data, int i, int j)
 {
 	free_tab(&data->pars->map_check);
 	data->pars->map_check = ft_calloc((data->height + 1), sizeof(char *));
@@ -25,19 +25,18 @@ void	reset_maps(t_data *data, int i, int j)
 	}
 	data->pars->map_check[i] = NULL;
 	i = 0;
-	while (data->map[i] && data->pars->map_check[i])
+	while (data->map[i])
 	{
-		while (data->map[i][j] && data->pars->map_check[i][j])
+		j = 0;
+		while (data->map[i][j])
 		{
-			if (is_c_inset(data->map[i][j], "\t\n\v\f\r"))
-			{
-				data->map[i][j] = ' ';
-				data->pars->map_check[i][j] = ' ';
-			}
+			if (is_c_inset(data->map[i][j], W_SPACES))
+				return (0);
 			j++;
 		}
 		i++;
 	}
+	return (1);
 }
 
 static int	get_map_size(t_data *data, char **map_check, int *i)

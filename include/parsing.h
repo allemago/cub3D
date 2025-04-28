@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:17:48 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 18:01:59 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/28 13:25:22 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		check_path(t_data *data);
  ********************************************/
 int		fill_map_check(t_data *data);
 int		fill_map_game(t_data *data, int i);
-void	reset_maps(t_data *data, int i, int j);
+int		reset_maps(t_data *data, int i, int j);
 
 /********************************************
  *                  UTILS                   *

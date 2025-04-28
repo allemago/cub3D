@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:54:43 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/27 19:47:02 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/28 14:26:18 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	draw_texture(t_data *data, int x)
 {
-	uint32_t	color;
-	int			y;
+	unsigned int	color;
+	int				y;
 
 	y = data->ray.draw_start;
 	while (y < data->ray.draw_end)
@@ -25,7 +25,8 @@ static void	draw_texture(t_data *data, int x)
 		color = *((unsigned int *)(data->texture->pixels + data->ray.tex_y
 					* data->texture->line_len + data->ray.tex_x
 					* (data->texture->bpp / 8)));
-		if (data->ray.wall_side == 1)
+		if (data->ray.wall_side == 1
+			&& data->texture != &data->door.frame[DOOR])
 			color = (color >> 1) & 8355711;
 		if (color != 0xFF000000)
 			ft_put_pixel(data, x, y, color);
