@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 12:34:41 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 20:09:52 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/28 16:32:18 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	free_all(t_data *data, int is_destroy)
 {
 	if (is_destroy == DESTROY)
-		destroy_all(data);
+		destroy_all_bonus(data);
 	if (data->f_color != NULL)
 		free_ptr((void **)&data->f_color);
 	if (data->c_color != NULL)

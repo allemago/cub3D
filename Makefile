@@ -33,7 +33,7 @@ EXEC_FILES=			draw.c events.c moves.c player.c raycasting.c				\
 MANDATORY_FILES= 	game.c main.c  												\
 
 BONUS_EXEC_FILES=	game_bonus.c main_bonus.c minimap_bonus.c init_bonus.c		\
-					hand_bonus.c animation_bonus.c								\
+					hand_bonus.c animation_bonus.c destroy_bonus.c				\
 
 BONUS_PARS_FILES=	checks_bonus.c												\
 
@@ -155,10 +155,10 @@ test_bonus: bonus
 	./cub3D maps/map_ok_bonus.cub
 
 valgrind: re
-	valgrind --tool=memcheck --track-origins=yes ./cub3D maps/map.cub
+	valgrind --tool=memcheck --track-origins=yes ./cub3D maps/OK/map_ok1.cub
 
 valgrind_bonus: bonus
-	valgrind --tool=memcheck --track-origins=yes ./cub3D maps/map_ok_bonus.cub
+	valgrind --tool=memcheck --track-origins=yes ./cub3D maps/OK/map_ok1_bonus.cub
 
 ##################################### PHONY ####################################
 

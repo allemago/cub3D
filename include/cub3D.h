@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:02:07 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/27 20:25:29 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/28 17:04:26 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@
 void	ft_raycasting(t_data *data);
 void	ft_calculate_texture(t_data *data, int x);
 void	destroy_all(t_data *data);
-
 /*********************************************
  *                   INIT                    *
  *********************************************/

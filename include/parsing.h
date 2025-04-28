@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:17:48 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/28 13:25:22 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/28 14:58:12 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		start_valid(char *line);
  *        ERROR HANDLERS & CLEANUP          *
  ********************************************/
 void	check_alloc(void *ptr, t_data *data);
+void	destroy_mlx(t_data *data);
 void	err_free_exit(char *str, t_data *data);
 void	err_exit(char *str);
 void	free_all(t_data *data, int is_destroy);
@@ -65,5 +66,6 @@ void	free_tab(char ***tab);
  *                 BONUS                    *
  ********************************************/
 int		check_map_bonus(t_data *data, int last);
+void	destroy_all_bonus(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 11:48:45 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/28 13:56:38 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/28 17:13:38 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	ft_calculate_rotate(t_data *data, double angle)
 			) - data->player.plane_y * sin(angle);
 	data->player.plane_y = old_plane_x * sin(angle
 			) + data->player.plane_y * cos(angle);
+	ft_change_face(data);
 }
 
 void	ft_rotate(t_data *data)
@@ -75,5 +76,4 @@ void	ft_rotate(t_data *data)
 		ft_calculate_rotate(data, ROTSPEED);
 	else if (data->player.rotate_left)
 		ft_calculate_rotate(data, -ROTSPEED);
-	ft_change_face(data);
 }
