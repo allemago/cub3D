@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:06:24 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/28 17:18:05 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/28 19:30:27 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	init_data(t_data *data)
 	data->map = NULL;
 	data->height = 0;
 	data->width = 0;
-	data->start_facing = 0;
 	data->facing = 0;
 	data->f_color = NULL;
 	data->c_color = NULL;

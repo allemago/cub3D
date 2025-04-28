@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:23:59 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/28 17:17:38 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/28 19:30:07 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ typedef struct s_data
 	char		**map;
 	int			height;
 	int			width;
-	char		start_facing; // modif
 	char		facing;
 	int			*f_color;
 	int			*c_color;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imatek <imatek@student.42.fr>              +#+  +:+       +#+        */
+/*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:24:42 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/27 20:18:50 by imatek           ###   ########.fr       */
+/*   Updated: 2025/04/28 19:29:23 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,7 @@ int	ft_anim_hand(t_data *data)
 	frame = data->hand.time_frame / 14 % 4;
 	flag = 0;
 	if (data->player.espace && flag == 0)
-	{
 		ft_exec_anim(data, frame, &flag);
-	}
 	else
 		ft_draw_anim(data, data->hand.frame[0], (WIDTH / 2), (HEIGHT / 2 + 40));
 	if (data->player.espace && flag == 1)

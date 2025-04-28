@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 18:47:02 by imatek            #+#    #+#             */
-/*   Updated: 2025/04/28 18:14:09 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/28 19:30:49 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static void	ft_set_face(t_data *data)
 		data->player.dir_x = 1;
 		data->player.plane_y = 0.66;
 	}
-
 }
 
 void	ft_init_player(t_data *data)
@@ -68,6 +67,5 @@ void	ft_init_player(t_data *data)
 	data->player.rotate_left = false;
 	data->player.rotate_right = false;
 	data->player.espace = false;
-	printf("facing start = %c\n", data->facing);
 	ft_set_face(data);
 }
