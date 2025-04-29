@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:36:36 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/28 19:45:34 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:17:05 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ static int	set_rgb(t_data *data, char *info, char c)
 
 static void	set_orientation(t_data *data, char *line, char *info)
 {
-	if (ft_strnstr(line, "NO", ft_strlen(line)))
+	if (is_key_valid(line, "NO"))
 		data->north = info;
-	else if (ft_strnstr(line, "SO", ft_strlen(line)))
+	else if (is_key_valid(line, "SO"))
 		data->south = info;
-	else if (ft_strnstr(line, "WE", ft_strlen(line)))
+	else if (is_key_valid(line, "WE"))
 		data->west = info;
-	else if (ft_strnstr(line, "EA", ft_strlen(line)))
+	else if (is_key_valid(line, "EA"))
 		data->east = info;
 }
 
@@ -79,8 +79,9 @@ int	set_element(t_data *data, char *line, int start, int index)
 	return (1);
 }
 
-int	start_valid(char *line)
+int	is_key_valid(char *line, char *key)
 {
+	int	n;
 	int	i;
 
 	i = go_edge_char(line, FIRST_C);
@@ -89,6 +90,11 @@ int	start_valid(char *line)
 		&& !is_c_inset(line[i], "FC"))
 		return (0);
 	if (line[i + 1] && line[i + 1] == line[i])
+		return (0);
+	n = ft_strlen(key);
+	if (ft_strncmp(&line[i], key, n))
+		return (0);
+	if (!is_c_inset(line[i + n], ALL_SPACES))
 		return (0);
 	return (1);
 }

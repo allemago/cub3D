@@ -6,7 +6,7 @@
 /*   By: magrabko <magrabko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 14:17:48 by magrabko          #+#    #+#             */
-/*   Updated: 2025/04/28 14:58:12 by magrabko         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:10:53 by magrabko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ int		go_edge_char(char *str, int edge);
 int		go_end_map(t_data *data, int i);
 int		is_directory(char *file);
 int		is_file_valid(t_data *data, char *map_file);
+int		is_key_valid(char *line, char *key);
 int		is_line_empty(char *line);
 int		is_rgb_valid(char **rgb);
 int		is_c_inset(char c, char *set);
 int		is_str_inset(char *str, char *set);
 int		set_element(t_data *data, char *line, int start, int index);
-int		start_valid(char *line);
 
 /********************************************
  *        ERROR HANDLERS & CLEANUP          *
