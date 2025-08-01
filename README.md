@@ -4,13 +4,13 @@
 
 ---
 
-## 📝 Description
+## Description
 **Cub3D** est un projet de graphics programming qui implémente un moteur 3D rudimentaire en C avec la **MiniLibX**. Le programme génère une vue en première personne à partir d'une carte 2D, en utilisant la technique du *raycasting*.
 
 ![cub3D visual](textures/screenshot.png)
 ---
 
-## 🧩 Fonctionnalités
+## Fonctionnalités
 
 ### Obligatoires
 - **Parsing du fichier `.cub`**  
