@@ -1,0 +1,19 @@
+F 139,108,66
+
+X NONE
+
+NO ./textures/WALLS/NORTH_WALL.xpm
+
+C		255,253,208
+SO ./textures/WALLS/SOUTH_WALL.xpm 
+
+
+WE ./textures/WALLS/WEST_WALL.xpm  
+
+EA ./textures/WALLS/EAST_WALL.xpm  
+
+1111111
+1000001
+100N001
+1000001
+1111111
